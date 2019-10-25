@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="..\css\bootstrap.css">
+	<script type="text/javascript" src="./lib/jquery-3.3.1.min.js"></script>
 	<Title>Scoring System</Title>
-	<link rel="stylesheet" href="bootstrap/bootstrap.css">
 </head>
 
 <body>
-	<nav class="navbar navbar-expand-sm navbar-light bg-light">
+
+	<nav class="navbar navbar-expand-sm navbar-light bg-light clearfix" style="height:5vh;">
 		<a class="navbar-brand" href="#">Scoring System: Admin</a>
-		<button class="btn btn-light">Log Out</button>
-		<button class="btn btn-light">View Messages</button>
+		<button class="btn btn-outline-dark pull-right">View Messages</button>
+		<button class="btn btn-danger pull-right">Log Out</button>
 	</nav>
+
+	<div class="container btn-list col-12" id="session_list" style="height:89vh;">
+		<button class="btn list-btn col-12 btn-outline-dark">Sessions Go Here</li>
+		<button class="btn list-btn col-12 btn-outline-dark">Sessions Go Here</li>
+	</div>
+	<div class="btn btn-secondary col-12" id="add_session_btn" style="height: 5vh">Add Session</div>
 
 </body>
 

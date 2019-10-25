@@ -2386,12 +2386,22 @@ textarea.form-control {
   -ms-user-select: none;
   user-select: none;
   background-color: transparent;
-  border: 1px solid transparent;
+  border: 1px solid black;
   padding: 0.375rem 0.75rem;
-  font-size: 1rem;
+  font-size: 2rem;
   line-height: 1.5;
   border-radius: 0.25rem;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  margin-left: 2.5px;
+  margin-right: 2.5px;
+}
+
+.list-btn {
+  margin-top: 2.5px;
+  margin-bottom: 2.5px;
+}
+.btn-list {
+  margin-top: 1vh;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -4174,7 +4184,7 @@ input[type="button"].btn-block {
   padding-top: 0.3125rem;
   padding-bottom: 0.3125rem;
   margin-right: 1rem;
-  font-size: 1.25rem;
+  font-size: 2.5rem;
   line-height: inherit;
   white-space: nowrap;
 }
