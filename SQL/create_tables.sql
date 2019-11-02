@@ -49,4 +49,28 @@ create table submission (
     primary key(project_id, judge_email)
 );
 
+create table experience (
+	responder_email char(128) default '' not null,
+	bioe boolean default false not null,
+    civl boolean default false not null,
+    coen boolean default false not null,
+    elen boolean default false not null,
+    mech boolean default false not null,
+    inte boolean default false not null,
+    q1 int unsigned default 0 not null,
+    q2 int unsigned default 0 not null,
+    q3 int unsigned default 0 not null,
+    q4 int unsigned default 0 not null,
+    q5 int unsigned default 0 not null,
+    q6 int unsigned default 0 not null,
+    q7 int unsigned default 0 not null,
+    q8 int unsigned default 0 not null,
+    q9 int unsigned default 0 not null,
+    q10 int unsigned default 0 not null,
+    q11 int unsigned default 0 not null,
+    q12 int unsigned default 0 not null,
+    comments text (2048) not null,
+    primary key (responder_email)
+);
+
 
