@@ -1,3 +1,4 @@
+create database scoring_system;
 create table judge (
 	judge_email char(128) default '' not null,
 	judge_name char(128) default '' not NULL,

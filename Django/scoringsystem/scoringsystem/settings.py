@@ -76,7 +76,11 @@ WSGI_APPLICATION = 'scoringsystem.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.path.join(BASE_DIR, 'db.mysql'),
+        'NAME': 'scoring_system',
+        'USER': 'root',
+        'HOST': 'localhost',
+        'PASSWORD': '174LW215',
+        'PORT': '3306',
     }
 }
 
