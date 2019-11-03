@@ -11,381 +11,204 @@
 </head>
 
 <body>
-  <div class="rb-box">
-    <p>
-    <br><b>Please evaluate senior engineering design projects and presentations using the following point system:</b><br><br>
-    5 = Excellent (at the level of entry-level engineer you would hire)<br>
-    4 = Good (at the level of an accomplished college senior)<br>
-    3 = Average (at the level typical of a college senior)<br>
-    2 = Below Average (not up to the expectations for a college senior)<br>
-    1 = Poor (significant errors or omissions)<br>
-    N/A if no appropriate score applies<br>
-    </p>
+    <nav class="navbar navbar-expand-sm navbar-light bg-light clearfix">
+      <a class="navbar-brand" href="index.html">Home</a>
+      <button class="btn btn-outline-dark pull-right">Send Message</button>
+      <button class="btn btn-danger pull-right">Log Out</button>
+    </nav>
 
-    <p><b>DESIGN PROJECT</b></p>
-
-    <p>Technical Accuracy</p>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-      <label class="form-check-label" for="inlineRadio1">N/A</label>
+  <div class="container col-12" id="eval_form">
+    <div class="card" style="margin-bottom: 10px; margin-top: 10px;">
+      <div class="card-header">
+        <b>Please evaluate senior engineering design projects and presentations using the following point system:</b>
+      </div>
+      <ul class="list-group">
+        <li class="list-group-item">5 = Excellent (at the level of entry-level engineer you would hire)</li>
+        <li class="list-group-item">4 = Good (at the level of an accomplished college senior)</li>
+        <li class="list-group-item">3 = Average (at the level typical of a college senior)</li>
+        <li class="list-group-item">2 = Below Average (not up to the expectations for a college senior)</li>
+        <li class="list-group-item">1 = Poor (significant errors or omissions)</li>
+        <li class="list-group-item">0 = No appropriate score applies</li>
+      </ul>
+    </div>
+    <div class="card">
+      <form>
+        <ul class="list-group">
+          <li class="list-group-item">
+            <h2>Design Project</h2>
+            <li class="list-group-item">
+              <div class="form-group row">
+                <label class="col-sm-6 col-form-label">A. Technical Accuracy</label>
+                <div class="col-sm-6">
+                  <input type="number" name="dp_a" min="0" max="5" class="form-control" id="dp_a" placeholder="Enter score">
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="form-group row">
+                <label class="col-sm-6 col-form-label">B. Creativity and Innovation</label>
+                <div class="col-sm-6">
+                  <input type="number" name="dp_b" min="0" max="5" class="form-control" id="dp_b" placeholder="Enter score">
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="form-group row">
+                <label class="col-sm-6 col-form-label">C. Supporting Analytical Work</label>
+                <div class="col-sm-6">
+                  <input type="number" name="dp_c" min="0" max="5" class="form-control" id="dp_c" placeholder="Enter score">
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="form-group row">
+                <label class="col-sm-6 col-form-label">D. Methodical Design Process Demonstrated</label>
+                <div class="col-sm-6">
+                  <input type="number" name="dp_d" min="0" max="5" class="form-control" id="dp_d" placeholder="Enter score">
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="form-group row">
+                <label class="col-sm-6 col-form-label">E. Addresses Project Complexity Appropriately</label>
+                <div class="col-sm-6">
+                  <input type="number" name="dp_e" min="0" max="5" class="form-control" id="dp_e" placeholder="Enter score">
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="form-group row">
+                <label class="col-sm-6 col-form-label">F. Expectation of Completion (by term's end)</label>
+                <div class="col-sm-6">
+                  <input type="number" name="dp_f" min="0" max="5" class="form-control" id="dp_f" placeholder="Enter score">
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="form-group row">
+                <label class="col-sm-6 col-form-label">G. Design & Analysis of tests</label>
+                <div class="col-sm-6">
+                  <input type="number" name="dp_g" min="0" max="5" class="form-control" id="dp_g" placeholder="Enter score">
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="form-group row">
+                <label class="col-sm-6 col-form-label">H. Quality of Response during Q&A</label>
+                <div class="col-sm-6">
+                  <input type="number" name="dp_h" min="0" max="5" class="form-control" id="dp_h" placeholder="Enter score">
+                </div>
+              </div>
+            </li>
+          </li>
+          <li class="list-group-item">
+            <h2>Presentation</h2>
+            <li class="list-group-item">
+              <div class="form-group row">
+                <label class="col-sm-6 col-form-label">A. Organization</label>
+                <div class="col-sm-6">
+                  <input type="number" name="p_a" min="0" max="5" class="form-control" id="p_a" placeholder="Enter score">
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="form-group row">
+                <label class="col-sm-6 col-form-label">B. Use of Allotted Time</label>
+                <div class="col-sm-6">
+                  <input type="number" name="p_b" min="0" max="5" class="form-control" id="p_b" placeholder="Enter score">
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="form-group row">
+                <label class="col-sm-6 col-form-label">C. Visual Aids</label>
+                <div class="col-sm-6">
+                  <input type="number" name="p_c" min="0" max="5" class="form-control" id="p_c" placeholder="Enter score">
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="form-group row">
+                <label class="col-sm-6 col-form-label">D. Confidence and Poise</label>
+                <div class="col-sm-6">
+                  <input type="number" name="p_d" min="0" max="5" class="form-control" id="p_d" placeholder="Enter score">
+                </div>
+              </div>
+            </li>
+          </li>
+          <li class="list-group-item">
+            <h5>Please select each of the following considerations that were addressed by the presentation:</h5>
+          </li>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="economic" id="econ_consideration" value="true">
+                  <label class="form-check-label" for="econ_consideration">
+                    economic
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="ethical" id="ethi_consideration" value="true">
+                  <label class="form-check-label" for="econ_consideration">
+                    ethical
+                  </label>
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="environmental" id="envi_consideration" value="true">
+                  <label class="form-check-label" for="econ_consideration">
+                    environmental
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="health" id="heal_consideration" value="true">
+                  <label class="form-check-label" for="econ_consideration">
+                    health and safety
+                  </label>
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="sustainability" id="sust_consideration" value="true">
+                  <label class="form-check-label" for="econ_consideration">
+                    sustainability
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="social" id="soci_consideration" value="true">
+                  <label class="form-check-label" for="econ_consideration">
+                    social
+                  </label>
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="manufacturability" id="manu_consideration" value="true">
+                  <label class="form-check-label" for="econ_consideration">
+                    manufacturability
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="political" id="poli_consideration" value="true">
+                  <label class="form-check-label" for="econ_consideration">
+                    political
+                  </label>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="form-group">
+              <label for="comments">Comments (optional):</label>
+              <textarea class="form-control" name="comments" id="comments" rows="5"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit All Scores and Comments</button>
+          </li>
+        </ul>
+      </form>
     </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-      <label class="form-check-label" for="inlineRadio2">1</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-      <label class="form-check-label" for="inlineRadio1">2</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-      <label class="form-check-label" for="inlineRadio2">3</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-      <label class="form-check-label" for="inlineRadio1">4</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-      <label class="form-check-label" for="inlineRadio2">5</label>
-    </div>
-
-    <p>Creativity and Innovation</p>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-      <label class="form-check-label" for="inlineRadio1">N/A</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-      <label class="form-check-label" for="inlineRadio2">1</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-      <label class="form-check-label" for="inlineRadio1">2</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-      <label class="form-check-label" for="inlineRadio2">3</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-      <label class="form-check-label" for="inlineRadio1">4</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-      <label class="form-check-label" for="inlineRadio2">5</label>
-    </div>
-
-    <p>Supporting Analytical Work</p>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-      <label class="form-check-label" for="inlineRadio1">N/A</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-      <label class="form-check-label" for="inlineRadio2">1</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-      <label class="form-check-label" for="inlineRadio1">2</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-      <label class="form-check-label" for="inlineRadio2">3</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-      <label class="form-check-label" for="inlineRadio1">4</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-      <label class="form-check-label" for="inlineRadio2">5</label>
-    </div>
-
-    <p>Methodical Design Process Demonstrated</p>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-      <label class="form-check-label" for="inlineRadio1">N/A</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-      <label class="form-check-label" for="inlineRadio2">1</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-      <label class="form-check-label" for="inlineRadio1">2</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-      <label class="form-check-label" for="inlineRadio2">3</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-      <label class="form-check-label" for="inlineRadio1">4</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-      <label class="form-check-label" for="inlineRadio2">5</label>
-    </div>
-
-    <p>Addresses Project Complexity Appropriately</p>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-      <label class="form-check-label" for="inlineRadio1">N/A</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-      <label class="form-check-label" for="inlineRadio2">1</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-      <label class="form-check-label" for="inlineRadio1">2</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-      <label class="form-check-label" for="inlineRadio2">3</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-      <label class="form-check-label" for="inlineRadio1">4</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-      <label class="form-check-label" for="inlineRadio2">5</label>
-    </div>
-
-    <p>Expectation of Completion (by term’s end)</p>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-      <label class="form-check-label" for="inlineRadio1">N/A</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-      <label class="form-check-label" for="inlineRadio2">1</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-      <label class="form-check-label" for="inlineRadio1">2</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-      <label class="form-check-label" for="inlineRadio2">3</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-      <label class="form-check-label" for="inlineRadio1">4</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-      <label class="form-check-label" for="inlineRadio2">5</label>
-    </div>
-
-    <p>Design & Analysis of Tests</p>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-      <label class="form-check-label" for="inlineRadio1">N/A</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-      <label class="form-check-label" for="inlineRadio2">1</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-      <label class="form-check-label" for="inlineRadio1">2</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-      <label class="form-check-label" for="inlineRadio2">3</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-      <label class="form-check-label" for="inlineRadio1">4</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-      <label class="form-check-label" for="inlineRadio2">5</label>
-    </div>
-
-    <p>Quality of Response during Q&A</p>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-      <label class="form-check-label" for="inlineRadio1">N/A</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-      <label class="form-check-label" for="inlineRadio2">1</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-      <label class="form-check-label" for="inlineRadio1">2</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-      <label class="form-check-label" for="inlineRadio2">3</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-      <label class="form-check-label" for="inlineRadio1">4</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-      <label class="form-check-label" for="inlineRadio2">5</label>
-    </div>
-
-    <p><b>PRESENTATION</b></p>
-
-    <p>Organization</p>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-      <label class="form-check-label" for="inlineRadio1">N/A</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-      <label class="form-check-label" for="inlineRadio2">1</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-      <label class="form-check-label" for="inlineRadio1">2</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-      <label class="form-check-label" for="inlineRadio2">3</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-      <label class="form-check-label" for="inlineRadio1">4</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-      <label class="form-check-label" for="inlineRadio2">5</label>
-    </div>
-
-    <p>Use of Allocated Time</p>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-      <label class="form-check-label" for="inlineRadio1">N/A</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-      <label class="form-check-label" for="inlineRadio2">1</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-      <label class="form-check-label" for="inlineRadio1">2</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-      <label class="form-check-label" for="inlineRadio2">3</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-      <label class="form-check-label" for="inlineRadio1">4</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-      <label class="form-check-label" for="inlineRadio2">5</label>
-    </div>
-
-    <p>Visual Aids</p>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-      <label class="form-check-label" for="inlineRadio1">N/A</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-      <label class="form-check-label" for="inlineRadio2">1</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-      <label class="form-check-label" for="inlineRadio1">2</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-      <label class="form-check-label" for="inlineRadio2">3</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-      <label class="form-check-label" for="inlineRadio1">4</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-      <label class="form-check-label" for="inlineRadio2">5</label>
-    </div>
-
-    <p>Confidence and Poise</p>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-      <label class="form-check-label" for="inlineRadio1">N/A</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-      <label class="form-check-label" for="inlineRadio2">1</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-      <label class="form-check-label" for="inlineRadio1">2</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-      <label class="form-check-label" for="inlineRadio2">3</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-      <label class="form-check-label" for="inlineRadio1">4</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-      <label class="form-check-label" for="inlineRadio2">5</label>
-    </div>
-
-    <p>Please select each of the following considerations that were addressed by the presentation:</p>
-    <div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-      <label class="form-check-label" for="inlineCheckbox1">economic</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-      <label class="form-check-label" for="inlineCheckbox2">environmental</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-      <label class="form-check-label" for="inlineCheckbox1">sustainable</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-      <label class="form-check-label" for="inlineCheckbox2">manufacturability</label>
-    </div>
-    </div>
-    <div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-      <label class="form-check-label" for="inlineCheckbox1">ethical</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-      <label class="form-check-label" for="inlineCheckbox2">health and safety</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-      <label class="form-check-label" for="inlineCheckbox1">social</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-      <label class="form-check-label" for="inlineCheckbox2">political</label>
-    </div>
-    </div>
-
-    <div class="form-group">
-      <label for="exampleFormControlTextarea1">Comments (optional):</label>
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-    </div>
-
-    <!-- Button -->
-    <div class="button-box">
-      <button class="button trigger">Submit!</button>
-    </div>
-
   </div>
 </body>
 <script type="text/javascript" src="..\js\functions.js"></script>
