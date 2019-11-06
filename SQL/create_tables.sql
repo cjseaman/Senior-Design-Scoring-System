@@ -45,7 +45,7 @@ create table scoringsystem_projecteval (
 	heal_consideration boolean default false,
 	soci_consideration boolean default false,
 	poli_consideration boolean default false,
-	comments text,
+	comments char (512) default '',
 	primary key(project_id)
 );
 
