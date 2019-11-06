@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html>
+
+<head>
+	<Title>Project Evaluation Form</Title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm navbar-light bg-light clearfix">
+      <a class="navbar-brand" href="index.html">Home</a>
+      <button class="btn btn-outline-dark pull-right">Send Message</button>
+      <button class="btn btn-danger pull-right">Log Out</button>
+    </nav>
+
+  <div class="container col-12" id="eval_form">
+    <div class="card">
+      <form action="submitted/" method="POST"> {% csrf_token %}
+        <ul class="list-group">
+          <li class="list-group-item">
+            <b>Judge Email:</b>
+            <input type="text" name="judge_email" id="judge_email"><br>
+          </li>
+          <li class="list-group-item">
+            <b>Project ID:</b>
+            <input type="text" name="project_id" id="project_id"><br>
+          </li>
+        </ul>
+        <input type="submit" value="Submit!">
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>
