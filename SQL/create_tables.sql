@@ -22,31 +22,31 @@ create table project (
 	primary key (project_id)
 );
 
-create table submission (
-	project_id int default 0 not null,
-	judge_email char (128) default '' not null,
-	dp_a float default 0 not null,
-	dp_b float default 0 not null,
-	dp_c float default 0 not null,
-	dp_d float default 0 not null,
-	dp_e float default 0 not null,
-	dp_f float default 0 not null,
-	dp_g float default 0 not null,
-	dp_h float default 0 not null,
-	p_a float default 0 not null,
-	p_b float default 0 not null,
-	p_c float default 0 not null,
-	p_d float default 0 not null,
-	econ_consideration boolean default false not null,
-	envi_consideration boolean default false not null,
-	sust_consideration boolean default false not null,
-	manu_consideration boolean default false not null,
-	ethi_consideration boolean default false not null,
-	heal_consideration boolean default false not null,
-	soci_consideration boolean default false not null,
-	poli_consideration boolean default false not null,
-	comments text not null,
-	primary key(project_id, judge_email)
+create table scoringsystem_projecteval (
+	project_id int default 0,
+	judge_email char (128) default '',
+	dp_a float default 0,
+	dp_b float default 0,
+	dp_c float default 0,
+	dp_d float default 0,
+	dp_e float default 0,
+	dp_f float default 0,
+	dp_g float default 0,
+	dp_h float default 0,
+	p_a float default 0,
+	p_b float default 0,
+	p_c float default 0,
+	p_d float default 0,
+	econ_consideration boolean default false,
+	envi_consideration boolean default false,
+	sust_consideration boolean default false,
+	manu_consideration boolean default false,
+	ethi_consideration boolean default false,
+	heal_consideration boolean default false,
+	soci_consideration boolean default false,
+	poli_consideration boolean default false,
+	comments text,
+	primary key(project_id)
 );
 
 create table experience (
