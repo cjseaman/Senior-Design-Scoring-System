@@ -1,7 +1,10 @@
 from django.shortcuts import render
 from .scoring_data import Score
+import logging
 
 def createscore(request):
+    logging.basicConfig(filename='mylog.log', level=logging.DEBUG)
+    logging.debug('got to createscore!!')
     if request.method == 'POST':
         if request.POST.get("project_id") and request.POST.get("judge_email")
             score = Score()
