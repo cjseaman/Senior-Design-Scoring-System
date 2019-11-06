@@ -3,10 +3,6 @@
 <html>
 
 <head>
-	<link rel="stylesheet" href="..\css\bootstrap.css">
-	<script type="text/javascript" src="..\js\jquery-3.4.1.js"></script>
-	<script type="text/javascript" src="..\js\bootstrap.js"></script>
-	<script type="text/javascript" src="..\js\functions.js"></script>
 	<Title>Project Evaluation Form</Title>
 </head>
 
@@ -19,7 +15,7 @@
 
   <div class="container col-12" id="eval_form">
     <div class="card">
-      <form action="/submitted/" method="POST"> {% csrf_token %}
+      <form action="submitted/" method="POST"> {% csrf_token %}
         <ul class="list-group">
           <li class="list-group-item">
             <b>Judge Email:</b>
@@ -35,7 +31,5 @@
     </div>
   </div>
 </body>
-<script type="text/javascript" src="..\js\functions.js"></script>
-<script type="text/javascript" src="events.js"></script>
 
 </html>
