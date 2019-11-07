@@ -7,12 +7,12 @@
 	<script type="text/javascript" src="..\js\jquery-3.4.1.js"></script>
 	<script type="text/javascript" src="..\js\bootstrap.js"></script>
 	<script type="text/javascript" src="..\js\functions.js"></script>
-	<title> Experience Evaluation Form </title> 
+	<title> Experience Evaluation Form </title>
 </head>
 
 <body>
-<form>
-	<div class = "container col-8">
+<form action="submitted" method="POST"> {% csrf_token %}
+  <div class = "container col-8">
 		<header><h2><b>
 		<div class = "text-center">
 	  		Judges' Evaluation of Senior Design Experience
@@ -25,7 +25,11 @@
 	  	</div>
 	  	</h2></b></header>
 			<i>Santa Clara University requires that the School of Engineering assess the capabilities of our students for our ongoing accreditation process, but more importantly to confirm we are educating the whole student and preparing them for the years to come. Your answers to the following questions, based on the presentations you witnessed today, would be most helpful to us and much appreciated.</i>
-		<div>
+    <li class="list-group-item">
+      <b>Judge Email:</b>
+      <input type="text" name="judge_email" id="judge_email"><br>
+    </li>
+    <div>
 			<b>Which discipline are you judging?</b>
 		</div>
 		<div>

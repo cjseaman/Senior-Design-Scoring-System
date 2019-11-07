@@ -20,5 +20,7 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('project_eval_form/', views.projectEvalView, name='project_eval'),
-    path('project_eval_form/submitted', views.submittedProjectEvalView, name='submit_project_eval'),
+    path('project_eval_form/submitted', views.submitProjectEvalView, name='submit_project_eval'),
+    path('judge_exp_eval_form/', views.judgeExpEvalView, name='exp_eval'),
+    path('judge_exp_eval_form/submitted', views.submitJudgeExpEvalView, name='submit_exp_eval'),
 ]
