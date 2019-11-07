@@ -9,8 +9,49 @@ import logging
 def projectEvalView(request):
     return render(request, 'projects_eval_form.html')
 
-def submittedProjectEvalView(request):
+def judgeExpEvalView(request):
+    return render(request, 'judge_exp_eval_form.html')
+
+def submitJudgeExpEvalView(request):
+    return submitJudgeEval(request)
+
+def submitProjectEvalView(request):
     return submitProjectEval(request)
+
+@csrf_exempt
+def submitJudgeEval(request):
+    logging.basicConfig(filename='mylog.log', level=logging.DEBUG)
+    logging.debug('got to submitJudgeEval!!')
+    if request.method == 'POST':
+        logging.debug('form is valid')
+        judge_email = request.POST.get("judge_email")
+        discipline = request.POST.get("discipline")
+        q1 = int(request.POST.get("q1"))
+        q2 = int(request.POST.get("q2"))
+        q3 = int(request.POST.get("q3"))
+        q4 = int(request.POST.get("q4"))
+        q5 = int(request.POST.get("q5"))
+        q6 = int(request.POST.get("q6"))
+        q7 = int(request.POST.get("q7"))
+        q8 = int(request.POST.get("q8"))
+        q9 = int(request.POST.get("q9"))
+        q10 = int(request.POST.get("q10"))
+        q11 = int(request.POST.get("q11"))
+        q12 = int(request.POST.get("q12"))
+        comments = request.POST.get("comments")
+        eval = m.JudgeEval(
+            judge_email=judge_email, discipline=discipline, q1=q1, q2=q2, q3=q3,
+            q4=q4, q5=q5, q6=q6, q7=q7, q8=q8, q9=q9, q10=q10, q11=q11, q12=q12,
+            comments=comments
+        )
+        logging.debug('eval:', eval)
+        eval.save()
+        return render(request, 'submitted.html')
+    else:
+        logging.debug('method is not POST')
+
+    return render(request,'error.html')
+
 
 def makeBool(val):
     if val == 'true':
@@ -65,6 +106,5 @@ def submitProjectEval(request):
         return render(request, 'submitted.html')
     else:
         logging.debug('method is not POST')
-        form = forms.TestScoreForm()
 
     return render(request,'error.html')
