@@ -9,13 +9,12 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-sm navbar-light bg-light clearfix">
-      <a class="navbar-brand" href="index.html">Home</a>
-      <button class="btn btn-outline-dark pull-right">Send Message</button>
-      <button class="btn btn-danger pull-right">Log Out</button>
-    </nav>
+  <nav class="navbar navbar-expand-sm navbar-light bg-light clearfix">
+    <a class="navbar-brand" href="index.html">Home</a>
+    <button class="btn btn-danger pull-right">Log Out</button>
+  </nav>
 
-  <div class="container col-12" id="eval_form">
+  <div class="container" id="eval_form">
     <div class="card" style="margin-bottom: 10px; margin-top: 10px;">
       <div class="card-header">
         <b>Please evaluate senior engineering design projects and presentations using the following point system:</b>
@@ -43,105 +42,500 @@
           <li class="list-group-item">
             <h2>Design Project</h2>
             <li class="list-group-item">
-              <div class="form-group row">
-                <label class="col-sm-6 col-form-label">A. Technical Accuracy</label>
-                <div class="col-sm-6">
-                  <input type="number" name="dp_a" min="0" max="5" class="form-control" id="dp_a" placeholder="Enter score">
-                </div>
+              <div class="form-group">
+                <label class="col-form-label"><h5>A. Technical Accuracy</h5></label>
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="0" name="dp_a" id="dp_a">
+                    <label class="form-check-label" for="defaultCheck7">No basis for judgment</label>
+                  </div>
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="1" name="dp_a" id="dp_a">
+                    <label class="form-check-label" for="defaultCheck8">
+                      1 = Poor (signifigcant errors or omissions)
+                    </label>
+                  </div>
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="2" name="dp_a" id="dp_a">
+                    <label class="form-check-label" for="defaultCheck9">
+                      2 = Below Average (not up to the expectations for a college senior)
+                    </label>
+                  </div>
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="3" name="dp_a" id="dp_a">
+                    <label class="form-check-label" for="defaultCheck10">
+                      3 = Average (at the level typical of a college senior)
+                    </label>
+                  </div>
+
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="4" name="dp_a" id="dp_a">
+                    <label class="form-check-label" for="defaultCheck10">
+                      4 = Good (at the level of an accomplished college senior)
+                    </label>
+                  </div>
+
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="5" name="dp_a" id="dp_a">
+                    <label class="form-check-label" for="defaultCheck11">
+                      5 = Excellent (at the level of entry-level engineer you would hire)
+                    </label>
+                  </div>
               </div>
             </li>
             <li class="list-group-item">
-              <div class="form-group row">
-                <label class="col-sm-6 col-form-label">B. Creativity and Innovation</label>
-                <div class="col-sm-6">
-                  <input type="number" name="dp_b" min="0" max="5" class="form-control" id="dp_b" placeholder="Enter score">
-                </div>
+              <div class="form-group">
+                <label class="col-form-label"><h5>B. Creativity and Innovation</h5></label>
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="0" name="dp_b" id="dp_b">
+                    <label class="form-check-label" for="defaultCheck7">No basis for judgment</label>
+                  </div>
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="1" name="dp_b" id="dp_b">
+                    <label class="form-check-label" for="defaultCheck8">
+                      1 = Poor (signifigcant errors or omissions)
+                    </label>
+                  </div>
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="2" name="dp_b" id="dp_b">
+                    <label class="form-check-label" for="defaultCheck9">
+                      2 = Below Average (not up to the expectations for a college senior)
+                    </label>
+                  </div>
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="3" name="dp_b" id="dp_b">
+                    <label class="form-check-label" for="defaultCheck10">
+                      3 = Average (at the level typical of a college senior)
+                    </label>
+                  </div>
+
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="4" name="dp_b" id="dp_b">
+                    <label class="form-check-label" for="defaultCheck10">
+                      4 = Good (at the level of an accomplished college senior)
+                    </label>
+                  </div>
+
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="5" name="dp_b" id="dp_b">
+                    <label class="form-check-label" for="defaultCheck11">
+                      5 = Excellent (at the level of entry-level engineer you would hire)
+                    </label>
+                  </div>
               </div>
             </li>
             <li class="list-group-item">
-              <div class="form-group row">
-                <label class="col-sm-6 col-form-label">C. Supporting Analytical Work</label>
-                <div class="col-sm-6">
-                  <input type="number" name="dp_c" min="0" max="5" class="form-control" id="dp_c" placeholder="Enter score">
-                </div>
+              <div class="form-group">
+                <label class="col-form-label"><h5>C. Supporting Analytical Work</h5></label>
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="0" name="dp_c" id="dp_c">
+                    <label class="form-check-label" for="defaultCheck7">No basis for judgment</label>
+                  </div>
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="1" name="dp_c" id="dp_c">
+                    <label class="form-check-label" for="defaultCheck8">
+                      1 = Poor (signifigcant errors or omissions)
+                    </label>
+                  </div>
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="2" name="dp_c" id="dp_c">
+                    <label class="form-check-label" for="defaultCheck9">
+                      2 = Below Average (not up to the expectations for a college senior)
+                    </label>
+                  </div>
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="3" name="dp_c" id="dp_c">
+                    <label class="form-check-label" for="defaultCheck10">
+                      3 = Average (at the level typical of a college senior)
+                    </label>
+                  </div>
+
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="4" name="dp_c" id="dp_c">
+                    <label class="form-check-label" for="defaultCheck10">
+                      4 = Good (at the level of an accomplished college senior)
+                    </label>
+                  </div>
+
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="5" name="dp_c" id="dp_c">
+                    <label class="form-check-label" for="defaultCheck11">
+                      5 = Excellent (at the level of entry-level engineer you would hire)
+                    </label>
+                  </div>
               </div>
             </li>
             <li class="list-group-item">
-              <div class="form-group row">
-                <label class="col-sm-6 col-form-label">D. Methodical Design Process Demonstrated</label>
-                <div class="col-sm-6">
-                  <input type="number" name="dp_d" min="0" max="5" class="form-control" id="dp_d" placeholder="Enter score">
-                </div>
+              <div class="form-group">
+                <label class="col-form-label"><h5>D. Methodical Design Process Demonstrated</h5></label>
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="0" name="dp_d" id="dp_d">
+                    <label class="form-check-label" for="defaultCheck7">No basis for judgment</label>
+                  </div>
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="1" name="dp_d" id="dp_d">
+                    <label class="form-check-label" for="defaultCheck8">
+                      1 = Poor (signifigcant errors or omissions)
+                    </label>
+                  </div>
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="2" name="dp_d" id="dp_d">
+                    <label class="form-check-label" for="defaultCheck9">
+                      2 = Below Average (not up to the expectations for a college senior)
+                    </label>
+                  </div>
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="3" name="dp_d" id="dp_d">
+                    <label class="form-check-label" for="defaultCheck10">
+                      3 = Average (at the level typical of a college senior)
+                    </label>
+                  </div>
+
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="4" name="dp_d" id="dp_d">
+                    <label class="form-check-label" for="defaultCheck10">
+                      4 = Good (at the level of an accomplished college senior)
+                    </label>
+                  </div>
+
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="5" name="dp_d" id="dp_d">
+                    <label class="form-check-label" for="defaultCheck11">
+                      5 = Excellent (at the level of entry-level engineer you would hire)
+                    </label>
+                  </div>
               </div>
             </li>
             <li class="list-group-item">
-              <div class="form-group row">
-                <label class="col-sm-6 col-form-label">E. Addresses Project Complexity Appropriately</label>
-                <div class="col-sm-6">
-                  <input type="number" name="dp_e" min="0" max="5" class="form-control" id="dp_e" placeholder="Enter score">
-                </div>
+              <div class="form-group">
+                <label class="col-form-label"><h5>E. Addresses Project Complexity Appropriately</h5></label>
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="0" name="dp_e" id="dp_e">
+                    <label class="form-check-label" for="defaultCheck7">No basis for judgment</label>
+                  </div>
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="1" name="dp_e" id="dp_e">
+                    <label class="form-check-label" for="defaultCheck8">
+                      1 = Poor (signifigcant errors or omissions)
+                    </label>
+                  </div>
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="2" name="dp_e" id="dp_e">
+                    <label class="form-check-label" for="defaultCheck9">
+                      2 = Below Average (not up to the expectations for a college senior)
+                    </label>
+                  </div>
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="3" name="dp_e" id="dp_e">
+                    <label class="form-check-label" for="defaultCheck10">
+                      3 = Average (at the level typical of a college senior)
+                    </label>
+                  </div>
+
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="4" name="dp_e" id="dp_e">
+                    <label class="form-check-label" for="defaultCheck10">
+                      4 = Good (at the level of an accomplished college senior)
+                    </label>
+                  </div>
+
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="5" name="dp_e" id="dp_e">
+                    <label class="form-check-label" for="defaultCheck11">
+                      5 = Excellent (at the level of entry-level engineer you would hire)
+                    </label>
+                  </div>
               </div>
             </li>
             <li class="list-group-item">
-              <div class="form-group row">
-                <label class="col-sm-6 col-form-label">F. Expectation of Completion (by term's end)</label>
-                <div class="col-sm-6">
-                  <input type="number" name="dp_f" min="0" max="5" class="form-control" id="dp_f" placeholder="Enter score">
-                </div>
+              <div class="form-group">
+                <label class="col-form-label"><h5>F. Expected Project Completion</h5></label>
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="0" name="dp_f" id="dp_f">
+                    <label class="form-check-label" for="defaultCheck7">No basis for judgment</label>
+                  </div>
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="1" name="dp_f" id="dp_f">
+                    <label class="form-check-label" for="defaultCheck8">
+                      1 = Poor (signifigcant errors or omissions)
+                    </label>
+                  </div>
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="2" name="dp_f" id="dp_f">
+                    <label class="form-check-label" for="defaultCheck9">
+                      2 = Below Average (not up to the expectations for a college senior)
+                    </label>
+                  </div>
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="3" name="dp_f" id="dp_f">
+                    <label class="form-check-label" for="defaultCheck10">
+                      3 = Average (at the level typical of a college senior)
+                    </label>
+                  </div>
+
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="4" name="dp_f" id="dp_f">
+                    <label class="form-check-label" for="defaultCheck10">
+                      4 = Good (at the level of an accomplished college senior)
+                    </label>
+                  </div>
+
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="5" name="dp_f" id="dp_f">
+                    <label class="form-check-label" for="defaultCheck11">
+                      5 = Excellent (at the level of entry-level engineer you would hire)
+                    </label>
+                  </div>
               </div>
             </li>
             <li class="list-group-item">
-              <div class="form-group row">
-                <label class="col-sm-6 col-form-label">G. Design & Analysis of tests</label>
-                <div class="col-sm-6">
-                  <input type="number" name="dp_g" min="0" max="5" class="form-control" id="dp_g" placeholder="Enter score">
-                </div>
+              <div class="form-group">
+                <label class="col-form-label"><h5>G. Design & Analysis of Tests</h5></label>
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="0" name="dp_g" id="dp_g">
+                    <label class="form-check-label" for="defaultCheck7">No basis for judgment</label>
+                  </div>
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="1" name="dp_g" id="dp_g">
+                    <label class="form-check-label" for="defaultCheck8">
+                      1 = Poor (signifigcant errors or omissions)
+                    </label>
+                  </div>
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="2" name="dp_g" id="dp_g">
+                    <label class="form-check-label" for="defaultCheck9">
+                      2 = Below Average (not up to the expectations for a college senior)
+                    </label>
+                  </div>
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="3" name="dp_g" id="dp_g">
+                    <label class="form-check-label" for="defaultCheck10">
+                      3 = Average (at the level typical of a college senior)
+                    </label>
+                  </div>
+
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="4" name="dp_g" id="dp_g">
+                    <label class="form-check-label" for="defaultCheck10">
+                      4 = Good (at the level of an accomplished college senior)
+                    </label>
+                  </div>
+
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="5" name="dp_g" id="dp_g">
+                    <label class="form-check-label" for="defaultCheck11">
+                      5 = Excellent (at the level of entry-level engineer you would hire)
+                    </label>
+                  </div>
               </div>
             </li>
             <li class="list-group-item">
-              <div class="form-group row">
-                <label class="col-sm-6 col-form-label">H. Quality of Response during Q&A</label>
-                <div class="col-sm-6">
-                  <input type="number" name="dp_h" min="0" max="5" class="form-control" id="dp_h" placeholder="Enter score">
-                </div>
+              <div class="form-group">
+                <label class="col-form-label"><h5>H. Quality of Response During Q&A</h5></label>
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="0" name="dp_h" id="dp_h">
+                    <label class="form-check-label" for="defaultCheck7">No basis for judgment</label>
+                  </div>
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="1" name="dp_h" id="dp_h">
+                    <label class="form-check-label" for="defaultCheck8">
+                      1 = Poor (signifigcant errors or omissions)
+                    </label>
+                  </div>
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="2" name="dp_h" id="dp_h">
+                    <label class="form-check-label" for="defaultCheck9">
+                      2 = Below Average (not up to the expectations for a college senior)
+                    </label>
+                  </div>
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="3" name="dp_h" id="dp_h">
+                    <label class="form-check-label" for="defaultCheck10">
+                      3 = Average (at the level typical of a college senior)
+                    </label>
+                  </div>
+
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="4" name="dp_h" id="dp_h">
+                    <label class="form-check-label" for="defaultCheck10">
+                      4 = Good (at the level of an accomplished college senior)
+                    </label>
+                  </div>
+
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="5" name="dp_h" id="dp_h">
+                    <label class="form-check-label" for="defaultCheck11">
+                      5 = Excellent (at the level of entry-level engineer you would hire)
+                    </label>
+                  </div>
               </div>
             </li>
           </li>
           <li class="list-group-item">
             <h2>Presentation</h2>
             <li class="list-group-item">
-              <div class="form-group row">
-                <label class="col-sm-6 col-form-label">A. Organization</label>
-                <div class="col-sm-6">
-                  <input type="number" name="p_a" min="0" max="5" class="form-control" id="p_a" placeholder="Enter score">
-                </div>
+              <div class="form-group">
+                <label class="col-form-label"><h5>A. Organization</h5></label>
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="0" name="p_a" id="p_a">
+                    <label class="form-check-label" for="defaultCheck7">No basis for judgment</label>
+                  </div>
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="1" name="p_a" id="p_a">
+                    <label class="form-check-label" for="defaultCheck8">
+                      1 = Poor (signifigcant errors or omissions)
+                    </label>
+                  </div>
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="2" name="p_a" id="p_a">
+                    <label class="form-check-label" for="defaultCheck9">
+                      2 = Below Average (not up to the expectations for a college senior)
+                    </label>
+                  </div>
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="3" name="p_a" id="p_a">
+                    <label class="form-check-label" for="defaultCheck10">
+                      3 = Average (at the level typical of a college senior)
+                    </label>
+                  </div>
+
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="4" name="p_a" id="p_a">
+                    <label class="form-check-label" for="defaultCheck10">
+                      4 = Good (at the level of an accomplished college senior)
+                    </label>
+                  </div>
+
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="5" name="p_a" id="p_a">
+                    <label class="form-check-label" for="defaultCheck11">
+                      5 = Excellent (at the level of entry-level engineer you would hire)
+                    </label>
+                  </div>
               </div>
             </li>
             <li class="list-group-item">
-              <div class="form-group row">
-                <label class="col-sm-6 col-form-label">B. Use of Allotted Time</label>
-                <div class="col-sm-6">
-                  <input type="number" name="p_b" min="0" max="5" class="form-control" id="p_b" placeholder="Enter score">
-                </div>
+              <div class="form-group">
+                <label class="col-form-label"><h5>B. Use of Allotted Time</h5></label>
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="0" name="p_b" id="p_b">
+                    <label class="form-check-label" for="defaultCheck7">No basis for judgment</label>
+                  </div>
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="1" name="p_b" id="p_b">
+                    <label class="form-check-label" for="defaultCheck8">
+                      1 = Poor (signifigcant errors or omissions)
+                    </label>
+                  </div>
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="2" name="p_b" id="p_b">
+                    <label class="form-check-label" for="defaultCheck9">
+                      2 = Below Average (not up to the expectations for a college senior)
+                    </label>
+                  </div>
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="3" name="p_b" id="p_b">
+                    <label class="form-check-label" for="defaultCheck10">
+                      3 = Average (at the level typical of a college senior)
+                    </label>
+                  </div>
+
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="4" name="p_b" id="p_b">
+                    <label class="form-check-label" for="defaultCheck10">
+                      4 = Good (at the level of an accomplished college senior)
+                    </label>
+                  </div>
+
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="5" name="p_b" id="p_b">
+                    <label class="form-check-label" for="defaultCheck11">
+                      5 = Excellent (at the level of entry-level engineer you would hire)
+                    </label>
+                  </div>
               </div>
             </li>
             <li class="list-group-item">
-              <div class="form-group row">
-                <label class="col-sm-6 col-form-label">C. Visual Aids</label>
-                <div class="col-sm-6">
-                  <input type="number" name="p_c" min="0" max="5" class="form-control" id="p_c" placeholder="Enter score">
-                </div>
+              <div class="form-group">
+                <label class="col-form-label"><h5>C. Visual Aids</h5></label>
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="0" name="p_c" id="p_c">
+                    <label class="form-check-label" for="defaultCheck7">No basis for judgment</label>
+                  </div>
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="1" name="p_c" id="p_c">
+                    <label class="form-check-label" for="defaultCheck8">
+                      1 = Poor (signifigcant errors or omissions)
+                    </label>
+                  </div>
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="2" name="p_c" id="p_c">
+                    <label class="form-check-label" for="defaultCheck9">
+                      2 = Below Average (not up to the expectations for a college senior)
+                    </label>
+                  </div>
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="3" name="p_c" id="p_c">
+                    <label class="form-check-label" for="defaultCheck10">
+                      3 = Average (at the level typical of a college senior)
+                    </label>
+                  </div>
+
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="4" name="p_c" id="p_c">
+                    <label class="form-check-label" for="defaultCheck10">
+                      4 = Good (at the level of an accomplished college senior)
+                    </label>
+                  </div>
+
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="5" name="p_c" id="p_c">
+                    <label class="form-check-label" for="defaultCheck11">
+                      5 = Excellent (at the level of entry-level engineer you would hire)
+                    </label>
+                  </div>
               </div>
             </li>
             <li class="list-group-item">
-              <div class="form-group row">
-                <label class="col-sm-6 col-form-label">D. Confidence and Poise</label>
-                <div class="col-sm-6">
-                  <input type="number" name="p_d" min="0" max="5" class="form-control" id="p_d" placeholder="Enter score">
-                </div>
+              <div class="form-group">
+                <label class="col-form-label"><h5>D. Confidence and Poise</h5></label>
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="0" name="p_d" id="p_d">
+                    <label class="form-check-label" for="defaultCheck7">No basis for judgment</label>
+                  </div>
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="1" name="p_d" id="p_d">
+                    <label class="form-check-label" for="defaultCheck8">
+                      1 = Poor (signifigcant errors or omissions)
+                    </label>
+                  </div>
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="2" name="p_d" id="p_d">
+                    <label class="form-check-label" for="defaultCheck9">
+                      2 = Below Average (not up to the expectations for a college senior)
+                    </label>
+                  </div>
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="3" name="p_d" id="p_d">
+                    <label class="form-check-label" for="defaultCheck10">
+                      3 = Average (at the level typical of a college senior)
+                    </label>
+                  </div>
+
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="4" name="p_d" id="p_d">
+                    <label class="form-check-label" for="defaultCheck10">
+                      4 = Good (at the level of an accomplished college senior)
+                    </label>
+                  </div>
+
+                  <div class = "form-check">
+                    <input class="form-check-input" type="radio" value="5" name="p_d" id="p_d">
+                    <label class="form-check-label" for="defaultCheck11">
+                      5 = Excellent (at the level of entry-level engineer you would hire)
+                    </label>
+                  </div>
               </div>
             </li>
-          </li>
           <li class="list-group-item">
             <h5>Please select each of the following considerations that were addressed by the presentation:</h5>
           </li>
