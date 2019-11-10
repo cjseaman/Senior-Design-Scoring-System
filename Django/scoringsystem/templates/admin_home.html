@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	{% load static %}
+	{% load define_action %}
+  	<link rel="stylesheet" type="text/css" href="{% static 'scoringsystem/style.css' %}">
+	<Title>Scoring System</Title>
+</head>
+
+<body>
+
+	<nav class="navbar navbar-expand-sm navbar-light bg-light clearfix">
+		<a class="navbar-brand" href="#">Scoring System: Admin</a>
+		<button class="btn btn-outline-dark pull-right">View Messages</button>
+		<button class="btn btn-danger pull-right">Log Out</button>
+	</nav>
+
+	<div class="container btn-list col-12" id="session_list">
+		{% for session in list_sessions %}
+    		<li>{{ session.name }}</li>
+		{% endfor %}
+	</div>
+	<form action="create_session_form" method="POST">
+		{% csrf_token %}
+		<button 
+			type="submit" 
+			class="btn btn-secondary col-12" 
+			value="{{ session.session_id }}" 
+			name="add_session_btn">Add Session
+		</button>
+	</form>
+
+</body>
+<script type="text/javascript" src="..\js\functions.js"></script>
+<script type="text/javascript" src="events.js"></script>
+</html>

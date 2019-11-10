@@ -18,6 +18,35 @@ def submitJudgeExpEvalView(request):
 def submitProjectEvalView(request):
     return submitProjectEval(request)
 
+def adminHomeView(request):
+    return render(request, 'admin_home.html')
+
+def createSessionView(request):
+    return render(request, 'create_session_form.html')
+
+def submitSessionView(request):
+    return submitSession(request)
+
+def assignJudgesView(request):
+    return render(request, 'assign_judges_form.html')
+
+@csrf_exempt
+def submitSession(request):
+    logging.basicConfig(filename='mylog.log', level=logging.DEBUG)
+    logging.debug('got to submitJudgeEval!!')
+    if request.method == 'POST':
+        logging.debug('form is valid')
+        session_id = request.POST.get('session_id')
+        name = request.POST.get('name')
+        location = request.POST.get('location')
+        session = m.review_session(
+            session_id = session_id,
+            name = name,
+            location = location
+        )
+        logging.debug('session:', session)
+        session.save()
+
 @csrf_exempt
 def submitJudgeEval(request):
     logging.basicConfig(filename='mylog.log', level=logging.DEBUG)

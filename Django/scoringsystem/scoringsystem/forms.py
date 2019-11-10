@@ -41,3 +41,19 @@ class JudgeEvalForm(forms.Form):
     q11 = forms.CharField(max_length=1)
     q12 = forms.CharField(max_length=1)
     comments = forms.CharField(max_length=512)
+
+class CreateSessionForm(forms.Form):
+    name = forms.CharField(max_length=128)
+    location = forms.CharField(max_length=128)
+
+class CreateProjectForm(forms.Form):
+    assigned_session_id = forms.IntegerField()
+    name = forms.CharField(max_length=128)
+    group_members = forms.CharField(max_length=256)
+    project_description = forms.CharField(max_length=256)
+    average_score = forms.FloatField()
+
+class AddJudgeForm(forms.Form):
+    email = forms.CharField(max_length=128)
+    name = forms.CharField(max_length=128)
+    assigned_session_id = forms.IntegerField()

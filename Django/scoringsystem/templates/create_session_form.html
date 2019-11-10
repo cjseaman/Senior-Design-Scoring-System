@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<head>
+	{% load static %}
+  	<link rel="stylesheet" type="text/css" href="{% static 'scoringsystem/style.css' %}">
+	<title> Experience Evaluation Form </title> 
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-sm navbar-light bg-light clearfix">
+		<a class="navbar-brand" href="/admin_home/">Home</a>
+		<button class="btn btn-danger pull-right">Log Out</button>
+	</nav>
+	<form action="/admin_home/" method="POST"> 
+	{% csrf_token %}
+		<div class = "container" style="padding: 5px;">
+		  	<li class="list-group-item">
+		  		<label for="name">
+					<h5>Session Name:</h5>
+				</label>
+		  		<input type="text" name="name" class="col-6">
+		  	</li>
+		  	<li class="list-group-item">
+		  		<label for="name">
+					<h5>Session Location:</h5>
+				</label>
+		  		<input type="text" name="location" class="col-6">
+		  	</li>
+			<div class="button-box" style="padding: 10px;">
+				<button class="btn btn-primary" type="submit">Submit</button>
+			</div>
+		</div>
+	</form>
+</body>
+</html>

@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+<meta charset="utf-8">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
 	{% load static %}
   	<link rel="stylesheet" type="text/css" href="{% static 'scoringsystem/style.css' %}">
 	<title> Experience Evaluation Form </title> 
@@ -10,7 +9,7 @@
 
 <body>
   <nav class="navbar navbar-expand-sm navbar-light bg-light clearfix">
-    <a class="navbar-brand" href="index.html">Home</a>
+    <a class="navbar-brand" href="admin_home">Home</a>
     <button class="btn btn-danger pull-right">Log Out</button>
   </nav>
   <form action="submitted" method="POST"> {% csrf_token %}

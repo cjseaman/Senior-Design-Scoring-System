@@ -43,3 +43,23 @@ class JudgeEval(m.Model):
     q11 = m.IntegerField(default=0)
     q12 = m.IntegerField(default=0)
     comments = m.CharField(max_length=512)
+
+class review_session(m.Model):
+    session_id = m.IntegerField(default=0, primary_key=True)
+    name = m.CharField(max_length=128)
+    location = m.CharField(max_length=128)
+
+class judge(m.Model):
+    email = m.CharField(max_length=128, primary_key=True)
+    name = m.CharField(max_length=128)
+    assigned_session_id = m.IntegerField(default=0)
+
+class project(m.Model):
+    project_id = m.IntegerField(default=0, primary_key=True)
+    assigned_session_id = m.IntegerField(default=0)
+    name = m.CharField(max_length=128)
+    group_members = m.CharField(max_length=256)
+    project_description = m.CharField(max_length=256)
+    average_score = m.FloatField(default=0)
+
+
