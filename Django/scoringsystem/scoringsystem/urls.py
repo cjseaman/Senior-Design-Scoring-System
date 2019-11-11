@@ -26,4 +26,5 @@ urlpatterns = [
     path('admin_home/', views.adminHomeView, name='admin_home'),
     path('admin_home/create_session_form', views.createSessionView, name='create_session'),
     path('admin_home/assign_judges_form', views.assignJudgesView, name='assign_judges'),
+    path('judge_home/', views.judgeHomeView, name='judge_home')
 ]

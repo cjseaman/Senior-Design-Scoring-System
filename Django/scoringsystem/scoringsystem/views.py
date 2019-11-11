@@ -30,6 +30,9 @@ def submitSessionView(request):
 def assignJudgesView(request):
     return render(request, 'assign_judges_form.html')
 
+def judgeHomeView(request):
+    return render(request, 'judge_home.html')
+
 @csrf_exempt
 def submitSession(request):
     logging.basicConfig(filename='mylog.log', level=logging.DEBUG)
