@@ -3,6 +3,7 @@
 <meta charset="utf-8">
 <head>
 	{% load static %}
+	{% load define_action %}
   	<link rel="stylesheet" type="text/css" href="{% static 'scoringsystem/style.css' %}">
 	<title> Experience Evaluation Form </title> 
 </head>
@@ -18,7 +19,7 @@
 			<li class="list-group-item">
 				<h5>Current Judges</h5>
 			</li>
-			{% for judge in judge_list(session) %}
+			{% for judge in list_judges %}
 			<li class="list-group-item">
 				<h5>
 					{{judge.name}}

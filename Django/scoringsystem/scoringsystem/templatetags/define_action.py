@@ -9,3 +9,7 @@ def list_sessions():
 def list_projects(session_id):
 	list_projects = project(session_id=session_id)
 	return list_projects.objects.all()
+
+@register.simple_tag
+def list_judges(session_id):
+	return judge.objects.all()
