@@ -6,6 +6,8 @@ from scoringsystem import forms
 from scoringsystem import models as m
 import logging
 
+current_session_id = 0
+
 def projectEvalView(request):
     return render(request, 'projects_eval_form.html')
 
@@ -30,13 +32,37 @@ def submitSessionView(request):
 def assignJudgesView(request):
     return render(request, 'add_judges_form.html')
 
+def submitJudgeView(request):
+    return submitJudge(request)
+
 def judgeHomeView(request):
     return render(request, 'judge_home.html')
 
 @csrf_exempt
+def submitJudge(request):
+    logging.basicConfig(filename='mylog.log', level=logging.DEBUG)
+    logging.debug('got to submitJudge')
+    if request.method == 'POST':
+        logging.debug('form is valid')
+        email = request.POST.get('email')
+        name = request.POST.get('name')
+        judge = m.judge(
+            email = email,
+            name = name,
+            assigned_session_id = current_session_id
+        )
+        logging.debug('session:', session)
+        session.save()
+        return session
+    else:
+        logging.debug('method is not POST')
+
+    return render(request,'error.html')
+
+@csrf_exempt
 def submitSession(request):
     logging.basicConfig(filename='mylog.log', level=logging.DEBUG)
-    logging.debug('got to submitJudgeEval!!')
+    logging.debug('got to submitSession')
     if request.method == 'POST':
         logging.debug('form is valid')
         session_id = request.POST.get('session_id')
@@ -49,6 +75,7 @@ def submitSession(request):
         )
         logging.debug('session:', session)
         session.save()
+        current_session_id = session_id
         return session
     else:
         logging.debug('method is not POST')
