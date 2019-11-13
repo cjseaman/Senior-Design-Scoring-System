@@ -28,7 +28,7 @@ def submitSessionView(request):
     return submitSession(request)
 
 def assignJudgesView(request):
-    return render(request, 'assign_judges_form.html')
+    return render(request, 'add_judges_form.html')
 
 def judgeHomeView(request):
     return render(request, 'judge_home.html')
@@ -49,6 +49,11 @@ def submitSession(request):
         )
         logging.debug('session:', session)
         session.save()
+        return session
+    else:
+        logging.debug('method is not POST')
+
+    return render(request,'error.html')
 
 @csrf_exempt
 def submitJudgeEval(request):
