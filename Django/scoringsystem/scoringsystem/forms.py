@@ -43,8 +43,8 @@ class JudgeEvalForm(forms.Form):
     comments = forms.CharField(max_length=512)
 
 class CreateSessionForm(forms.Form):
-    name = forms.CharField(max_length=128)
-    location = forms.CharField(max_length=128)
+    session_name = forms.CharField(max_length=128)
+    session_location = forms.CharField(max_length=128)
 
 class CreateProjectForm(forms.Form):
     assigned_session_id = forms.IntegerField()

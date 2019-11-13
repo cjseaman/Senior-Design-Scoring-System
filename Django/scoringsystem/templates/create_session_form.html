@@ -4,7 +4,7 @@
 <head>
 	{% load static %}
   	<link rel="stylesheet" type="text/css" href="{% static 'scoringsystem/style.css' %}">
-	<title> Experience Evaluation Form </title> 
+	<title> Experience Evaluation Form </title>
 </head>
 
 <body>
@@ -12,7 +12,7 @@
 		<a class="navbar-brand" href="/admin_home/">Home</a>
 		<button class="btn btn-danger pull-right">Log Out</button>
 	</nav>
-	<form action="/admin_home/add_judges_form" method="POST"> 
+	<form action="create_session_form/submitted" method="POST"> 
 	{% csrf_token %}
 		<div class = "container" style="padding: 5px;">
 		  	<li class="list-group-item">
