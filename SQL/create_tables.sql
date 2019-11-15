@@ -1,10 +1,10 @@
-create table scoringsystem_judge (
+create table judge (
   judge_id serial,
 	judge_email char(128) default '',
 	judge_name char(128) default '',
 	session_id int,
 	primary key (judge_id),
-  foreign key (session_id) references scoringsystem_session(id)
+  foreign key (session_id) references session(session_id)
 );
 
 create table scoringsystem_session (
@@ -15,7 +15,7 @@ create table scoringsystem_session (
 );
 
 create table project (
-	project_id serial,
+	project_id serial ,
 	session_id int,
 	project_name char(128) default '' ,
 	group_members text ,

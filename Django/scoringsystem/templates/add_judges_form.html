@@ -13,7 +13,7 @@
 		<a class="navbar-brand" href="/admin_home/">Home</a>
 		<button class="btn btn-danger pull-right">Log Out</button>
 	</nav>
-	<form action="add_judges_form/submitted" method="POST">
+	<form action="submitted" method="POST">
 	{% csrf_token %}
 		<div class = "container" style="padding: 5px;">
 			<li class="list-group-item">
@@ -30,19 +30,13 @@
 		  		<label for="name">
 					<h5>Judge Email:</h5>
 				</label>
-		  		<input type="text" name="judge_email" class="col-6">
+		  		<input type="text" name="name" class="col-6">
 		  	</li>
 		  	<li class="list-group-item">
 		  		<label for="name">
 					<h5>Judge Name:</h5>
 				</label>
-		  		<input type="text" name="judge_name" class="col-6">
-		  	</li>
-        <li class="list-group-item">
-		  		<label for="name">
-					<h5>Session ID:</h5>
-				</label>
-		  		<input type="number" name="session_id" class="col-6">
+		  		<input type="text" name="location" class="col-6">
 		  	</li>
 		  	<div class="row">
 				<div class="button-box" style="padding: 10px;">

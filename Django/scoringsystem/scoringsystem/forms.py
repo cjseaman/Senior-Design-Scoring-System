@@ -54,6 +54,6 @@ class CreateProjectForm(forms.Form):
     average_score = forms.FloatField()
 
 class AddJudgeForm(forms.Form):
-    judge_email = forms.CharField(max_length=128)
-    judge_name = forms.CharField(max_length=128)
-    session_id = forms.IntegerField()
+    email = forms.CharField(max_length=128)
+    name = forms.CharField(max_length=128)
+    assigned_session_id = forms.IntegerField()
