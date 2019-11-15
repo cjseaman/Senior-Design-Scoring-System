@@ -47,6 +47,7 @@ class JudgeEval(m.Model):
 class session(m.Model):
     session_name = m.CharField(max_length=128)
     session_location = m.CharField(max_length=128)
+    id = m.AutoField(primary_key=True)
     class Meta:
         db_table = 'scoringsystem_session'
 

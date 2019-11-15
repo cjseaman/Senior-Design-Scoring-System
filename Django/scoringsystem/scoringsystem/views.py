@@ -27,6 +27,7 @@ def submittedCreatedSessionView(request):
     logging.debug('inside submittedCreatedSessionView')
     return submitCreatedSession(request)
 
+
 def createSessionView(request):
     logging.basicConfig(filename='mylog.log', level=logging.DEBUG)
     logging.debug('inside createSessionView')
@@ -38,6 +39,7 @@ def submitSessionView(request):
     return submitSession(request)
 
 def assignJudgesView(request):
+    judge_list = m.judge.objects.all()
     return render(request, 'add_judges_form.html')
 
 def submittedAssignJudgesView(request):
@@ -55,11 +57,9 @@ def submitAndAddJudge(request):
         logging.debug('form is valid')
         judge_email = request.POST.get('judge_email')
         judge_name = request.POST.get('judge_name')
-        session_id = int(request.POST.get('session_id'))
         judge = m.judge(
             judge_email=judge_email,
             judge_name=judge_name,
-            session_id=session_id
         )
         logging.debug('judge:', judge)
         judge.save()
@@ -78,7 +78,7 @@ def submitCreatedSession(request):
         session_location = request.POST.get('location')
         session = m.session(
             session_name=session_name,
-            session_location=session_location
+            session_location=session_location,
         )
         logging.debug('session:', session)
         session.save()
