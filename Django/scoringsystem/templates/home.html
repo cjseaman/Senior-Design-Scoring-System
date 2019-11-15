@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Senior Design Conference Scoring System Home{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+  Hello, {{ user.username}}!  Welcome to the SCU Senior Design Scoring System!
+  <p><a href="/admin">Admin Page</a>
+  <p><a href="{% url 'logout' %}">logout</a></p>
+{% else %}
+  <p>You are not logged in! Please login as either a judge or administrator:</p>
+  <a href="{% url 'login' %}">Judge login</a>
+  <br>
+  <a href="/admin">Admin Login</a>
+{% endif %}
+
+{% endblock %}
