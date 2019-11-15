@@ -39,6 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # created apps
+    'users',
+    'admin_site'
 ]
 
 MIDDLEWARE = [
@@ -49,7 +53,15 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.auth.middleware.RemoteUserMiddleware',
 ]
+
+# Backend authentication for custom user
+# https://docs.djangoproject.com/en/2.2/howto/auth-remote-user/#configuration
+AUTHENTICATION_BACKENDS = (
+    "django.contrib.auth.backends.RemoteUserBackend",   # authenticate using custom user
+    'django.contrib.auth.backends.ModelBackend',        
+)
 
 ROOT_URLCONF = 'scoringsystem.urls'
 
@@ -124,3 +136,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+# by default Django will use custom created user
+# https://docs.djangoproject.com/en/2.2/topics/auth/customizing/
+
+AUTH_USER_MODEL = 'users.User'
+
+
+# Login and Logout redirection
+
+LOGOUT_REDIRECT_URL = 'home' # redirect logout to login
+LOGIN_REDIRECT_URL = 'home'   # redirect login to home
