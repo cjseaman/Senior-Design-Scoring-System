@@ -18,8 +18,8 @@
 	</nav>
 
 	<div class="container btn-list col-12" id="session_list">
-		{% for session in list_sessions %}
-    		<li class="list-group-item">{{ session.name }}</li>
+		{% for session in session_list %}
+    		<li class="list-group-item">{{ session.session_name }}</li>
 		{% endfor %}
 	</div>
 	<form action="create_session_form" method="POST">

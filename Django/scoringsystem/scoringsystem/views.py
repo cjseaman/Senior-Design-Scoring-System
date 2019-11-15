@@ -19,7 +19,8 @@ def submitProjectEvalView(request):
     return submitProjectEval(request)
 
 def adminHomeView(request):
-    return render(request, 'admin_home.html')
+    session_list = m.session.objects.all()
+    return render(request, 'admin_home.html', {'session_list': session_list})
 
 def submittedCreatedSessionView(request):
     logging.basicConfig(filename='mylog.log', level=logging.DEBUG)

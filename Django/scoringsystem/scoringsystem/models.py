@@ -47,6 +47,8 @@ class JudgeEval(m.Model):
 class session(m.Model):
     session_name = m.CharField(max_length=128)
     session_location = m.CharField(max_length=128)
+    class Meta:
+        db_table = 'scoringsystem_session'
 
 class judge(m.Model):
     email = m.CharField(max_length=128, primary_key=True)
