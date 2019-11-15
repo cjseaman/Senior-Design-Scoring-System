@@ -39,8 +39,34 @@ def submitSessionView(request):
 def assignJudgesView(request):
     return render(request, 'add_judges_form.html')
 
+def submittedAssignJudgesView(request):
+    logging.basicConfig(filename='mylog.log', level=logging.DEBUG)
+    logging.debug('inside submittedAssignJudgesView')
+    return submitAndAddJudge(request)
+
 def judgeHomeView(request):
     return render(request, 'judge_home.html')
+
+def submitAndAddJudge(request):
+    logging.basicConfig(filename='mylog.log', level=logging.DEBUG)
+    logging.debug('got to submitAndAddJudge!!')
+    if request.method == 'POST':
+        logging.debug('form is valid')
+        judge_email = request.POST.get('judge_email')
+        judge_name = request.POST.get('judge_name')
+        session_id = int(request.POST.get('session_id'))
+        judge = m.judge(
+            judge_email=judge_email,
+            judge_name=judge_name,
+            session_id=session_id
+        )
+        logging.debug('judge:', judge)
+        judge.save()
+        return render(request, 'submitted.html')
+    else:
+        logging.debug('method is not POST')
+
+    return render(request,'error.html')
 
 def submitCreatedSession(request):
     logging.basicConfig(filename='mylog.log', level=logging.DEBUG)
