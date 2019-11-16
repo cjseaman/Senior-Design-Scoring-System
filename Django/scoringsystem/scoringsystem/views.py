@@ -29,9 +29,18 @@ def submittedCreatedSessionView(request):
 
 def createProjectForm(request):
     session_id = request.POST.get('session_id')
+    sessions = m.session.objects.filter(id=session_id)
+    project_list = m.project.objects.filter(id=session_id)
+    session_name = ''
+    for s in sessions:
+        session_name = s.session_name
     logging.basicConfig(filename='mylog.log', level=logging.DEBUG)
     logging.debug('inside createProjectForm')
-    return render(request, 'add_projects_form.html', {'session_id': session_id})
+    return render(request, 'add_projects_form.html', {
+        'session_id': session_id,
+        'session_name': session_name,
+        'project_list': project_list
+    })
 
 def submittedCreatedProjectForm(request):
     session_id = request.POST.get('session_id')
