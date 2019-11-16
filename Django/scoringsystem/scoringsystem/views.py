@@ -27,6 +27,27 @@ def submittedCreatedSessionView(request):
     logging.debug('inside submittedCreatedSessionView')
     return submitCreatedSession(request)
 
+def createProjectForm(request):
+    logging.basicConfig(filename='mylog.log', level=logging.DEBUG)
+    logging.debug('inside createProjectForm')
+    session_id = request.POST.get('session_id')
+    sessions = m.session.objects.filter(id=session_id)
+    project_list = m.project.objects.filter(session_id=session_id)
+    session_name = ''
+    for s in sessions:
+        session_name = s.session_name
+    return render(request, 'add_projects_form.html', {
+        'session_id': session_id,
+        'session_name': session_name,
+        'project_list': project_list
+    })
+
+def submittedCreatedProjectForm(request):
+    session_id = request.POST.get('session_id')
+    logging.basicConfig(filename='mylog.log', level=logging.DEBUG)
+    logging.debug('inside submittedCreatedProjectForm')
+    return submitCreatedProject(request)
+
 def createSessionView(request):
     logging.basicConfig(filename='mylog.log', level=logging.DEBUG)
     logging.debug('inside createSessionView')
@@ -37,8 +58,40 @@ def submitSessionView(request):
     logging.debug('inside submitSessionView')
     return submitSession(request)
 
+def deleteSessionPromptView(request):
+    session_id = request.POST.get('session_id')
+    return render(request, 'delete_session_prompt.html', {'session_id': session_id})
+
+def deleteSessionView(request):
+    session_id = request.POST.get('session_id')
+
+    judges = m.judge.objects.filter(session_id=session_id)
+    for judge in judges:
+        m.JudgeEval.objects.filter(judge_email=judge.judge_email).delete()
+    judges.delete()
+
+    projects = m.project.objects.filter(session_id=session_id)
+    for project in projects:
+        m.ProjectEval.objects.filter(project_id=project.id).delete()
+    projects.delete()
+
+    m.session.objects.filter(id=session_id).delete()
+    return render(request, 'deleted_session.html')
+
+
+
 def assignJudgesView(request):
-    return render(request, 'add_judges_form.html')
+    session_id = request.POST.get('session_id')
+    sessions = m.session.objects.filter(id=session_id)
+    judge_list = m.judge.objects.filter(session_id=session_id)
+    session_name = ''
+    for s in sessions:
+        session_name = s.session_name
+    return render(request, 'add_judges_form.html', {
+            'session_id': session_id,
+            'session_name': session_name,
+            'judge_list': judge_list
+    })
 
 def submittedAssignJudgesView(request):
     logging.basicConfig(filename='mylog.log', level=logging.DEBUG)
@@ -55,7 +108,7 @@ def submitAndAddJudge(request):
         logging.debug('form is valid')
         judge_email = request.POST.get('judge_email')
         judge_name = request.POST.get('judge_name')
-        session_id = int(request.POST.get('session_id'))
+        session_id = request.POST.get('session_id')
         judge = m.judge(
             judge_email=judge_email,
             judge_name=judge_name,
@@ -63,6 +116,31 @@ def submitAndAddJudge(request):
         )
         logging.debug('judge:', judge)
         judge.save()
+        return render(request, 'submitted_judge.html', {'session_id': session_id})
+    else:
+        logging.debug('method is not POST')
+
+    return render(request,'error.html')
+
+def submitCreatedProject(request):
+    logging.basicConfig(filename='mylog.log', level=logging.DEBUG)
+    logging.debug('got to submitCreatedProject!!')
+    if request.method == 'POST':
+        logging.debug('form is valid')
+        session_id = request.POST.get('session_id')
+        project_name = request.POST.get('project_name')
+        group_members = request.POST.get('group_members')
+        project_desc = request.POST.get('project_desc')
+        average_score = request.POST.get('average_score')
+        project = m.project(
+            session_id=session_id,
+            project_name=project_name,
+            group_members=group_members,
+            project_desc=project_desc,
+            average_score=average_score
+        )
+        logging.debug('project:', project)
+        project.save()
         return render(request, 'submitted.html')
     else:
         logging.debug('method is not POST')
@@ -78,7 +156,7 @@ def submitCreatedSession(request):
         session_location = request.POST.get('location')
         session = m.session(
             session_name=session_name,
-            session_location=session_location
+            session_location=session_location,
         )
         logging.debug('session:', session)
         session.save()

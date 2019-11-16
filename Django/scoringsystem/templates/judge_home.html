@@ -15,24 +15,21 @@
 	</nav>
 	<form action="/project_eval_form/" method="POST"> 
 		<div class="container btn-list col-12" id="session_list">
-			<form action="/projects_eval_form/" method="POST">
-				<li class="list-group-item">
-	    			<button class="btn col-12" name="Example_Name">Example_Project</button>
-	    		</li>
-	    		<li class="list-group-item">
-	    			<button class="btn col-12" name="Example_Name">Example_Project</button>
-	    		</li>
-	    		<!--THE REST OF THE PROJECTS SHOULD BE RENDERED USING SOME KIND OF LOOP LIKE THIS-->
-				{% for project in list_projects(session_id) %}
+	    	<!--THE REST OF THE PROJECTS SHOULD BE RENDERED USING SOME KIND OF LOOP LIKE THIS-->
+			{% for project in project_list %}
+				<form action="/projects_eval_form/" method="POST">
+					{% csrf_token %}
 		    		<li>
 		    			<button 
+		    				type="submit"
 		    				class="btn col-12" 
-		    				name="{{ project.id }}">
-		    				{{ project.name }}
+		    				name="project_id"
+		    				value="{{ project.id }}">
+		    				{{ project.project_name }}
 		    			</button>
 		    		</li>
-				{% endfor %}
-			</form>
+		    	</form>
+			{% endfor %}
 		</div>
 	</form>
 </body>

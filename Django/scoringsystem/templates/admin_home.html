@@ -17,20 +17,65 @@
 		<button class="btn btn-danger pull-right">Log Out</button>
 	</nav>
 
-	<div class="container btn-list col-12" id="session_list">
+	<div class="container btn-list" id="session_list">
 		{% for session in session_list %}
-    		<li class="list-group-item">{{ session.session_name }}</li>
+    		<li class="list-group-item">
+				<div class="row col-12">
+					<h5 class="col-2">{{ session.session_name }}</h5>
+					<h5 class="col-2 pull-right">{{ session.session_location }}</h5>
+					<form action="/admin_home/add_judges_form" method="POST" class="col-2">
+						{% csrf_token %}
+    					<button 
+		    				type="submit"
+		    				value="{{ session.id }}"
+		    				class="btn btn-outline-dark"
+		    				name="session_id">
+    						<h5>Add Judges</h5>
+    					</button>
+					</form>
+					<form action="/admin_home/create_project_form" method="POST" class="col-2">
+						{% csrf_token %}
+    					<button 
+		    				type="submit"
+		    				value="{{ session.id }}"
+		    				class="btn btn-outline-dark"
+		    				name="session_id">
+    						<h5>Add Project</h5>
+    					</button>
+					</form>
+					<form action="/admin_home/view_session_scores" method="POST" class="col-2">
+						{% csrf_token %}
+    					<button 
+		    				type="submit"
+		    				value="{{ session.id }}"
+		    				class="btn btn-outline-primary"
+		    				name="session_id">
+    						<h5>View Scores</h5>
+    					</button>
+					</form>
+					<form action="/admin_home/delete_session_prompt" method="POST" class="col-2">
+						{% csrf_token %}
+    					<button 
+		    				type="submit"
+		    				value="{{ session.id }}"
+		    				class="btn btn-outline-danger"
+		    				name="session_id">
+    						<h6>Delete Session</h6>
+    					</button>
+					</form>
+				</div>
+	    	</li>
 		{% endfor %}
-	</div>
 	<form action="create_session_form" method="POST">
 		{% csrf_token %}
 		<button 
 			type="submit" 
-			class="btn btn-secondary col-12" 
-			value="{{ session.session_id }}" 
+			class="btn btn-secondary col-12"  
 			name="add_session_btn">Add Session
 		</button>
 	</form>
+	</div>
+
 
 </body>
 <script type="text/javascript" src="..\js\functions.js"></script>

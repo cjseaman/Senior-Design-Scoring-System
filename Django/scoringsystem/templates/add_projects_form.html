@@ -5,7 +5,7 @@
 	{% load static %}
 	{% load define_action %}
   	<link rel="stylesheet" type="text/css" href="{% static 'scoringsystem/style.css' %}">
-	<title> Experience Evaluation Form </title>
+	<title>Scoring System</title>
 </head>
 
 <body>
@@ -13,7 +13,7 @@
 		<a class="navbar-brand" href="/admin_home/">Home</a>
 		<button class="btn btn-danger pull-right">Log Out</button>
 	</nav>
-	<form action="add_judges_form/submitted_judge" method="POST">
+	<form action="create_project_form/submitted" method="POST">
 	{% csrf_token %}
 		<div class = "container" style="padding: 5px;">
 			<li class="list-group-item">
@@ -22,33 +22,39 @@
 				</h5>
 			</li>
 			<li class="list-group-item">
-				<h5>Current Judges</h5>
+				<h5>Current projects</h5>
 			</li>
-			{% for judge in judge_list %}
+			{% for project in project_list %}
 				<li class="list-group-item">
 					<h5 class="col-6">
-						{{judge.judge_name}}
+						{{project.project_name}}
 					</h5>
 					<h5 class="col-6">
-						{{judge.judge_email}}
+						{{project.group_members}}
 					</h5>
 				</li>
 			{% endfor %}
 		  	<li class="list-group-item">
-		  		<label for="name">
-					<h5>Judge Email:</h5>
+		  		<label for="project_name">
+					<h5>Project Name:</h5>
 				</label>
-		  		<input type="text" name="judge_email" class="col-6">
+		  		<input type="text" name="project_name" class="col-6">
+		  	</li>
+		  	<li class="list-group-item">
+		  		<label for="group_members">
+					<h5>Group Members:</h5>
+				</label>
+		  		<input type="text" name="group_members" class="col-6">
 		  	</li>
 		  	<li class="list-group-item">
 		  		<label for="name">
-					<h5>Judge Name:</h5>
+					<h5>Description:</h5>
 				</label>
-		  		<input type="text" name="judge_name" class="col-6">
+		  		<textarea class="form-control" name="project_desc" rows="5"></textarea>
 		  	</li>
 		  	<div class="row">
 				<div class="button-box" style="padding: 10px;">
-					<button class="btn btn-primary" type="submit" name="session_id" value="{{ session_id }}">Add Judge</button>
+					<button class="btn btn-primary" type="submit" name="session_id" value="{{ session_id }}">Add project</button>
 				</div>
 			</div>
 		</div>
