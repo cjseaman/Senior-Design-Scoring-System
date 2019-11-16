@@ -52,8 +52,8 @@ class session(m.Model):
         db_table = 'scoringsystem_session'
 
 class judge(m.Model):
-    judge_name = m.CharField(max_length=128, primary_key=True)
-    judge_email = m.CharField(max_length=128)
+    judge_name = m.CharField(max_length=128)
+    judge_email = m.CharField(max_length=128, primary_key=True)
     session_id = m.IntegerField(default=0)
 
 class project(m.Model):
@@ -62,3 +62,4 @@ class project(m.Model):
     group_members = m.CharField(max_length=256)
     project_desc = m.CharField(max_length=256)
     average_score = m.FloatField(default=0)
+    id = m.AutoField(primary_key=True)
