@@ -57,3 +57,7 @@ class AddJudgeForm(forms.Form):
     judge_email = forms.CharField(max_length=128)
     judge_name = forms.CharField(max_length=128)
     session_id = forms.IntegerField()
+
+class createAccountForm(forms.Form):
+    user_email = forms.CharField(max_length=128)
+    password = forms.CharField(max_length=128)

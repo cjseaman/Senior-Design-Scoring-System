@@ -6,6 +6,43 @@ from scoringsystem import forms
 from scoringsystem import models as m
 import logging
 
+def homeView(request):
+    return render(request, 'home.html')
+
+def loginView(request):
+    return render(request, 'login.html')
+
+def createAccountView(request):
+    logging.basicConfig(filename='mylog.log', level=logging.DEBUG)
+    logging.debug('inside createAccountView')
+    return render(request, 'create_account.html')
+
+def submitJudgeUser(request):
+    logging.basicConfig(filename='mylog.log', level=logging.DEBUG)
+    logging.debug('got to submitJudgeUser!!')
+    if request.method == 'POST':
+        logging.debug('form is valid')
+        user_email = request.POST.get('user_email')
+        password = request.POST.get('password')
+        #session_id = int(request.POST.get('session_id'))
+        judgeUser = m.judgeUser(
+            user_email=user_email,
+            password=password,
+        )
+        logging.debug('judgeUser:', judgeUser)
+        judgeUser.save()
+        return render(request, 'account_submitted.html')
+    else:
+        logging.debug('method is not POST')
+
+    return render(request,'error.html')
+
+
+def submittedCreateAccountView(request):
+    logging.basicConfig(filename='mylog.log', level=logging.DEBUG)
+    logging.debug('inside submittedCreateAccountView')
+    return submitJudgeUser(request)
+
 def projectEvalView(request):
     return render(request, 'projects_eval_form.html')
 

@@ -63,3 +63,7 @@ class project(m.Model):
     project_desc = m.CharField(max_length=256)
     average_score = m.FloatField(default=0)
     id = m.AutoField(primary_key=True)
+
+class judgeUser(m.Model):
+    user_email = m.CharField(max_length=128, primary_key=True)
+    password = m.CharField(max_length=128)

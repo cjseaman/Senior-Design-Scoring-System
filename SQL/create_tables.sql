@@ -3,6 +3,11 @@ create table scoringsystem_session (
 	session_name char(128) default '',
 	session_location char(128) default '',
 	primary key (id)
+
+create table scoringsystem_judgeUser (
+	password char(128) default '',
+	user_email char(128) default '',
+	primary key (user_email)
 );
 
 create table scoringsystem_judge (

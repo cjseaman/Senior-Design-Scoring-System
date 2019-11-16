@@ -1,17 +1,20 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<head>
+	{% load static %}
+	{% load define_action %}
+  	<link rel="stylesheet" type="text/css" href="{% static 'scoringsystem/style.css' %}">
+	<title> Home </title>
+</head>
 
-{% block title %}Senior Design Conference Scoring System Home{% endblock %}
-
-{% block content %}
-{% if user.is_authenticated %}
-  Hello, {{ user.username}}!  Welcome to the SCU Senior Design Scoring System!
-  <p><a href="/admin">Admin Page</a>
-  <p><a href="{% url 'logout' %}">logout</a></p>
+{% if judgeUser.user_email == judge.judge_email %}
+  Hello!  Welcome to the SCU Senior Design Scoring System!
+  <p><a href="/judge_home">Judge Home</a>
+  <p><a href="/login">Logout</a>
+  <!--<p><a href="/admin_home">Admin Home</a>
+  <p><a href="/admin_home/add_judges_form">Add Judges</a>-->
 {% else %}
-  <p>You are not logged in! Please login as either a judge or administrator:</p>
-  <a href="{% url 'login' %}">Judge login</a>
-  <br>
-  <a href="/admin">Admin Login</a>
+  <p>You are not logged in! Please login here:
+  <a href="{% url 'login' %}">Login page</a>
 {% endif %}
-
-{% endblock %}

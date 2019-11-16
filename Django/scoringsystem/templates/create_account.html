@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<head>
+	{% load static %}
+	{% load define_action %}
+  	<link rel="stylesheet" type="text/css" href="{% static 'scoringsystem/style.css' %}">
+	<title> Create Account </title>
+</head>
+
+<body>
+	<form action="/create_account/submitted" method="POST">
+		{% csrf_token %}
+		<div class = "container" style="padding: 5px;">
+			<li class="list-group-item">
+				<h2><b>Create Account</b></h2>
+		  	</li>
+		  	<li class="list-group-item">
+		  		<label for="name">
+					<h5>Judge Email:</h5>
+				</label>
+		  		<input type="text" name="user_email" id="user_email" class="col-6">
+		  	</li>
+	        <li class="list-group-item">
+			  	<label for="name">
+					<h5>Password:</h5>
+				</label>
+			  	<input type="text" name="password" id="password" class="col-6">
+			</li>
+			<div class="button-box" style="padding: 10px;">
+				<button class="btn btn-primary" type="submit">Create</button>
+			</div>
+		</div>
+	</form>
+</body>
+</html>

@@ -34,6 +34,8 @@ urlpatterns = [
     path('admin_home/delete_session_prompt', views.deleteSessionPromptView, name='delete_session_prompt'),
     path('admin_home/delete_session', views.deleteSessionView, name='delete_session'),
     path('judge_home/', views.judgeHomeView, name='judge_home'),
-    path('', TemplateView.as_view(template_name='home.html'), name='home'), # home page, default path
-    path('accounts/', include('django.contrib.auth.urls')), # login page
+    path('', views.homeView, name='home'), 
+    path('login/', views.loginView, name='login'), 
+    path('create_account/', views.createAccountView, name='create_account'),
+    path('create_account/submitted', views.submittedCreateAccountView, name='submitted_created_account'),
 ]

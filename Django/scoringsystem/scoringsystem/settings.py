@@ -41,8 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # created apps
-    'users',
-    'admin_site'
+    #'users',
+    #'admin_site'
 ]
 
 MIDDLEWARE = [
@@ -141,10 +141,4 @@ STATIC_URL = '/static/'
 # by default Django will use custom created user
 # https://docs.djangoproject.com/en/2.2/topics/auth/customizing/
 
-AUTH_USER_MODEL = 'users.User'
-
-
-# Login and Logout redirection
-
-LOGOUT_REDIRECT_URL = 'home' # redirect logout to login
-LOGIN_REDIRECT_URL = 'home'   # redirect login to home
+#AUTH_USER_MODEL = 'users.User'
