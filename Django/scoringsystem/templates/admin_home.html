@@ -24,27 +24,43 @@
 					<h5 class="col-2">{{ session.session_name }}</h5>
 					<h5 class="col-2 pull-right">{{ session.session_location }}</h5>
 					<form action="/admin_home/add_judges_form" method="POST" class="col-2">
+						{% csrf_token %}
     					<button 
 		    				type="submit"
+		    				value="{{ session.id }}"
 		    				class="btn btn-outline-dark"
-		    				name="{{ session.id }}">
+		    				name="session_id">
     						<h5>Add Judges</h5>
     					</button>
 					</form>
-					<form action="/admin_home/view_session_scores" method="POST" class="col-2">
+					<form action="/admin_home/add_project_form" method="POST" class="col-2">
+						{% csrf_token %}
     					<button 
 		    				type="submit"
+		    				value="{{ session.id }}"
 		    				class="btn btn-outline-dark"
-		    				name="{{ session.id }}">
+		    				name="session_id">
+    						<h5>Add Project</h5>
+    					</button>
+					</form>
+					<form action="/admin_home/view_session_scores" method="POST" class="col-2">
+						{% csrf_token %}
+    					<button 
+		    				type="submit"
+		    				value="{{ session.id }}"
+		    				class="btn btn-outline-primary"
+		    				name="session_id">
     						<h5>View Scores</h5>
     					</button>
 					</form>
-					<form action="/admin_home/" method="POST" class="col-2">
+					<form action="/admin_home/delete_session" method="POST" class="col-2">
+						{% csrf_token %}
     					<button 
 		    				type="submit"
+		    				value="{{ session.id }}"
 		    				class="btn btn-outline-danger"
-		    				name="{{ session.id }}">
-    						<h5>Delete Session</h5>
+		    				name="session_id">
+    						<h6>Delete Session</h6>
     					</button>
 					</form>
 				</div>

@@ -39,8 +39,17 @@ def submitSessionView(request):
     return submitSession(request)
 
 def assignJudgesView(request):
-    judge_list = m.judge.objects.all()
-    return render(request, 'add_judges_form.html')
+    session_id = request.POST.get('session_id')
+    sessions = m.session.objects.filter(id=session_id)
+    judge_list = m.judge.objects.filter(session_id=session_id)
+    session_name = ''
+    for s in sessions:
+        session_name = s.session_name
+    return render(request, 'add_judges_form.html', {
+            'session_id': session_id,
+            'session_name': session_name,
+            'judge_list': judge_list
+    })
 
 def submittedAssignJudgesView(request):
     logging.basicConfig(filename='mylog.log', level=logging.DEBUG)
@@ -57,13 +66,15 @@ def submitAndAddJudge(request):
         logging.debug('form is valid')
         judge_email = request.POST.get('judge_email')
         judge_name = request.POST.get('judge_name')
+        session_id = request.POST.get('session_id')
         judge = m.judge(
             judge_email=judge_email,
             judge_name=judge_name,
+            session_id=session_id
         )
         logging.debug('judge:', judge)
         judge.save()
-        return render(request, 'submitted.html')
+        return render(request, 'submitted_judge.html', {'session_id': session_id})
     else:
         logging.debug('method is not POST')
 
