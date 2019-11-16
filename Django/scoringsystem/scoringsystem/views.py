@@ -27,6 +27,10 @@ def submittedCreatedSessionView(request):
     logging.debug('inside submittedCreatedSessionView')
     return submitCreatedSession(request)
 
+def createProjectForm(request):
+    logging.basicConfig(filename='mylog.log', level=logging.DEBUG)
+    logging.debug('inside createProjectForm')
+    return render(request, 'add_projects_form.html')
 
 def createSessionView(request):
     logging.basicConfig(filename='mylog.log', level=logging.DEBUG)

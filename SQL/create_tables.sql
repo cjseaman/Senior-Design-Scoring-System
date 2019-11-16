@@ -14,8 +14,8 @@ create table scoringsystem_judge (
   foreign key (session_id) references scoringsystem_session(id)
 );
 
-create table project (
-	project_id serial,
+create table scoringsystem_project (
+  project_id serial,
 	session_id int,
 	project_name char(128) default '' ,
 	group_members text ,
