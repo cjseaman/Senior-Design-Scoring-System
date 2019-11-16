@@ -59,7 +59,7 @@ class judge(m.Model):
 class project(m.Model):
     project_id = m.IntegerField(default=0, primary_key=True)
     assigned_session_id = m.IntegerField(default=0)
-    name = m.CharField(max_length=128)
+    project_name = m.CharField(max_length=128)
     group_members = m.CharField(max_length=256)
     project_description = m.CharField(max_length=256)
     average_score = m.FloatField(default=0)

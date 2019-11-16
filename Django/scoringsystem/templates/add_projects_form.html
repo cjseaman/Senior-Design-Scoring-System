@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<head>
+	{% load static %}
+	{% load define_action %}
+  	<link rel="stylesheet" type="text/css" href="{% static 'scoringsystem/style.css' %}">
+	<title>Scoring System</title>
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-sm navbar-light bg-light clearfix">
+		<a class="navbar-brand" href="/admin_home/">Home</a>
+		<button class="btn btn-danger pull-right">Log Out</button>
+	</nav>
+	<form action="add_projects_form/submitted" method="POST">
+	{% csrf_token %}
+		<div class = "container" style="padding: 5px;">
+			<li class="list-group-item">
+				<h5>
+					{{session_name}}
+				</h5>
+			</li>
+			<li class="list-group-item">
+				<h5>Current projects</h5>
+			</li>
+			{% for project in project_list %}
+				<li class="list-group-item">
+					<h5 class="col-6">
+						{{project.project_name}}
+					</h5>
+					<h5 class="col-6">
+						{{project.group_members}}
+					</h5>
+				</li>
+			{% endfor %}
+		  	<li class="list-group-item">
+		  		<label for="project_name">
+					<h5>Project Name:</h5>
+				</label>
+		  		<input type="text" name="project_name" class="col-6">
+		  	</li>
+		  	<li class="list-group-item">
+		  		<label for="group_members">
+					<h5>Group Members:</h5>
+				</label>
+		  		<input type="text" name="group_members" class="col-6">
+		  	</li>
+		  	<li class="list-group-item">
+		  		<label for="name">
+					<h5>Description:</h5>
+				</label>
+		  		<textarea class="form-control" name="description" rows="5"></textarea>
+		  	</li>
+		  	<div class="row">
+				<div class="button-box" style="padding: 10px;">
+					<button class="btn btn-primary" type="submit" name="session_id" value="{{ session_id }}">Add project</button>
+				</div>
+			</div>
+		</div>
+	</form>
+</body>
+</html>
