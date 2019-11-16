@@ -49,6 +49,28 @@ def submitSessionView(request):
     logging.debug('inside submitSessionView')
     return submitSession(request)
 
+def deleteSessionPromptView(request):
+    session_id = request.POST.get('session_id')
+    return render(request, 'delete_session_prompt.html', {'session_id': session_id})
+
+def deleteSessionView(request):
+    session_id = request.POST.get('session_id')
+
+    judges = m.judge.objects.filter(session_id=session_id)
+    for judge in judges:
+        m.JudgeEval.objects.filter(judge_email=judge.judge_email).delete()
+    judges.delete()
+
+    projects = m.project.objects.filter(session_id=session_id)
+    for project in projects:
+        m.ProjectEval.objects.filter(project_id=project.id).delete()
+    projects.delete()
+
+    m.session.objects.filter(id=session_id).delete()
+    return render(request, 'deleted_session.html')
+
+
+
 def assignJudgesView(request):
     session_id = request.POST.get('session_id')
     sessions = m.session.objects.filter(id=session_id)
@@ -91,25 +113,6 @@ def submitAndAddJudge(request):
 
     return render(request,'error.html')
 
-def submitCreatedSession(request):
-    logging.basicConfig(filename='mylog.log', level=logging.DEBUG)
-    logging.debug('got to submitCreatedSession!!')
-    if request.method == 'POST':
-        logging.debug('form is valid')
-        session_name = request.POST.get('name')
-        session_location = request.POST.get('location')
-        session = m.session(
-            session_name=session_name,
-            session_location=session_location,
-        )
-        logging.debug('session:', session)
-        session.save()
-        return render(request, 'submitted.html')
-    else:
-        logging.debug('method is not POST')
-
-    return render(request,'error.html')
-
 def submitCreatedProject(request):
     logging.basicConfig(filename='mylog.log', level=logging.DEBUG)
     logging.debug('got to submitCreatedProject!!')
@@ -129,6 +132,25 @@ def submitCreatedProject(request):
         )
         logging.debug('project:', project)
         project.save()
+        return render(request, 'submitted.html')
+    else:
+        logging.debug('method is not POST')
+
+    return render(request,'error.html')
+
+def submitCreatedSession(request):
+    logging.basicConfig(filename='mylog.log', level=logging.DEBUG)
+    logging.debug('got to submitCreatedSession!!')
+    if request.method == 'POST':
+        logging.debug('form is valid')
+        session_name = request.POST.get('name')
+        session_location = request.POST.get('location')
+        session = m.session(
+            session_name=session_name,
+            session_location=session_location,
+        )
+        logging.debug('session:', session)
+        session.save()
         return render(request, 'submitted.html')
     else:
         logging.debug('method is not POST')
