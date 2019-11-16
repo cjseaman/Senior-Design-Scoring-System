@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html>
+
+<head>
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'scoringsystem/style.css' %}">
+	<Title>Delete Session</Title>
+</head>
+
+<body>
+  <div class="container" id="eval_form" style="margin:25px">
+    <div class="card" style="padding:10px">
+      <h1>Are you sure?</h1>
+      <h5>All judges, projects, and scores assigned to this session will also be deleted.</h5>
+      <div class="row col-12">
+          <form action="/admin_home/delete_session" method="POST" class="col-3">
+            {% csrf_token %}
+              <button 
+                type="submit"
+                value="{{ session_id }}"
+                class="btn btn-outline-danger"
+                name="session_id">
+                <h6>Delete Session</h6>
+              </button>
+          </form>
+          <form action="/admin_home/" method="POST" target="_blank" class="col-3">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-outline-primary">
+              <h6>Cancel</h6>
+            </button>
+          </form>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

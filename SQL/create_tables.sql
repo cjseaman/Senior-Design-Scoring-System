@@ -1,3 +1,10 @@
+create table scoringsystem_session (
+	id serial,
+	session_name char(128) default '',
+	session_location char(128) default '',
+	primary key (id)
+);
+
 create table scoringsystem_judge (
   judge_id serial,
 	judge_email char(128) default '',
@@ -7,22 +14,15 @@ create table scoringsystem_judge (
   foreign key (session_id) references scoringsystem_session(id)
 );
 
-create table scoringsystem_session (
-	id serial,
-	session_name char(128) default '',
-	session_location char(128) default '',
-	primary key (id)
-);
-
-create table project (
-	project_id serial,
+create table scoringsystem_project (
+  id serial,
 	session_id int,
 	project_name char(128) default '' ,
 	group_members text ,
 	project_desc text ,
 	average_score int default 0 ,
-	primary key (project_id),
-  foreign key (session_id) references session(session_id)
+	primary key (id),
+  foreign key (session_id) references scoringsystem_session(id)
 );
 
 create table scoringsystem_projecteval (
