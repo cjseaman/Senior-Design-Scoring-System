@@ -28,9 +28,16 @@ def submittedCreatedSessionView(request):
     return submitCreatedSession(request)
 
 def createProjectForm(request):
+    session_id = request.POST.get('session_id')
     logging.basicConfig(filename='mylog.log', level=logging.DEBUG)
     logging.debug('inside createProjectForm')
-    return render(request, 'add_projects_form.html')
+    return render(request, 'add_projects_form.html', {'session_id': session_id})
+
+def submittedCreatedProjectForm(request):
+    session_id = request.POST.get('session_id')
+    logging.basicConfig(filename='mylog.log', level=logging.DEBUG)
+    logging.debug('inside submittedCreatedProjectForm')
+    return submitCreatedProject(request)
 
 def createSessionView(request):
     logging.basicConfig(filename='mylog.log', level=logging.DEBUG)
@@ -97,6 +104,31 @@ def submitCreatedSession(request):
         )
         logging.debug('session:', session)
         session.save()
+        return render(request, 'submitted.html')
+    else:
+        logging.debug('method is not POST')
+
+    return render(request,'error.html')
+
+def submitCreatedProject(request):
+    logging.basicConfig(filename='mylog.log', level=logging.DEBUG)
+    logging.debug('got to submitCreatedProject!!')
+    if request.method == 'POST':
+        logging.debug('form is valid')
+        session_id = request.POST.get('session_id')
+        project_name = request.POST.get('project_name')
+        group_members = request.POST.get('group_members')
+        project_desc = request.POST.get('project_desc')
+        average_score = request.POST.get('average_score')
+        project = m.project(
+            session_id=session_id,
+            project_name=project_name,
+            group_members=group_members,
+            project_desc=project_desc,
+            average_score=average_score
+        )
+        logging.debug('project:', project)
+        project.save()
         return render(request, 'submitted.html')
     else:
         logging.debug('method is not POST')

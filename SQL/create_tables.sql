@@ -15,13 +15,13 @@ create table scoringsystem_judge (
 );
 
 create table scoringsystem_project (
-  project_id serial,
+  id serial,
 	session_id int,
 	project_name char(128) default '' ,
 	group_members text ,
 	project_desc text ,
 	average_score int default 0 ,
-	primary key (project_id),
+	primary key (id),
   foreign key (session_id) references scoringsystem_session(id)
 );
 

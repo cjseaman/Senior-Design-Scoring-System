@@ -30,6 +30,7 @@ urlpatterns = [
     path('admin_home/add_judges_form', views.assignJudgesView, name='assign_judges'),
     path('admin_home/add_judges_form/submitted_judge', views.submittedAssignJudgesView, name='submitted_assign_judges'),
     path('admin_home/create_project_form', views.createProjectForm, name='create_project'),
+    path('admin_home/create_project_form/submitted', views.submittedCreatedProjectForm, name='submitted_create_project'),
     path('judge_home/', views.judgeHomeView, name='judge_home'),
     path('', TemplateView.as_view(template_name='home.html'), name='home'), # home page, default path
     path('accounts/', include('django.contrib.auth.urls')), # login page
