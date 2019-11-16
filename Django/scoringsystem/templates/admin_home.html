@@ -25,7 +25,7 @@
 					<h5 class="col-2 pull-right">{{ session.session_location }}</h5>
 					<form action="/admin_home/add_judges_form" method="POST" class="col-2">
 						{% csrf_token %}
-    					<button 
+    					<button
 		    				type="submit"
 		    				value="{{ session.id }}"
 		    				class="btn btn-outline-dark"
@@ -35,7 +35,7 @@
 					</form>
 					<form action="/admin_home/create_project_form" method="POST" class="col-2">
 						{% csrf_token %}
-    					<button 
+    					<button
 		    				type="submit"
 		    				value="{{ session.id }}"
 		    				class="btn btn-outline-dark"
@@ -45,7 +45,7 @@
 					</form>
 					<form action="/admin_home/view_session_scores" method="POST" class="col-2">
 						{% csrf_token %}
-    					<button 
+    					<button
 		    				type="submit"
 		    				value="{{ session.id }}"
 		    				class="btn btn-outline-primary"
@@ -55,7 +55,7 @@
 					</form>
 					<form action="/admin_home/delete_session_prompt" method="POST" class="col-2">
 						{% csrf_token %}
-    					<button 
+    					<button
 		    				type="submit"
 		    				value="{{ session.id }}"
 		    				class="btn btn-outline-danger"
@@ -68,10 +68,18 @@
 		{% endfor %}
 	<form action="create_session_form" method="POST">
 		{% csrf_token %}
-		<button 
-			type="submit" 
-			class="btn btn-secondary col-12"  
+		<button
+			type="submit"
+			class="btn btn-secondary col-12"
 			name="add_session_btn">Add Session
+		</button>
+	</form>
+  <form action="sd_experience_results" method="POST">
+		{% csrf_token %}
+		<button
+			type="submit"
+			class="btn btn-secondary col-12"
+			name="add_session_btn">Senior Design Experience Results
 		</button>
 	</form>
 	</div>

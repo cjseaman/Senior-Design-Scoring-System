@@ -25,6 +25,7 @@ urlpatterns = [
     path('judge_exp_eval_form/', views.judgeExpEvalView, name='exp_eval'),
     path('judge_exp_eval_form/submitted', views.submitJudgeExpEvalView, name='submit_exp_eval'),
     path('admin_home/', views.adminHomeView, name='admin_home'),
+    path('admin_home/sd_experience_results', views.sdExperienceResults, name='sd_experience_results'),
     path('admin_home/create_session_form', views.createSessionView, name='create_session'),
     path('admin_home/create_session_form/submitted', views.submittedCreatedSessionView, name='submitted_created_session'),
     path('admin_home/add_judges_form', views.assignJudgesView, name='assign_judges'),

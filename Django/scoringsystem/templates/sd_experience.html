@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	{% load static %}
+	{% load define_action %}
+  	<link rel="stylesheet" type="text/css" href="{% static 'scoringsystem/style.css' %}">
+	<Title>Scoring System</Title>
+</head>
+
+<body>
+
+	<nav class="navbar navbar-expand-sm navbar-light bg-light clearfix">
+		<a class="navbar-brand" href="#">Scoring System: Admin</a>
+		<button class="btn btn-outline-dark pull-right">View Messages</button>
+    <button class="btn btn-outline-dark pull-right">Return Home</button>
+		<button class="btn btn-danger pull-right">Log Out</button>
+	</nav>
+
+  <div class="container btn-list" id="form_results">
+    <b>Which discipline are you judging?</b>
+    <table>
+      <tr>
+        <th>Bio </th>
+        <th>Civil </th>
+        <th>Computer </th>
+        <th>Electrical </th>
+        <th>Mechanical </th>
+        <th>Interdisciplinary </th>
+      </tr>
+      <tr>
+        <td>{{ bio }}</td>
+        <td>{{ civil }}</td>
+        <td>{{ coen }}</td>
+        <td>{{ elen }}</td>
+        <td>{{ mech }}</td>
+        <td>{{ inter }}</td>
+      </tr>
+    </table>
+  </div>
+
+</body>
+<script type="text/javascript" src="..\js\functions.js"></script>
+<script type="text/javascript" src="events.js"></script>
+</html>
