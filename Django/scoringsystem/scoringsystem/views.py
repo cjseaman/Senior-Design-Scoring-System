@@ -22,6 +22,23 @@ def adminHomeView(request):
     session_list = m.session.objects.all()
     return render(request, 'admin_home.html', {'session_list': session_list})
 
+def sdExperienceResults(request):
+    eval_list = m.JudgeEval.objects.all()
+    bio = len(m.JudgeEval.objects.filter(discipline='bioe'))
+    civil = len(m.JudgeEval.objects.filter(discipline='civil'))
+    coen = len(m.JudgeEval.objects.filter(discipline='coen'))
+    elen = len(m.JudgeEval.objects.filter(discipline='elen'))
+    mech = len(m.JudgeEval.objects.filter(discipline='mech'))
+    inter = len(m.JudgeEval.objects.filter(discipline='inter'))
+    return render(request, 'sd_experience.html', {
+        'bio': bio,
+        'civil': civil,
+        'coen': coen,
+        'elen': elen,
+        'mech': mech,
+        'inter': inter
+    })
+
 def submittedCreatedSessionView(request):
     logging.basicConfig(filename='mylog.log', level=logging.DEBUG)
     logging.debug('inside submittedCreatedSessionView')
