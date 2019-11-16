@@ -13,26 +13,18 @@
 		<a class="navbar-brand" href="/admin_home/">Home</a>
 		<button class="btn btn-danger pull-right">Log Out</button>
 	</nav>
-	<form action="add_judges_form/submitted_judge" method="POST">
+	<form action="add_judges_form/submitted" method="POST">
 	{% csrf_token %}
 		<div class = "container" style="padding: 5px;">
 			<li class="list-group-item">
-				<h5>
-					{{session_name}}
-				</h5>
-			</li>
-			<li class="list-group-item">
 				<h5>Current Judges</h5>
 			</li>
-			{% for judge in judge_list %}
-				<li class="list-group-item">
-					<h5 class="col-6">
-						{{judge.judge_name}}
-					</h5>
-					<h5 class="col-6">
-						{{judge.judge_email}}
-					</h5>
-				</li>
+			{% for judge in list_judges %}
+			<li class="list-group-item">
+				<h5>
+					{{judge.name}}
+				</h5>
+			</li>
 			{% endfor %}
 		  	<li class="list-group-item">
 		  		<label for="name">
@@ -46,9 +38,18 @@
 				</label>
 		  		<input type="text" name="judge_name" class="col-6">
 		  	</li>
+        <li class="list-group-item">
+		  		<label for="name">
+					<h5>Session ID:</h5>
+				</label>
+		  		<input type="number" name="session_id" class="col-6">
+		  	</li>
 		  	<div class="row">
 				<div class="button-box" style="padding: 10px;">
-					<button class="btn btn-primary" type="submit" name="session_id" value="{{ session_id }}">Add Judge</button>
+					<button class="btn btn-primary" type="submit">Add Judge</button>
+				</div>
+				<div class="button-box" style="padding: 10px;">
+					<button class="btn btn-primary" type="submit">Submit</button>
 				</div>
 			</div>
 		</div>

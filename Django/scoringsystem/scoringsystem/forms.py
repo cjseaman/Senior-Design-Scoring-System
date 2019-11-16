@@ -47,10 +47,10 @@ class CreateSessionForm(forms.Form):
     session_location = forms.CharField(max_length=128)
 
 class CreateProjectForm(forms.Form):
-    session_id = forms.IntegerField()
-    project_name = forms.CharField(max_length=128)
+    assigned_session_id = forms.IntegerField()
+    name = forms.CharField(max_length=128)
     group_members = forms.CharField(max_length=256)
-    project_desc = forms.CharField(max_length=256)
+    project_description = forms.CharField(max_length=256)
     average_score = forms.FloatField()
 
 class AddJudgeForm(forms.Form):

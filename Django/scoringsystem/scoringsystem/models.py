@@ -47,19 +47,18 @@ class JudgeEval(m.Model):
 class session(m.Model):
     session_name = m.CharField(max_length=128)
     session_location = m.CharField(max_length=128)
-    id = m.AutoField(primary_key=True)
     class Meta:
         db_table = 'scoringsystem_session'
 
 class judge(m.Model):
-    judge_name = m.CharField(max_length=128)
-    judge_email = m.CharField(max_length=128, primary_key=True)
+    judge_name = m.CharField(max_length=128, primary_key=True)
+    judge_email = m.CharField(max_length=128)
     session_id = m.IntegerField(default=0)
 
 class project(m.Model):
-    session_id = m.IntegerField(default=0)
-    project_name = m.CharField(max_length=128)
+    project_id = m.IntegerField(default=0, primary_key=True)
+    assigned_session_id = m.IntegerField(default=0)
+    name = m.CharField(max_length=128)
     group_members = m.CharField(max_length=256)
-    project_desc = m.CharField(max_length=256)
+    project_description = m.CharField(max_length=256)
     average_score = m.FloatField(default=0)
-    id = m.AutoField(primary_key=True)

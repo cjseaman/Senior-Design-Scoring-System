@@ -33,7 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'scoringsystem',
     #'django.contrib.sites',
-    #'django.contrib.admin',
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -60,7 +60,7 @@ MIDDLEWARE = [
 # https://docs.djangoproject.com/en/2.2/howto/auth-remote-user/#configuration
 AUTHENTICATION_BACKENDS = (
     "django.contrib.auth.backends.RemoteUserBackend",   # authenticate using custom user
-    'django.contrib.auth.backends.ModelBackend',
+    'django.contrib.auth.backends.ModelBackend',        
 )
 
 ROOT_URLCONF = 'scoringsystem.urls'
