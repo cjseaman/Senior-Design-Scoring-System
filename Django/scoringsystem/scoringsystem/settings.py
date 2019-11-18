@@ -26,7 +26,7 @@ SECRET_KEY = '&zy2in#3x$zapjv$2x02sf2x#!9)$)17!pvyjk=i&pwjn6zvw$'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '6eea0fde.ngrok.io'
+    #'6eea0fde.ngrok.io'
 ]
 
 
@@ -35,16 +35,18 @@ ALLOWED_HOSTS = [
 INSTALLED_APPS = [
     'scoringsystem',
     #'django.contrib.sites',
-    #'django.contrib.admin',
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #'accounts.apps.AccountsConfig', # for Sign Up
 
     # created apps
     #'users',
-    #'admin_site'
+    #'admin_site',
+    #'account',
 ]
 
 MIDDLEWARE = [
@@ -140,7 +142,14 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-# by default Django will use custom created user
+# by default Django will now use custom created user, use default as backup for other functionality (signup)
 # https://docs.djangoproject.com/en/2.2/topics/auth/customizing/
 
 #AUTH_USER_MODEL = 'users.User'
+
+# login, logout, homepage redirects
+
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
+
+

@@ -19,6 +19,15 @@
 			{% for project in project_list %}
 				<form action="/projects_eval_form/" method="POST">
 					{% csrf_token %}
+			<form action="/projects_eval_form/" method="POST">
+				<li class="list-group-item">
+	    			<button class="btn col-12" name="Example_Name">Example_Project</button>
+	    		</li>
+	    		<li class="list-group-item">
+	    			<button class="btn col-12" name="Example_Name">Example_Project</button>
+	    		</li>
+	    		<!--THE REST OF THE PROJECTS SHOULD BE RENDERED USING SOME KIND OF LOOP LIKE THIS-->
+				{% for project in list_projects %}
 		    		<li>
 		    			<button 
 		    				type="submit"
@@ -28,8 +37,9 @@
 		    				{{ project.project_name }}
 		    			</button>
 		    		</li>
-		    	</form>
-			{% endfor %}
+		    	{% endfor %}
+		    </form>
+		    {% endfor %}
 		</div>
 	</form>
 </body>

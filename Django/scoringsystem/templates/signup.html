@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<head>
+	{% load static %}
+	{% load define_action %}
+  	<link rel="stylesheet" type="text/css" href="{% static 'scoringsystem/style.css' %}">
+	<title> Judge Sign Up </title>
+</head>
+
+<body>
+	<div class = "container" style="padding: 5px;">
+	<h5><b>Judge Sign Up</b></h5>
+		<form method="POST">
+			{% csrf_token %}
+			{{ form.as_p }}
+			<button type="submit">Sign Up</button>
+		</form>
+	</div>
+</body>
+</html>

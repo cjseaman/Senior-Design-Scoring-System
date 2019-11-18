@@ -19,7 +19,7 @@ from . import views
 from django.views.generic.base import TemplateView
 
 urlpatterns = [
-    #path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls),
     path('project_eval_form/', views.projectEvalView, name='project_eval'),
     path('project_eval_form/submitted', views.submitProjectEvalView, name='submit_project_eval'),
     path('judge_exp_eval_form/', views.judgeExpEvalView, name='exp_eval'),
@@ -36,7 +36,11 @@ urlpatterns = [
     path('admin_home/delete_session', views.deleteSessionView, name='delete_session'),
     path('judge_home/', views.judgeHomeView, name='judge_home'),
     path('', views.homeView, name='home'), 
-    path('login/', views.loginView, name='login'), 
+    #path('login/', views.loginView, name='login'), 
     path('create_account/', views.createAccountView, name='create_account'),
     path('create_account/submitted', views.submittedCreateAccountView, name='submitted_created_account'),
+    #new
+    #path('accounts/', include('account.urls')),
+    path('accounts/signup/', views.SignUp.as_view(), name='signup'),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]

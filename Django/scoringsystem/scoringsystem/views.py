@@ -5,12 +5,26 @@ from django.views.decorators.csrf import csrf_exempt
 from scoringsystem import forms
 from scoringsystem import models as m
 import logging
+from django.contrib.auth.forms import UserCreationForm
+from django.urls import reverse_lazy
+from django.views import generic
+
+
+class SignUp(generic.CreateView):   # subclass CreateView to use build in form  
+    form_class = UserCreationForm   # use built-in custom Django sign up form
+    success_url = reverse_lazy('login')     # button redirects to login url
+    template_name = 'signup.html'   # render signup.html on view
 
 def homeView(request):
     return render(request, 'home.html')
 
 def loginView(request):
     return render(request, 'login.html')
+
+class signUp(generic.CreateView):
+    form_class=UserCreationForm # use django default signup form
+    success_url=reverse_lazy('login') # url to redirect to login after form submission
+    template_name="signup.html" # form to render in view
 
 def createAccountView(request):
     logging.basicConfig(filename='mylog.log', level=logging.DEBUG)

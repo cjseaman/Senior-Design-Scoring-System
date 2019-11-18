@@ -10,7 +10,16 @@
 
 <body>
 	<form method="POST">
-		{% csrf_token %}
+		<div class = "container" style="padding: 5px;">
+			<h5><b> Judge Login </b></h5>
+			{% csrf_token %}
+			{{ form.as_p }}
+			<div class="row">
+				<button type="submit">Login</button>
+				<a href="{% url 'signup' %}">Sign Up</a>
+			</div>
+		</div>
+		<!--
 		<div class = "container" style="padding: 5px;">
 			<li class="list-group-item">
 				<h2><b>Login</b></h2>
@@ -28,13 +37,14 @@
 			  	<input type="text" name="password" id="password" class="col-6">
 			</li>
 			<div class="row">
-				<!--<div class="button-box" style="padding: 10px;">
+				<div class="button-box" style="padding: 10px;">
 					<button class="btn btn-primary" type="submit">Submit</button>
-				</div>-->
+				</div>
 				<a class="navbar-brand" href="/">Login</a>
 				<a href="/create_account">Create Account</a>
 			</div>
 		</div>
+	-->
 	</form>
 </body>
 </html>

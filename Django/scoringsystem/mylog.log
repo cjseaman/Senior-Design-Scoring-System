@@ -745,3 +745,104 @@ WARNING:django.request:Not Found: /js/functions.js
 WARNING:django.request:Not Found: /admin_home/events.js
 WARNING:django.request:Not Found: /admin
 WARNING:django.request:Not Found: /admin
+DEBUG:root:inside createAccountView
+INFO:django.utils.autoreload:/Users/alexachramowicz/Documents/GitHub/Senior-Design-Scoring-System/Django/scoringsystem/scoringsystem/settings.py changed, reloading.
+DEBUG:root:inside createProjectForm
+ERROR:django.request:Internal Server Error: /admin_home/create_project_form
+Traceback (most recent call last):
+  File "/Users/alexachramowicz/Documents/GitHub/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.UndefinedTable: relation "scoringsystem_project" does not exist
+LINE 1: ...average_score", "scoringsystem_project"."id" FROM "scoringsy...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/alexachramowicz/Documents/GitHub/lib/python3.8/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/alexachramowicz/Documents/GitHub/lib/python3.8/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/alexachramowicz/Documents/GitHub/lib/python3.8/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/alexachramowicz/Documents/GitHub/Senior-Design-Scoring-System/Django/scoringsystem/scoringsystem/views.py", line 93, in createProjectForm
+    return render(request, 'add_projects_form.html', {
+  File "/Users/alexachramowicz/Documents/GitHub/lib/python3.8/site-packages/django/shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/alexachramowicz/Documents/GitHub/lib/python3.8/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/Users/alexachramowicz/Documents/GitHub/lib/python3.8/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/Users/alexachramowicz/Documents/GitHub/lib/python3.8/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+  File "/Users/alexachramowicz/Documents/GitHub/lib/python3.8/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/Users/alexachramowicz/Documents/GitHub/lib/python3.8/site-packages/django/template/base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "/Users/alexachramowicz/Documents/GitHub/lib/python3.8/site-packages/django/template/base.py", line 904, in render_annotated
+    return self.render(context)
+  File "/Users/alexachramowicz/Documents/GitHub/lib/python3.8/site-packages/django/template/defaulttags.py", line 166, in render
+    len_values = len(values)
+  File "/Users/alexachramowicz/Documents/GitHub/lib/python3.8/site-packages/django/db/models/query.py", line 256, in __len__
+    self._fetch_all()
+  File "/Users/alexachramowicz/Documents/GitHub/lib/python3.8/site-packages/django/db/models/query.py", line 1242, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/Users/alexachramowicz/Documents/GitHub/lib/python3.8/site-packages/django/db/models/query.py", line 55, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "/Users/alexachramowicz/Documents/GitHub/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1100, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/alexachramowicz/Documents/GitHub/lib/python3.8/site-packages/django/db/backends/utils.py", line 99, in execute
+    return super().execute(sql, params)
+  File "/Users/alexachramowicz/Documents/GitHub/lib/python3.8/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/Users/alexachramowicz/Documents/GitHub/lib/python3.8/site-packages/django/db/backends/utils.py", line 76, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/Users/alexachramowicz/Documents/GitHub/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/alexachramowicz/Documents/GitHub/lib/python3.8/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/alexachramowicz/Documents/GitHub/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.ProgrammingError: relation "scoringsystem_project" does not exist
+LINE 1: ...average_score", "scoringsystem_project"."id" FROM "scoringsy...
+                                                             ^
+
+DEBUG:root:inside submittedAssignJudgesView
+DEBUG:root:got to submitAndAddJudge!!
+DEBUG:root:form is valid
+ERROR:django.request:Internal Server Error: /admin_home/add_judges_form/submitted_judge
+Traceback (most recent call last):
+  File "/Users/alexachramowicz/Documents/GitHub/lib/python3.8/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/alexachramowicz/Documents/GitHub/lib/python3.8/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/alexachramowicz/Documents/GitHub/lib/python3.8/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/alexachramowicz/Documents/GitHub/Senior-Design-Scoring-System/Django/scoringsystem/scoringsystem/views.py", line 153, in submittedAssignJudgesView
+    return submitAndAddJudge(request)
+  File "/Users/alexachramowicz/Documents/GitHub/Senior-Design-Scoring-System/Django/scoringsystem/scoringsystem/views.py", line 172, in submitAndAddJudge
+    judge.save()
+  File "/Users/alexachramowicz/Documents/GitHub/lib/python3.8/site-packages/django/db/models/base.py", line 740, in save
+    self.save_base(using=using, force_insert=force_insert,
+  File "/Users/alexachramowicz/Documents/GitHub/lib/python3.8/site-packages/django/db/models/base.py", line 777, in save_base
+    updated = self._save_table(
+  File "/Users/alexachramowicz/Documents/GitHub/lib/python3.8/site-packages/django/db/models/base.py", line 850, in _save_table
+    updated = self._do_update(base_qs, using, pk_val, values, update_fields,
+  File "/Users/alexachramowicz/Documents/GitHub/lib/python3.8/site-packages/django/db/models/base.py", line 900, in _do_update
+    return filtered._update(values) > 0
+  File "/Users/alexachramowicz/Documents/GitHub/lib/python3.8/site-packages/django/db/models/query.py", line 760, in _update
+    return query.get_compiler(self.db).execute_sql(CURSOR)
+  File "/Users/alexachramowicz/Documents/GitHub/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1429, in execute_sql
+    cursor = super().execute_sql(result_type)
+  File "/Users/alexachramowicz/Documents/GitHub/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1087, in execute_sql
+    sql, params = self.as_sql()
+  File "/Users/alexachramowicz/Documents/GitHub/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1395, in as_sql
+    val = field.get_db_prep_save(val, connection=self.connection)
+  File "/Users/alexachramowicz/Documents/GitHub/lib/python3.8/site-packages/django/db/models/fields/__init__.py", line 789, in get_db_prep_save
+    return self.get_db_prep_value(value, connection=connection, prepared=False)
+  File "/Users/alexachramowicz/Documents/GitHub/lib/python3.8/site-packages/django/db/models/fields/__init__.py", line 784, in get_db_prep_value
+    value = self.get_prep_value(value)
+  File "/Users/alexachramowicz/Documents/GitHub/lib/python3.8/site-packages/django/db/models/fields/__init__.py", line 1821, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: 'None'

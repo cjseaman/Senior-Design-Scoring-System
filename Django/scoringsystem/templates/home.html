@@ -8,13 +8,15 @@
 	<title> Home </title>
 </head>
 
-{% if judgeUser.user_email == judge.judge_email %}
-  Hello!  Welcome to the SCU Senior Design Scoring System!
+{% if user.is_authenticated %}
+  <h5>Hello, {{ user.username }}! Welcome to the SCU Senior Design Scoring System!</h5>
   <p><a href="/judge_home">Judge Home</a>
-  <p><a href="/login">Logout</a>
-  <!--<p><a href="/admin_home">Admin Home</a>
-  <p><a href="/admin_home/add_judges_form">Add Judges</a>-->
+    {% if user.is_superuser %}
+      <p><a href="/admin_home">Admin Home</a></p>
+      <p><a href="/admin">Admin Page</a></p>
+    {% endif %}
+  <p><a href="{% url 'logout' %}">Logout</a></p>
 {% else %}
-  <p>You are not logged in! Please login here:
-  <a href="{% url 'login' %}">Login page</a>
+  <p>You are not logged in! Please login here:</p>
+  <a href="{% url 'login' %}">Login</a>
 {% endif %}
