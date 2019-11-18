@@ -8,15 +8,27 @@
 	<title> Home </title>
 </head>
 
-{% if user.is_authenticated %}
-  <h5>Hello, {{ user.username }}! Welcome to the SCU Senior Design Scoring System!</h5>
-  <p><a href="/judge_home">Judge Home</a>
-    {% if user.is_superuser %}
-      <p><a href="/admin_home">Admin Home</a></p>
-      <p><a href="/admin">Admin Page</a></p>
-    {% endif %}
-  <p><a href="{% url 'logout' %}">Logout</a></p>
-{% else %}
-  <p>You are not logged in! Please login here:</p>
-  <a href="{% url 'login' %}">Login</a>
-{% endif %}
+<body>
+  <div class = "container" style="padding: 5px;">
+    <div class="text-center">
+      <h5 class="card-title">
+          <img src="https://www.scu.edu/media/offices/umc/scu-brand-guidelines/visual-identity-amp-photography/visual-identity-toolkit/logos-amp-seals/Mission-Stacked-PMS201.png" width="300" height="100"><br>
+          Senior Design Scoring Application<br>
+          <b>Home Page</b>
+      </h5>
+      {% if user.is_authenticated %}
+        <h5>Hello, {{ user.username }}! Welcome to the SCU Senior Design Scoring System!</h5>
+        <a href="/judge_home">Judge Home</a>
+          {% if user.is_superuser %}
+            <p><a href="/admin_home">Admin Home</a></p>
+            <p><a href="/admin">Admin Page</a></p>
+          {% endif %}
+        <p><a href="{% url 'logout' %}">Logout</a></p>
+      {% else %}
+        <p>You are not logged in! Please login here:</p>
+        <a href="{% url 'login' %}">Login</a>
+      {% endif %}
+    </div>
+  </div>
+</body>
+</html>

@@ -4,10 +4,12 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from scoringsystem import forms
 from scoringsystem import models as m
-import logging
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views import generic
+from django.contrib.auth.decorators import login_required
+import logging
+
 
 
 class SignUp(generic.CreateView):   # subclass CreateView to use build in form  

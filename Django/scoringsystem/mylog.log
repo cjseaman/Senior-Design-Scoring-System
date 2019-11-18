@@ -846,3 +846,42 @@ Traceback (most recent call last):
   File "/Users/alexachramowicz/Documents/GitHub/lib/python3.8/site-packages/django/db/models/fields/__init__.py", line 1821, in get_prep_value
     return int(value)
 ValueError: invalid literal for int() with base 10: 'None'
+DEBUG:root:inside createSessionView
+DEBUG:root:inside submittedCreatedSessionView
+DEBUG:root:got to submitCreatedSession!!
+DEBUG:root:form is valid
+WARNING:django.request:Not Found: /admin_home/events.js
+WARNING:django.request:Not Found: /js/functions.js
+WARNING:django.request:Not Found: /admin_home/events.js
+WARNING:django.request:Not Found: /admin_home/view_session_scores
+WARNING:django.request:Not Found: /admin_home/events.js
+DEBUG:root:inside createProjectForm
+DEBUG:root:inside createProjectForm
+WARNING:django.request:Not Found: /js/functions.js
+WARNING:django.request:Not Found: /admin_home/events.js
+DEBUG:root:inside createProjectForm
+INFO:django.utils.autoreload:/Users/alexachramowicz/Documents/GitHub/Senior-Design-Scoring-System/Django/scoringsystem/scoringsystem/settings.py changed, reloading.
+DEBUG:root:inside submittedAssignJudgesView
+DEBUG:root:got to submitAndAddJudge!!
+DEBUG:root:form is valid
+WARNING:django.request:Not Found: /js/functions.js
+WARNING:django.request:Not Found: /admin_home/events.js
+INFO:django.utils.autoreload:/Users/alexachramowicz/Documents/GitHub/Senior-Design-Scoring-System/Django/scoringsystem/scoringsystem/views.py changed, reloading.
+DEBUG:root:inside createSessionView
+DEBUG:root:inside submittedCreatedSessionView
+DEBUG:root:got to submitCreatedSession!!
+DEBUG:root:form is valid
+WARNING:django.request:Not Found: /js/functions.js
+WARNING:django.request:Not Found: /admin_home/events.js
+DEBUG:root:inside submittedAssignJudgesView
+DEBUG:root:got to submitAndAddJudge!!
+DEBUG:root:form is valid
+WARNING:django.request:Not Found: /js/functions.js
+WARNING:django.request:Not Found: /admin_home/events.js
+WARNING:django.request:Not Found: /js/functions.js
+WARNING:django.request:Not Found: /admin_home/events.js
+WARNING:django.request:Not Found: /admin_home/events.js
+WARNING:django.request:Not Found: /js/functions.js
+WARNING:django.request:Not Found: /admin_home/events.js
+WARNING:django.request:Not Found: /js/functions.js
+WARNING:django.request:Not Found: /admin_home/events.js
