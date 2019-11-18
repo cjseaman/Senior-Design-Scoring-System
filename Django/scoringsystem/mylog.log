@@ -745,3 +745,25 @@ WARNING:django.request:Not Found: /js/functions.js
 WARNING:django.request:Not Found: /admin_home/events.js
 WARNING:django.request:Not Found: /admin
 WARNING:django.request:Not Found: /admin
+INFO:django.utils.autoreload:E:\Documents\GitHub\Senior-Design-Scoring-System\Django\scoringsystem\scoringsystem\views.py changed, reloading.
+DEBUG:root:inside createSessionView
+DEBUG:root:inside createSessionView
+DEBUG:root:inside submittedCreatedSessionView
+DEBUG:root:got to submitCreatedSession!!
+DEBUG:root:form is valid
+DEBUG:root:inside submittedAssignJudgesView
+DEBUG:root:got to submitAndAddJudge!!
+DEBUG:root:form is valid
+WARNING:django.request:Not Found: /admin_home/view_session_scores
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /js/functions.js
+WARNING:django.request:Not Found: /admin_home/events.js
+DEBUG:root:inside createProjectForm
+DEBUG:root:inside submittedCreatedProjectForm
+DEBUG:root:got to submitCreatedProject!!
+DEBUG:root:form is valid
+DEBUG:root:inside createProjectForm
+DEBUG:root:inside submittedAssignJudgesView
+DEBUG:root:got to submitAndAddJudge!!
+DEBUG:root:form is valid
+WARNING:django.request:Not Found: /admin_home/view_session_scores
