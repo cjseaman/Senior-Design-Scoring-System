@@ -10,6 +10,7 @@ create table scoringsystem_judge (
 	judge_email char(128) default '',
 	judge_name char(128) default '',
 	session_id int,
+	password text,
 	primary key (judge_id),
   foreign key (session_id) references scoringsystem_session(id)
 );

@@ -4,13 +4,38 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from scoringsystem import forms
 from scoringsystem import models as m
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate
+from django.contrib.auth import logout
+from django.core.mail import send_mail
+from smtplib import SMTPRecipientsRefused
 import logging
+import string
+import random
+
+def logoutView(request):
+    logout(request)
+    return render(request, 'logout.html')
+
+def loginView(request):
+    return render(request, 'registration/login.html')
+
+def loginUserView(request):
+    email = request.POST.get('email')
+    password = request.POST.get('password')
+    user = authenticate(username=email, password=password)
+    if user is not None:
+        if user.is_admin == True:
+            return render(request, 'admin/submitted.html')
+        else: return judgeHomeView(request, 'judge/submitted.html')
+        return loginView(request)
+    else: return loginView(request)
 
 def projectEvalView(request):
-    return render(request, 'projects_eval_form.html')
+    return render(request, 'judge/projects_eval_form.html')
 
 def judgeExpEvalView(request):
-    return render(request, 'judge_exp_eval_form.html')
+    return render(request, 'judge/judge_exp_eval_form.html')
 
 def submitJudgeExpEvalView(request):
     return submitJudgeEval(request)
@@ -20,7 +45,7 @@ def submitProjectEvalView(request):
 
 def adminHomeView(request):
     session_list = m.session.objects.all()
-    return render(request, 'admin_home.html', {'session_list': session_list})
+    return render(request, 'admin/admin_home.html', {'session_list': session_list})
 
 def sdExperienceResults(request):
     eval_list = m.JudgeEval.objects.all()
@@ -30,13 +55,13 @@ def sdExperienceResults(request):
     elen = len(m.JudgeEval.objects.filter(discipline='elen'))
     mech = len(m.JudgeEval.objects.filter(discipline='mech'))
     inter = len(m.JudgeEval.objects.filter(discipline='inter'))
-    return render(request, 'sd_experience.html', {
+    return render(request, 'admin/sd_experience.html', {
         'bio': bio,
-        'civil': civil,
+        'civi': civil,
         'coen': coen,
         'elen': elen,
         'mech': mech,
-        'inter': inter
+        'inte': inter
     })
 
 def submittedCreatedSessionView(request):
@@ -53,7 +78,7 @@ def createProjectForm(request):
     session_name = ''
     for s in sessions:
         session_name = s.session_name
-    return render(request, 'add_projects_form.html', {
+    return render(request, 'admin/add_projects_form.html', {
         'session_id': session_id,
         'session_name': session_name,
         'project_list': project_list
@@ -68,7 +93,7 @@ def submittedCreatedProjectForm(request):
 def createSessionView(request):
     logging.basicConfig(filename='mylog.log', level=logging.DEBUG)
     logging.debug('inside createSessionView')
-    return render(request, 'create_session_form.html')
+    return render(request, 'admin/create_session_form.html')
 
 def submitSessionView(request):
     logging.basicConfig(filename='mylog.log', level=logging.DEBUG)
@@ -77,7 +102,7 @@ def submitSessionView(request):
 
 def deleteSessionPromptView(request):
     session_id = request.POST.get('session_id')
-    return render(request, 'delete_session_prompt.html', {'session_id': session_id})
+    return render(request, 'admin/delete_session_prompt.html', {'session_id': session_id})
 
 def deleteSessionView(request):
     session_id = request.POST.get('session_id')
@@ -93,7 +118,7 @@ def deleteSessionView(request):
     projects.delete()
 
     m.session.objects.filter(id=session_id).delete()
-    return render(request, 'deleted_session.html')
+    return render(request, 'admin/deleted_session.html')
 
 
 
@@ -104,7 +129,7 @@ def assignJudgesView(request):
     session_name = ''
     for s in sessions:
         session_name = s.session_name
-    return render(request, 'add_judges_form.html', {
+    return render(request, 'admin/add_judges_form.html', {
             'session_id': session_id,
             'session_name': session_name,
             'judge_list': judge_list
@@ -116,7 +141,7 @@ def submittedAssignJudgesView(request):
     return submitAndAddJudge(request)
 
 def judgeHomeView(request):
-    return render(request, 'judge_home.html')
+    return render(request, 'judge/judge_home.html')
 
 def submitAndAddJudge(request):
     logging.basicConfig(filename='mylog.log', level=logging.DEBUG)
@@ -129,11 +154,26 @@ def submitAndAddJudge(request):
         judge = m.judge(
             judge_email=judge_email,
             judge_name=judge_name,
-            session_id=session_id
+            session_id=session_id,
         )
+        #To be used later
+        password = randomPassword()
+        #password = 'testpassword'
+        judge.set_password(password)
+        message = (
+            'Hi ' + judge_name + ',\n'
+            'Your password is: "' + password + '".\n'
+            'Use your email and this password to log in to the senior design scoring system.'
+        )
+        
+        try:
+            send_mail('Senior Design Scoring System Password', message, 'scusdscoringsystem@gmail.com', [judge_email], fail_silently=False)
+        except SMTPRecipientsRefused:
+            return render(request, 'admin/email_error.html', {'email': judge_email})
+
         logging.debug('judge:', judge)
         judge.save()
-        return render(request, 'submitted_judge.html', {'session_id': session_id})
+        return render(request, 'admin/submitted_judge.html', {'session_id': session_id})
     else:
         logging.debug('method is not POST')
 
@@ -158,7 +198,7 @@ def submitCreatedProject(request):
         )
         logging.debug('project:', project)
         project.save()
-        return render(request, 'submitted.html')
+        return render(request, 'admin/submitted.html')
     else:
         logging.debug('method is not POST')
 
@@ -177,7 +217,7 @@ def submitCreatedSession(request):
         )
         logging.debug('session:', session)
         session.save()
-        return render(request, 'submitted.html')
+        return render(request, 'admin/submitted.html')
     else:
         logging.debug('method is not POST')
 
@@ -234,7 +274,7 @@ def submitJudgeEval(request):
         )
         logging.debug('eval:', eval)
         eval.save()
-        return render(request, 'submitted.html')
+        return render(request, 'judge/submitted.html')
     else:
         logging.debug('method is not POST')
 
@@ -291,8 +331,13 @@ def submitProjectEval(request):
         )
         logging.debug('score:', score)
         score.save()
-        return render(request, 'submitted.html')
+        return render(request, 'judge/submitted_judge.html')
     else:
         logging.debug('method is not POST')
 
     return render(request,'error.html')
+
+def randomPassword(stringLength=10):
+    """Generate a random string of letters and digits """
+    lettersAndDigits = string.ascii_letters + string.digits
+    return ''.join(random.choice(lettersAndDigits) for i in range(stringLength))

@@ -10,7 +10,7 @@
 <body>
 	<nav class="navbar navbar-expand-sm navbar-light bg-light clearfix">
 		<a class="navbar-brand" href="/admin_home/">Home</a>
-		<button class="btn btn-danger pull-right">Log Out</button>
+		<a class="btn btn-danger pull-right" href="/logout/">Log Out</a>
 	</nav>
 	<form action="create_session_form/submitted" method="POST"> 
 	{% csrf_token %}
@@ -19,13 +19,13 @@
 		  		<label for="name">
 					<h5>Session Name:</h5>
 				</label>
-		  		<input type="text" name="name" class="col-6">
+		  		<input type="text" name="name" class="col-6" required>
 		  	</li>
 		  	<li class="list-group-item">
 		  		<label for="name">
 					<h5>Session Location:</h5>
 				</label>
-		  		<input type="text" name="location" class="col-6">
+		  		<input type="text" name="location" class="col-6" required>
 		  	</li>
 			<div class="button-box" style="padding: 10px;">
 				<button class="btn btn-primary" type="submit">Submit</button>

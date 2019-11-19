@@ -26,7 +26,8 @@ SECRET_KEY = '&zy2in#3x$zapjv$2x02sf2x#!9)$)17!pvyjk=i&pwjn6zvw$'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '6eea0fde.ngrok.io'
+    '6eea0fde.ngrok.io',
+    '127.0.0.1'
 ]
 
 
@@ -34,8 +35,8 @@ ALLOWED_HOSTS = [
 
 INSTALLED_APPS = [
     'scoringsystem',
-    #'django.contrib.sites',
-    #'django.contrib.admin',
+    'django.contrib.sites',
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -43,8 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # created apps
-    'users',
-    'admin_site'
+    #'users',
+    #'admin_site'
 ]
 
 MIDDLEWARE = [
@@ -143,10 +144,20 @@ STATIC_URL = '/static/'
 # by default Django will use custom created user
 # https://docs.djangoproject.com/en/2.2/topics/auth/customizing/
 
-AUTH_USER_MODEL = 'users.User'
+AUTH_USER_MODEL = 'scoringsystem.judge'
 
 
 # Login and Logout redirection
 
 LOGOUT_REDIRECT_URL = 'home' # redirect logout to login
 LOGIN_REDIRECT_URL = 'home'   # redirect login to home
+
+# Email Settings for sending judge passwords
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_PASSWORD = '174LW215'
+EMAIL_HOST_USER = 'scusdscoringsystem@gmail.com'
+EMAIL_PORT = '587'
+EMAIL_USE_TLS = 'True'
+
+

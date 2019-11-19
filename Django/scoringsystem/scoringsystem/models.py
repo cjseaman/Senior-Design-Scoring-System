@@ -1,6 +1,9 @@
 # m.py
 
 from django.db import models as m
+from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.base_user import AbstractBaseUser
+from django.contrib.auth.models import UserManager
 
 class ProjectEval(m.Model):
     project_id = m.IntegerField(default=0, primary_key=True)
@@ -51,10 +54,16 @@ class session(m.Model):
     class Meta:
         db_table = 'scoringsystem_session'
 
-class judge(m.Model):
+class judge(AbstractBaseUser):
     judge_name = m.CharField(max_length=128)
     judge_email = m.CharField(max_length=128, primary_key=True)
     session_id = m.IntegerField(default=0)
+    is_admin = m.BooleanField(default=False)
+    USERNAME_FIELD = 'judge_email'
+    EMAIL_FIELD = 'judge_email'
+    REQUIRED_FIELDS = ['judge_name']
+    objects = UserManager()
+
 
 class project(m.Model):
     session_id = m.IntegerField(default=0)
