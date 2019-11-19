@@ -10,8 +10,11 @@
 
 <body>
   <nav class="navbar navbar-expand-sm navbar-light bg-light clearfix">
-    <a class="navbar-brand" href='index.html'>Home</a>
-    <button class="btn btn-danger pull-right">Log Out</button>
+    <a class="navbar-brand" href='/judge_home/'>Home</a>
+    <a class="btn btn-danger pull-right" href="/logout/">Log Out</a>
+    <div class="container">
+      <h1>Logged in as {{ judge.judge_name }}</h1>
+    </div>
   </nav>
 
   <div class="container" id="eval_form">
@@ -29,12 +32,9 @@
       </ul>
     </div>
     <div class="card">
-      <form action="submitted" method="POST"> {% csrf_token %}
+      <form action="submitted" method="POST">
+        {% csrf_token %}
         <ul class="list-group">
-          <li class="list-group-item">
-            <b>Judge Email:</b>
-            <input type="text" name="judge_email" id="judge_email"><br>
-          </li>
           <li class="list-group-item">
             <h2>Design Project</h2>
             <li class="list-group-item">
@@ -600,6 +600,7 @@
               <label for="comments">Comments (optional):</label>
               <textarea class="form-control" name="comments" id="comments" rows="5"></textarea>
             </div>
+            <input name="judge_email" type="hidden" value="{{ judge.judge_email }}"></input> 
             <button type="submit" name="project_id"
             value="{{ project_id }}" class="btn btn-primary">Submit All Scores and Comments</button>
           </li>

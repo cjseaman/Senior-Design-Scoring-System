@@ -35,15 +35,21 @@ def loginUserView(request):
 
 def projectEvalView(request):
     project_id = request.POST.get('project_id')
-    return render(request, 'judge/projects_eval_form.html', {'project_id':project_id})
+    judge_email = request.POST.get('judge_email')
+    judge = m.judge.objects.filter(judge_email=judge_email)
+    return render(request, 'judge/projects_eval_form.html', {'project_id':project_id, 'judge': judge})
 
 def judgeExpEvalView(request):
     return render(request, 'judge/judge_exp_eval_form.html')
 
 def submitJudgeExpEvalView(request):
-    return submitJudgeEval(request)
+    email = request.POST.get('judge_email')
+    judge = m.judge.objects.filter(judge_email=email)
+    return submitJudgeEval(request, {'judge': judge})
 
 def submitProjectEvalView(request):
+    email = request.POST.get('judge_email')
+    judge = m.judge.objects.filter(judge_email=email)
     return submitProjectEval(request)
 
 def adminHomeView(request):
@@ -150,6 +156,7 @@ def judgeHomeView(request, email):
     session = m.session.objects.get(id=session_id)
     project_list = m.project.objects.filter(session_id=session_id)
     return render(request, 'judge/judge_home.html', {
+        'judge': currentJudge,
         'session': session,
         'session_id': session_id,
         'project_list': project_list
@@ -279,6 +286,8 @@ def makeBool(val):
 
 @csrf_exempt
 def submitProjectEval(request):
+    judge_email = request.POST.get('judge_email')
+    judge = m.judge.objects.filter(email=judge_email)
     logging.basicConfig(filename='mylog.log', level=logging.DEBUG)
     logging.debug('got to submitProjectEval!!')
     if request.method == 'POST':

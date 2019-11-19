@@ -10,7 +10,10 @@
 <body>
   <nav class="navbar navbar-expand-sm navbar-light bg-light clearfix">
     <a class="navbar-brand" href="admin_home">Home</a>
-    <button class="btn btn-danger pull-right">Log Out</button>
+    <a class="btn btn-danger pull-right" href="/logout/">Log Out</a>
+    <div class="container">
+      <h1>Logged in as {{ judge.judge_name }}</h1>
+    </div>
   </nav>
   <form action="submitted" method="POST"> {% csrf_token %}
   <div class = "container" style="padding: 5px;">
