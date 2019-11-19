@@ -5,7 +5,7 @@ from django.views.decorators.csrf import csrf_exempt
 from scoringsystem import forms
 from scoringsystem import models as m
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, get_user, login
 from django.contrib.auth import logout
 from django.core.mail import send_mail
 from smtplib import SMTPRecipientsRefused
@@ -23,23 +23,25 @@ def loginView(request):
 def loginUserView(request):
     email = request.POST.get('email')
     password = request.POST.get('password')
-    user = authenticate(username=email, password=password)
+    user = authenticate(request=request, username=email, password=password)
     if user is not None:
+        login(request, user)
         if user.is_admin == True:
             return render(request, 'admin/submitted.html')
         else:
-            return judgeHomeView(request, email)
+            return judgeHomeView(request)
         return loginView(request)
     else:
         return loginView(request)
 
 def projectEvalView(request):
     project_id = request.POST.get('project_id')
-    judge_email = request.POST.get('judge_email')
-    judge = m.judge.objects.filter(judge_email=judge_email)
+    judge_email = request.POST.get('judge_email', None)
+    #judge = m.judge.objects.filter(judge_email=judge_email)
     return render(request, 'judge/projects_eval_form.html', {'project_id':project_id, 'judge': judge})
 
 def judgeExpEvalView(request):
+    judge_email = request.POST.get('judge_email', None)
     return render(request, 'judge/judge_exp_eval_form.html')
 
 def submitJudgeExpEvalView(request):
@@ -149,14 +151,14 @@ def submittedAssignJudgesView(request):
     logging.debug('inside submittedAssignJudgesView')
     return submitAndAddJudge(request)
 
-def judgeHomeView(request, email):
+def judgeHomeView(request):
     logging.basicConfig(filename='mylog.log', level=logging.DEBUG)
-    currentJudge = m.judge.objects.get(judge_email=email)
-    session_id = currentJudge.session_id
+    judge = get_user(request)
+    session_id = judge.session_id
     session = m.session.objects.get(id=session_id)
     project_list = m.project.objects.filter(session_id=session_id)
     return render(request, 'judge/judge_home.html', {
-        'judge': currentJudge,
+        'judge': judge,
         'session': session,
         'session_id': session_id,
         'project_list': project_list
@@ -331,7 +333,7 @@ def submitProjectEval(request):
         )
         logging.debug('score:', score)
         score.save()
-        return judgeHomeView(request, judge_email)
+        return judgeHomeView(request)
     else:
         logging.debug('method is not POST')
 
