@@ -36,10 +36,6 @@
             <input type="text" name="judge_email" id="judge_email"><br>
           </li>
           <li class="list-group-item">
-            <b>Project ID:</b>
-            <input type="text" name="project_id" id="project_id"><br>
-          </li>
-          <li class="list-group-item">
             <h2>Design Project</h2>
             <li class="list-group-item">
               <div class="form-group">
@@ -604,7 +600,8 @@
               <label for="comments">Comments (optional):</label>
               <textarea class="form-control" name="comments" id="comments" rows="5"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Submit All Scores and Comments</button>
+            <button type="submit" name="project_id"
+            value="{{ project_id }}" class="btn btn-primary">Submit All Scores and Comments</button>
           </li>
         </ul>
       </form>

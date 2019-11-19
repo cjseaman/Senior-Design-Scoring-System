@@ -27,12 +27,15 @@ def loginUserView(request):
     if user is not None:
         if user.is_admin == True:
             return render(request, 'admin/submitted.html')
-        else: return judgeHomeView(request, 'judge/submitted.html')
+        else:
+            return judgeHomeView(request, email)
         return loginView(request)
-    else: return loginView(request)
+    else:
+        return loginView(request)
 
 def projectEvalView(request):
-    return render(request, 'judge/projects_eval_form.html')
+    project_id = request.POST.get('project_id')
+    return render(request, 'judge/projects_eval_form.html', {'project_id':project_id})
 
 def judgeExpEvalView(request):
     return render(request, 'judge/judge_exp_eval_form.html')
@@ -140,8 +143,17 @@ def submittedAssignJudgesView(request):
     logging.debug('inside submittedAssignJudgesView')
     return submitAndAddJudge(request)
 
-def judgeHomeView(request):
-    return render(request, 'judge/judge_home.html')
+def judgeHomeView(request, email):
+    logging.basicConfig(filename='mylog.log', level=logging.DEBUG)
+    currentJudge = m.judge.objects.get(judge_email=email)
+    session_id = currentJudge.session_id
+    session = m.session.objects.get(id=session_id)
+    project_list = m.project.objects.filter(session_id=session_id)
+    return render(request, 'judge/judge_home.html', {
+        'session': session,
+        'session_id': session_id,
+        'project_list': project_list
+    })
 
 def submitAndAddJudge(request):
     logging.basicConfig(filename='mylog.log', level=logging.DEBUG)
@@ -165,7 +177,7 @@ def submitAndAddJudge(request):
             'Your password is: "' + password + '".\n'
             'Use your email and this password to log in to the senior design scoring system.'
         )
-        
+
         try:
             send_mail('Senior Design Scoring System Password', message, 'scusdscoringsystem@gmail.com', [judge_email], fail_silently=False)
         except SMTPRecipientsRefused:
@@ -189,6 +201,8 @@ def submitCreatedProject(request):
         group_members = request.POST.get('group_members')
         project_desc = request.POST.get('project_desc')
         average_score = request.POST.get('average_score')
+        if average_score is None:
+            average_score = 0
         project = m.project(
             session_id=session_id,
             project_name=project_name,
@@ -222,29 +236,6 @@ def submitCreatedSession(request):
         logging.debug('method is not POST')
 
     return render(request,'error.html')
-
-"""@csrf_exempt
-def submitSession(request):
-    logging.basicConfig(filename='mylog.log', level=logging.DEBUG)
-    logging.debug('got to submitSession!!')
-    if request.method == 'POST':
-        logging.debug('form is valid')
-        session_id = request.POST.get('session_id')
-        name = request.POST.get('name')
-        location = request.POST.get('location')
-        session = m.review_session(
-            session_id = session_id,
-            name = name,
-            location = location
-        )
-        logging.debug('session:', session)
-        session.save()
-        return render(request, 'submitted.html')
-
-    else:
-        logging.debug('method is not POST')
-
-    return render(request,'error.html')"""
 
 @csrf_exempt
 def submitJudgeEval(request):
@@ -331,7 +322,7 @@ def submitProjectEval(request):
         )
         logging.debug('score:', score)
         score.save()
-        return render(request, 'judge/submitted_judge.html')
+        return judgeHomeView(request, judge_email)
     else:
         logging.debug('method is not POST')
 

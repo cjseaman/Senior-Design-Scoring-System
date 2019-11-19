@@ -5,7 +5,7 @@
 	{% load static %}
 	{% load define_action %}
   	<link rel="stylesheet" type="text/css" href="{% static 'scoringsystem/style.css' %}">
-	<title> Experience Evaluation Form </title> 
+	<title> Judge Home </title>
 </head>
 
 <body>
@@ -13,23 +13,28 @@
 		<a class="navbar-brand" href="#">Home</a>
 		<button class="btn btn-danger pull-right">Log Out</button>
 	</nav>
-	<form action="/project_eval_form/" method="POST"> 
+	<form action="/project_eval_form/" method="POST">
 		<div class="container btn-list col-12" id="session_list">
 	    	<!--THE REST OF THE PROJECTS SHOULD BE RENDERED USING SOME KIND OF LOOP LIKE THIS-->
-			{% for project in project_list %}
-				<form action="/projects_eval_form/" method="POST">
-					{% csrf_token %}
-		    		<li>
-		    			<button 
-		    				type="submit"
-		    				class="btn col-12" 
-		    				name="project_id"
-		    				value="{{ project.id }}">
-		    				{{ project.project_name }}
-		    			</button>
-		    		</li>
-		    	</form>
-			{% endfor %}
+        {% for project in project_list %}
+        		<li class="list-group-item">
+    				<div class="row col-12">
+    					<h5 class="col-2">{{ session.session_name }}</h5>
+    					<h5 class="col-2 pull-right">{{ session.session_location }}</h5>
+    					<form action="/projects_eval_form/" method="POST" class="col-2">
+    						{% csrf_token %}
+                <button
+  		    				type="submit"
+  		    				class="btn col-12"
+  		    				name="project_id"
+  		    				value="{{ project.id }}">
+  		    				Submit scores for {{ project.project_name }}
+  		    			</button>
+    					</form>
+    				</div>
+    	    	</li>
+    		{% endfor %}
+
 		</div>
 	</form>
 </body>
