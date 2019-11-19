@@ -11,7 +11,7 @@
 <body>
 	<nav class="navbar navbar-expand-sm navbar-light bg-light clearfix">
 		<a class="navbar-brand" href="/admin_home/">Home</a>
-		<button class="btn btn-danger pull-right">Log Out</button>
+		<a class="btn btn-danger pull-right" href="/logout/">Log Out</a>
 	</nav>
 	<form action="create_project_form/submitted" method="POST">
 	{% csrf_token %}
@@ -38,13 +38,13 @@
 		  		<label for="project_name">
 					<h5>Project Name:</h5>
 				</label>
-		  		<input type="text" name="project_name" class="col-6">
+		  		<input type="text" name="project_name" class="col-6" required>
 		  	</li>
 		  	<li class="list-group-item">
 		  		<label for="group_members">
 					<h5>Group Members:</h5>
 				</label>
-		  		<input type="text" name="group_members" class="col-6">
+		  		<input type="text" name="group_members" class="col-6" required>
 		  	</li>
 		  	<li class="list-group-item">
 		  		<label for="name">

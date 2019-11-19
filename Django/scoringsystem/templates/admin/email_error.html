@@ -3,18 +3,20 @@
 <html>
 
 <head>
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'scoringsystem/style.css' %}">
 	<Title>Error page</Title>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-sm navbar-light bg-light clearfix">
-      <a class="navbar-brand" href="index.html">Home</a>
+      <a class="navbar-brand" href="/admin_home/">Home</a>
       <a class="btn btn-danger pull-right" href="/logout/">Log Out</a>
     </nav>
 
   <div class="container col-12" id="eval_form">
     <div class="card">
-      <b>An error happened!!</b>
+      <h1>Judge was not created, email must be valid. Could not send password to {{ email }}.<h1>
     </div>
   </div>
 </body>

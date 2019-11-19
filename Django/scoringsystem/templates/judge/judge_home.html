@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<head>
+	{% load static %}
+	{% load define_action %}
+  	<link rel="stylesheet" type="text/css" href="{% static 'scoringsystem/style.css' %}">
+	<title> Judge Home </title>
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-sm navbar-light bg-light clearfix">
+		<a class="navbar-brand" href="#">Home</a>
+		<a class="btn btn-danger pull-right" href="/logout/">Log Out</a>
+    <div class="container">
+      <h1>Logged in as {{ judge.judge_name }}</h1>
+    </div>
+	</nav>
+	<form action="/project_eval_form/" method="POST">
+		<div class="container" id="session_list">
+	    	<li class="list-group-item">
+          <h2>Welcome, {{ judge.judge_name }}</h2>
+          <h4>Select a project to score:</h4>
+        </li>
+        {% for project in project_list %}
+        		<li class="list-group-item">
+    					<form action="/projects_eval_form/" method="POST">
+    						{% csrf_token %}
+                <input name="judge_email" type="hidden" value="{{ judge.judge_email }}"></input>
+                <button
+  		    				type="submit"
+  		    				class="btn btn-outline-primary col-12"
+  		    				name="project_id"
+  		    				value="{{ project.id }}">
+                  <div class="row">
+                    <h2 class="col-6">{{ project.project_name }}</h2>
+                    <h5 class="col-6 pull-right">{{ project.group_members }}</h5>
+                  </div>
+  		    			</button>
+    					</form>
+    	    	</li>
+    		{% endfor %}
+        <li class="list-group-item">
+          <form action="judge_exp_eval_form/" method="POST">
+            {% csrf_token %}
+            <button
+              type="submit"
+              class="btn btn-outline-dark col-12"
+              value="{{ judge.judge_email }}"
+              name="judge_email">Senior Design Experience Survey
+            </button>
+          </form>
+        </li>
+		</div>
+	</form>
+</body>
+</html>

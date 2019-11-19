@@ -745,3 +745,106 @@ WARNING:django.request:Not Found: /js/functions.js
 WARNING:django.request:Not Found: /admin_home/events.js
 WARNING:django.request:Not Found: /admin
 WARNING:django.request:Not Found: /admin
+INFO:django.utils.autoreload:E:\Documents\GitHub\Senior-Design-Scoring-System\Django\scoringsystem\scoringsystem\views.py changed, reloading.
+DEBUG:root:inside createSessionView
+DEBUG:root:inside createSessionView
+DEBUG:root:inside submittedCreatedSessionView
+DEBUG:root:got to submitCreatedSession!!
+DEBUG:root:form is valid
+DEBUG:root:inside submittedAssignJudgesView
+DEBUG:root:got to submitAndAddJudge!!
+DEBUG:root:form is valid
+WARNING:django.request:Not Found: /admin_home/view_session_scores
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /js/functions.js
+WARNING:django.request:Not Found: /admin_home/events.js
+DEBUG:root:inside createProjectForm
+DEBUG:root:inside submittedCreatedProjectForm
+DEBUG:root:got to submitCreatedProject!!
+DEBUG:root:form is valid
+DEBUG:root:inside createProjectForm
+DEBUG:root:inside submittedAssignJudgesView
+DEBUG:root:got to submitAndAddJudge!!
+DEBUG:root:form is valid
+WARNING:django.request:Not Found: /admin_home/view_session_scores
+DEBUG:root:inside submittedAssignJudgesView
+DEBUG:root:got to submitAndAddJudge!!
+DEBUG:root:form is valid
+DEBUG:root:inside createProjectForm
+DEBUG:root:inside submittedCreatedProjectForm
+DEBUG:root:got to submitCreatedProject!!
+DEBUG:root:form is valid
+DEBUG:root:inside createProjectForm
+DEBUG:root:inside submittedCreatedProjectForm
+DEBUG:root:got to submitCreatedProject!!
+DEBUG:root:form is valid
+INFO:django.utils.autoreload:E:\Documents\GitHub\Senior-Design-Scoring-System\Django\scoringsystem\scoringsystem\views.py changed, reloading.
+WARNING:django.request:Not Found: /js/functions.js
+WARNING:django.request:Not Found: /project_eval_form/events.js
+WARNING:django.request:Not Found: /js/functions.js
+WARNING:django.request:Not Found: /project_eval_form/events.js
+WARNING:django.request:Not Found: /project_eval_form/index.html
+WARNING:django.request:Not Found: /project_eval_form/index.html
+WARNING:django.request:Not Found: /login_user/judge_exp_eval_form/
+WARNING:django.request:Not Found: /login_user/judge_exp_eval_form/
+WARNING:django.request:Not Found: /js/functions.js
+WARNING:django.request:Not Found: /project_eval_form/events.js
+WARNING:django.request:Not Found: /project_eval_form/events.js
+WARNING:django.request:Not Found: /js/functions.js
+WARNING:django.request:Not Found: /project_eval_form/events.js
+ERROR:django.request:Internal Server Error: /judge_home/
+Traceback (most recent call last):
+  File "C:\Python37\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python37\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python37\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+TypeError: judgeHomeView() missing 1 required positional argument: 'email'
+INFO:django.utils.autoreload:E:\Documents\GitHub\Senior-Design-Scoring-System\Django\scoringsystem\scoringsystem\views.py changed, reloading.
+WARNING:django.request:Not Found: /js/functions.js
+WARNING:django.request:Not Found: /project_eval_form/events.js
+INFO:django.utils.autoreload:E:\Documents\GitHub\Senior-Design-Scoring-System\Django\scoringsystem\scoringsystem\views.py changed, reloading.
+ERROR:django.request:Internal Server Error: /project_eval_form/
+Traceback (most recent call last):
+  File "C:\Python37\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python37\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python37\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\Documents\GitHub\Senior-Design-Scoring-System\Django\scoringsystem\scoringsystem\views.py", line 39, in projectEvalView
+    judge = m.judge.objects.filter(email=judge_email)
+NameError: name 'judge_email' is not defined
+INFO:django.utils.autoreload:E:\Documents\GitHub\Senior-Design-Scoring-System\Django\scoringsystem\scoringsystem\views.py changed, reloading.
+ERROR:django.request:Internal Server Error: /project_eval_form/
+Traceback (most recent call last):
+  File "C:\Python37\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python37\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python37\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\Documents\GitHub\Senior-Design-Scoring-System\Django\scoringsystem\scoringsystem\views.py", line 39, in projectEvalView
+    judge = m.judge.objects.filter(email=judge_email)
+  File "C:\Python37\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Python37\lib\site-packages\django\db\models\query.py", line 892, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "C:\Python37\lib\site-packages\django\db\models\query.py", line 910, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "C:\Python37\lib\site-packages\django\db\models\sql\query.py", line 1290, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\Python37\lib\site-packages\django\db\models\sql\query.py", line 1318, in _add_q
+    split_subq=split_subq, simple_col=simple_col,
+  File "C:\Python37\lib\site-packages\django\db\models\sql\query.py", line 1190, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg)
+  File "C:\Python37\lib\site-packages\django\db\models\sql\query.py", line 1049, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+  File "C:\Python37\lib\site-packages\django\db\models\sql\query.py", line 1420, in names_to_path
+    "Choices are: %s" % (name, ", ".join(available)))
+django.core.exceptions.FieldError: Cannot resolve keyword 'email' into field. Choices are: is_admin, judge_email, judge_name, last_login, logentry, password, session_id
+INFO:django.utils.autoreload:E:\Documents\GitHub\Senior-Design-Scoring-System\Django\scoringsystem\scoringsystem\views.py changed, reloading.
+WARNING:django.request:Not Found: /js/functions.js
+WARNING:django.request:Not Found: /project_eval_form/events.js
+INFO:django.utils.autoreload:E:\Documents\GitHub\Senior-Design-Scoring-System\Django\scoringsystem\scoringsystem\views.py changed, reloading.

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html>
+
+<head>
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'scoringsystem/style.css' %}">
+	<Title>Login</Title>
+</head>
+
+<body>
+
+	<div class="container">
+		<div class="header">
+			<h1>Log In to Senior Design Scoring System</h1>
+		</div>
+	</div>
+	<div class="container">
+		<form action="login_user/" method="POST">
+		{% csrf_token %}
+		  <div class="form-group">
+		    <label for="email">Email address</label>
+		    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" name="email" required>
+		  </div>
+		  <div class="form-group">
+		    <label for="exampleInputPassword1">Password</label>
+		    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password" required>
+		  </div>
+		  <label>{{message}}</label>
+		  <button type="submit" class="btn btn-primary">Log in</button>
+		</form>
+	</div>
+</body>
+
+</html>

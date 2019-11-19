@@ -15,6 +15,7 @@ create table scoringsystem_judge (
 	judge_email char(128) default '',
 	judge_name char(128) default '',
 	session_id int,
+	password text,
 	primary key (judge_id),
   foreign key (session_id) references scoringsystem_session(id)
 );
@@ -33,6 +34,7 @@ create table scoringsystem_project (
 create table scoringsystem_projecteval (
 	project_id int default 0,
 	judge_email char (128) default '',
+  session_id int,
 	dp_a float default 0,
 	dp_b float default 0,
 	dp_c float default 0,
@@ -54,7 +56,8 @@ create table scoringsystem_projecteval (
 	soci_consideration boolean default false,
 	poli_consideration boolean default false,
 	comments char (512) default '',
-	primary key(project_id)
+	primary key(project_id),
+  foreign key (session_id) references scoringsystem_session(id)
 );
 
 create table scoringsystem_judgeeval (
