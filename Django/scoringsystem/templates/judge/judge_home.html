@@ -16,7 +16,6 @@
       <h1>Logged in as {{ judge.judge_name }}</h1>
     </div>
 	</nav>
-	<form action="/project_eval_form/" method="POST">
 		<div class="container" id="session_list">
 	    	<li class="list-group-item">
           <h2>Welcome, {{ judge.judge_name }}</h2>
@@ -24,7 +23,7 @@
         </li>
         {% for project in project_list %}
         		<li class="list-group-item">
-    					<form action="/projects_eval_form/" method="POST">
+    					<form action="/project_eval_form/" method="POST">
     						{% csrf_token %}
                 <input name="judge_email" type="hidden" value="{{ judge.judge_email }}"></input>
                 <button
