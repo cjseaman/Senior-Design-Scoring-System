@@ -6,7 +6,8 @@ from django.contrib.auth.base_user import AbstractBaseUser
 from django.contrib.auth.models import UserManager
 
 class ProjectEval(m.Model):
-    project_id = m.IntegerField(default=0, primary_key=True)
+    id = m.AutoField(primary_key=True)
+    project_id = m.IntegerField(default=0)
     judge_email = m.CharField(max_length=128, default='')
     dp_a = m.IntegerField(default=0)
     dp_b = m.IntegerField(default=0)
@@ -29,6 +30,9 @@ class ProjectEval(m.Model):
     soci_consideration = m.BooleanField(default=False)
     poli_consideration = m.BooleanField(default=False)
     comments = m.CharField(max_length=512)
+
+    class Meta:
+        unique_together = (("project_id", "judge_email"),)
 
 class JudgeEval(m.Model):
     judge_email = m.CharField(max_length=128, primary_key=True)
