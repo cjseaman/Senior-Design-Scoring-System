@@ -2,19 +2,19 @@
 <meta charset="UTF-8">
 <html>
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	{% load static %}
-	{% load define_action %}
-  	<link rel="stylesheet" type="text/css" href="{% static 'scoringsystem/style.css' %}">
-	<Title>Scoring System</Title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% load static %}
+  {% load define_action %}
+    <link rel="stylesheet" type="text/css" href="{% static 'scoringsystem/style.css' %}">
+  <Title>Scoring System</Title>
 </head>
 
 <body>
 
-	<nav class="navbar navbar-expand-sm navbar-light bg-light clearfix">
-		<a class="navbar-brand" href="/admin_home/">Home</a>
-		<a class="btn btn-danger pull-right" href="/logout/">Log Out</a>
-	</nav>
+  <nav class="navbar navbar-expand-sm navbar-light bg-light clearfix">
+    <a class="navbar-brand" href="/admin_home/">Home</a>
+    <a class="btn btn-danger pull-right" href="/logout/">Log Out</a>
+  </nav>
 
   <div class="container" id="form_results">
         <li class="list-group-item">
@@ -119,55 +119,12 @@
         <li class="list-group-item">
           <form action="/admin_home/sd_experience_results" method="POST">
             {% csrf_token %}
-              <h5>View Individual Results and Comments by Subject:</h5>
               <button
                 type="submit"
                 value="alls"
                 class="btn btn-outline-primary"
                 name="subject">
-                <h5>All Subjects</h5>
-              </button>
-              <button
-                type="submit"
-                value="bioe"
-                class="btn btn-outline-dark"
-                name="subject">
-                <h5>Bio Engineering</h5>
-              </button>
-              <button
-                type="submit"
-                value="civl"
-                class="btn btn-outline-dark"
-                name="subject">
-                <h5>Civil Engineering</h5>
-              </button>
-              <button
-                type="submit"
-                value="coen"
-                class="btn btn-outline-dark"
-                name="subject">
-                <h5>Computer Engineering</h5>
-              </button>
-              <button
-                type="submit"
-                value="elen"
-                class="btn btn-outline-dark"
-                name="subject">
-                <h5>Electrical Engineering</h5>
-              </button>
-              <button
-                type="submit"
-                value="mech"
-                class="btn btn-outline-dark"
-                name="subject">
-                <h5>Mechanical Engineering</h5>
-              </button>
-              <button
-                type="submit"
-                value="inte"
-                class="btn btn-outline-dark"
-                name="subject">
-                <h5>Interdisciplinary</h5>
+                <h5>View All Results</h5>
               </button>
           </form>
         </li>

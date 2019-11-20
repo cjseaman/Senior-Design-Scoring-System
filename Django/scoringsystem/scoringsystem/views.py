@@ -30,9 +30,8 @@ def loginUserView(request):
             return render(request, 'admin/submitted.html')
         else:
             return judgeHomeView(request)
-        return loginView(request)
     else:
-        return loginView(request)
+        return render(request, 'registration/login.html')
 
 def homeView(request):
     return render(request, 'home.html')
@@ -58,27 +57,120 @@ def submitJudgeExpEvalView(request):
 
 def submitProjectEvalView(request):
     judge = get_user(request)
-    return submitProjectEval(request)
+    project_id = request.POST.get('project_id')
+    return render(request, 'judge/projects_eval_form.html', {'project_id':project_id, 'judge': judge})
 
 def adminHomeView(request):
     session_list = m.session.objects.all()
     return render(request, 'admin/admin_home.html', {'session_list': session_list})
 
+def sdExperience(request):
+    eval_list = m.JudgeEval.objects.all()
+    q1_average = 0
+    q2_average = 0
+    q3_average = 0
+    q4_average = 0
+    q5_average = 0
+    q6_average = 0
+    q7_average = 0
+    q8_average = 0
+    q9_average = 0
+    q10_average = 0
+    q11_average = 0
+    q12_average = 0
+    n1 = 0
+    n2 = 0
+    n3 = 0
+    n4 = 0
+    n5 = 0
+    n6 = 0
+    n7 = 0
+    n8 = 0
+    n9 = 0
+    n10 = 0
+    n11 = 0
+    n12 = 0
+    for eval in eval_list:
+        if(eval.q1 != 0):
+            n1 = n1 + 1
+            q1_average += eval.q1
+        if(eval.q2 != 0):
+            n2 = n2 + 1
+            q2_average += eval.q2
+        if(eval.q3 != 0):
+            n3 = n3 + 1
+            q3_average += eval.q3
+        if(eval.q4 != 0):
+            n4 = n4 + 1
+            q4_average += eval.q4
+        if(eval.q5 != 0):
+            n5 = n5 + 1
+            q5_average += eval.q5
+        if(eval.q6 != 0):
+            n6 = n6 + 1
+            q6_average += eval.q6
+        if(eval.q7 != 0):
+            n7 = n7 + 1
+            q7_average += eval.q7
+        if(eval.q8 != 0):
+            n8 = n8 + 1
+            q8_average += eval.q8
+        if(eval.q9 != 0):
+            n9 = n9 + 1
+            q9_average += eval.q9
+        if(eval.q10 != 0):
+            n10 = n10 + 1
+            q10_average += eval.q10
+        if(eval.q11 != 0):
+            n11 = n11 + 1
+            q11_average += eval.q11
+        if(eval.q12 != 0):
+            n12 = n12 + 1
+            q12_average += eval.q12
+    if n1 is not 0:
+        q1_average /= n1
+    if n2 is not 0:
+        q2_average /= n2
+    if n3 is not 0:
+        q3_average /= n3
+    if n4 is not 0:
+        q4_average /= n4
+    if n5 is not 0:
+        q5_average /= n5
+    if n6 is not 0:
+        q6_average /= n6
+    if n7 is not 0:
+        q7_average /= n7
+    if n8 is not 0:
+        q8_average /= n8
+    if n9 is not 0:
+        q9_average /= n9
+    if n10 is not 0:
+        q10_average /= n10
+    if n11 is not 0:
+        q11_average /= n11
+    if n12 is not 0:
+        q12_average /= n12
+
+    return render(request, 'admin/sd_experience.html', {
+        'q1_average': q1_average,
+        'q2_average': q2_average,
+        'q3_average': q3_average,
+        'q4_average': q4_average,
+        'q5_average': q5_average,
+        'q6_average': q6_average,
+        'q7_average': q7_average,
+        'q8_average': q8_average,
+        'q9_average': q9_average,
+        'q10_average': q10_average,
+        'q11_average': q11_average,
+        'q12_average': q12_average,
+    })
+
 def sdExperienceResults(request):
     eval_list = m.JudgeEval.objects.all()
-    bio = len(m.JudgeEval.objects.filter(discipline='bioe'))
-    civil = len(m.JudgeEval.objects.filter(discipline='civil'))
-    coen = len(m.JudgeEval.objects.filter(discipline='coen'))
-    elen = len(m.JudgeEval.objects.filter(discipline='elen'))
-    mech = len(m.JudgeEval.objects.filter(discipline='mech'))
-    inter = len(m.JudgeEval.objects.filter(discipline='inter'))
-    return render(request, 'admin/sd_experience.html', {
-        'bio': bio,
-        'civi': civil,
-        'coen': coen,
-        'elen': elen,
-        'mech': mech,
-        'inte': inter
+    return render(request, 'admin/sd_experience_results.html', {
+        'sd_exp_list': eval_list
     })
 
 def submittedCreatedSessionView(request):
@@ -257,9 +349,10 @@ def submitCreatedSession(request):
 def submitJudgeEval(request):
     logging.basicConfig(filename='mylog.log', level=logging.DEBUG)
     logging.debug('got to submitJudgeEval!!')
+    judge = get_user(request)
+    judge_email = judge.judge_email
     if request.method == 'POST':
         logging.debug('form is valid')
-        judge_email = request.POST.get("judge_email")
         discipline = request.POST.get("discipline")
         q1 = int(request.POST.get("q1"))
         q2 = int(request.POST.get("q2"))
@@ -295,14 +388,13 @@ def makeBool(val):
 
 @csrf_exempt
 def submitProjectEval(request):
-    judge_email = request.POST.get('judge_email')
-    judge = m.judge.objects.filter(judge_email=judge_email)
+    judge = get_user(request)
     logging.basicConfig(filename='mylog.log', level=logging.DEBUG)
     logging.debug('got to submitProjectEval!!')
     if request.method == 'POST':
         logging.debug('form is valid')
         project_id = request.POST.get("project_id")
-        judge_email = request.POST.get("judge_email")
+        judge_email = judge.judge_email
         dp_a = request.POST.get("dp_a")
         dp_b = request.POST.get("dp_b")
         dp_c = request.POST.get("dp_c")
