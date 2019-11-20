@@ -13,13 +13,19 @@
 		<a class="navbar-brand" href="#">Home</a>
 		<a class="btn btn-danger pull-right" href="/logout/">Log Out</a>
     <div class="container">
-      <h1>Logged in as {{ judge.judge_name }}</h1>
+      <h4>Logged in as {{ judge.judge_name }}</h4>
     </div>
 	</nav>
 		<div class="container" id="session_list">
 	    	<li class="list-group-item">
           <h2>Welcome, {{ judge.judge_name }}</h2>
           <h4>Select a project to score:</h4>
+        </li>
+        <li class="list-group-item">
+          <div class="row">
+            <h2 class="col-3">Project Name</h2>
+            <h5 class="col-3 pull-right">Group Members</h5>
+          </div>
         </li>
         {% for project in project_list %}
         		<li class="list-group-item">
@@ -40,7 +46,7 @@
     	    	</li>
     		{% endfor %}
         <li class="list-group-item">
-          <form action="judge_exp_eval_form/" method="POST">
+          <form action="/judge_exp_eval_form/" method="POST">
             {% csrf_token %}
             <button
               type="submit"

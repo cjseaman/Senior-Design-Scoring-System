@@ -9,7 +9,7 @@
 
 <body>
   <nav class="navbar navbar-expand-sm navbar-light bg-light clearfix">
-    <a class="navbar-brand" href="admin_home">Home</a>
+    <a class="navbar-brand" href="{% url 'judge_home' %}">Home</a>
     <a class="btn btn-danger pull-right" href="/logout/">Log Out</a>
     <div class="container">
       <h1>Logged in as {{ judge.judge_name }}</h1>
@@ -30,8 +30,7 @@
 	  	</h2></b></header>
 			<i>Santa Clara University requires that the School of Engineering assess the capabilities of our students for our ongoing accreditation process, but more importantly to confirm we are educating the whole student and preparing them for the years to come. Your answers to the following questions, based on the presentations you witnessed today, would be most helpful to us and much appreciated.</i>
     <li class="list-group-item">
-      <b>Judge Email:</b>
-      <input type="text" name="judge_email" id="judge_email"><br>
+      <b>Judge Email: {{ judge.judge_email }}</b><br>
     </li>
     <div>
     	<li class="list-group-item">

@@ -38,23 +38,26 @@ def homeView(request):
     return render(request, 'home.html')
 
 def projectEvalView(request):
-    project_id = request.POST.get('project_id')
-    judge_email = request.POST.get('judge_email', None)
-    #judge = m.judge.objects.filter(judge_email=judge_email)
-    return render(request, 'judge/projects_eval_form.html', {'project_id':project_id, 'judge': judge})
+    judge = get_user(request)
+    if (judge.judge_email == '' or judge.judge_email == None):
+        return render(request, 'registration/login.html')
+    else:
+        project_id = request.POST.get('project_id')
+        return render(request, 'judge/projects_eval_form.html', {'project_id':project_id, 'judge': judge})
 
 def judgeExpEvalView(request):
-    judge_email = request.POST.get('judge_email', None)
-    return render(request, 'judge/judge_exp_eval_form.html')
+    judge = get_user(request)
+    if(judge.judge_email == '' or judge.judge_email == None):
+        return render(request, 'registration/login.html')
+    else:
+        return render(request, 'judge/judge_exp_eval_form.html', {'judge': judge})
 
 def submitJudgeExpEvalView(request):
-    email = request.POST.get('judge_email')
-    judge = m.judge.objects.filter(judge_email=email)
-    return submitJudgeEval(request, {'judge': judge})
+    judge = get_user(request) 
+    return submitJudgeEval(request)
 
 def submitProjectEvalView(request):
-    email = request.POST.get('judge_email')
-    judge = m.judge.objects.filter(judge_email=email)
+    judge = get_user(request)
     return submitProjectEval(request)
 
 def adminHomeView(request):
@@ -153,17 +156,20 @@ def submittedAssignJudgesView(request):
     return submitAndAddJudge(request)
 
 def judgeHomeView(request):
-    logging.basicConfig(filename='mylog.log', level=logging.DEBUG)
     judge = get_user(request)
-    session_id = judge.session_id
-    session = m.session.objects.get(id=session_id)
-    project_list = m.project.objects.filter(session_id=session_id)
-    return render(request, 'judge/judge_home.html', {
-        'judge': judge,
-        'session': session,
-        'session_id': session_id,
-        'project_list': project_list
-    })
+    if(judge.judge_email == '' or judge.judge_email == None):
+        return render(request, 'registration/login.html')
+    else:
+        logging.basicConfig(filename='mylog.log', level=logging.DEBUG)
+        session_id = judge.session_id
+        session = m.session.objects.get(id=session_id)
+        project_list = m.project.objects.filter(session_id=session_id)
+        return render(request, 'judge/judge_home.html', {
+            'judge': judge,
+            'session': session,
+            'session_id': session_id,
+            'project_list': project_list
+        })
 
 def submitAndAddJudge(request):
     logging.basicConfig(filename='mylog.log', level=logging.DEBUG)
@@ -290,7 +296,7 @@ def makeBool(val):
 @csrf_exempt
 def submitProjectEval(request):
     judge_email = request.POST.get('judge_email')
-    judge = m.judge.objects.filter(email=judge_email)
+    judge = m.judge.objects.filter(judge_email=judge_email)
     logging.basicConfig(filename='mylog.log', level=logging.DEBUG)
     logging.debug('got to submitProjectEval!!')
     if request.method == 'POST':
