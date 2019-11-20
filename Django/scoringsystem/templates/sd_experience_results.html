@@ -13,28 +13,18 @@
 
 	<nav class="navbar navbar-expand-sm navbar-light bg-light clearfix">
 		<a class="navbar-brand" href="/admin_home/">Home</a>
-		<a class="btn btn-danger pull-right" href="/logout/">Log Out</a>
+		<button class="btn btn-danger pull-right">Log Out</button>
 	</nav>
 
   <div class="container" id="form_results">
-    {% if not sd_exp_list %}
-      <div class="card">
         <li class="list-group-item">
-          <h5>No scores to show!</h5>
-        </li>
-      </div>
-    {% endif %}
-
-    {% for sd_exp in sd_exp_list %}
-      <div class="card">
-        <li class="list-group-item">
-          <h5>Discipline: {{ sd_exp.discipline }}</h5>
+          <h5>Averages:</h5>
         </li>
         <li class="list-group-item">
           <div class="row">
             <h6 class="col-11">1. Do you find evidence that our students have the ability to apply knowledge of mathematics, science, and engineering?</h6>
             <div class="card col-1">
-              <h5>{{ sd_exp.q1 }}/5</h5>
+              <h5>{{ q1_average }}/5</h5>
             </div>
           </div>
         </li>
@@ -42,7 +32,7 @@
         <div class="row">
           <h6 class="col-11">2. Do you find evidence that our students have the ability to design and conduct experiments or tests, as well as to analyze and interpret the results?</h6>
           <div class="card col-1">
-            <h5>{{ sd_exp.q2 }}/5</h5>
+            <h5>{{ q2_average }}/5</h5>
           </div>
         </div>
         </li>
@@ -50,7 +40,7 @@
         <div class="row">
           <h6 class="col-11">3. Do you find evidence that our students have the ability to design a system, component or process to meet desired needs?</h6>
           <div class="card col-1">
-            <h5>{{ sd_exp.q3 }}/5</h5>
+            <h5>{{ q3_average }}/5</h5>
           </div>
         </div>
         </li>
@@ -58,7 +48,7 @@
         <div class="row">
           <h6 class="col-11">4. Do you find evidence that our students have the ability to function well on teams?</h6>
           <div class="card col-1">
-            <h5>{{ sd_exp.q4}}/5</h5>
+            <h5>{{ q4_average }}/5</h5>
           </div>
         </div>
         </li>
@@ -66,7 +56,7 @@
         <div class="row">
           <h6 class="col-11">5. Do you find evidence that our students have the ability to identify, formulate and solve engineering problems?</h6>
           <div class="card col-1">
-            <h5>{{ sd_exp.q5 }}/5</h5>
+            <h5>{{ q5_average }}/5</h5>
           </div>
         </div>
         </li>
@@ -74,7 +64,7 @@
         <div class="row">
           <h6 class="col-11">6. Do you find evidence that our students have an understanding of professional and ethical responsibility?</h6>
           <div class="card col-1">
-            <h5>{{ sd_exp.q6 }}/5</h5>
+            <h5>{{ q6_average }}/5</h5>
           </div>
         </div>
         </li>
@@ -82,7 +72,7 @@
         <div class="row">
           <h6 class="col-11">7. Do you find evidence that our students have the ability to communicate effectively? </h6>
           <div class="card col-1">
-            <h5>{{ sd_exp.q7 }}/5</h5>
+            <h5>{{ q7_average }}/5</h5>
           </div>
         </div>
         </li>
@@ -90,7 +80,7 @@
         <div class="row">
           <h6 class="col-11">8. Do you find evidence that our students understand the impact of engineering solutions in a societal context?</h6>
           <div class="card col-1">
-            <h5>{{ sd_exp.q8 }}/5</h5>
+            <h5>{{ q8_average }}/5</h5>
           </div>
         </div>
         </li>
@@ -98,7 +88,7 @@
         <div class="row">
           <h6 class="col-11">9. Do you find evidence that our students have the ability and recognize the need for independent learningoutside the classroom context?</h6>
           <div class="card col-1">
-            <h5>{{ sd_exp.q9 }}/5</h5>
+            <h5>{{ q9_average }}/5</h5>
           </div>
         </div>
         </li>
@@ -106,7 +96,7 @@
         <div class="row">
           <h6 class="col-11">10. Do you find evidence that our students have knowledge of contemporary engineering practice?</h6>
           <div class="card col-1">
-            <h5>{{ sd_exp.q10 }}/5</h5>
+            <h5>{{ q10_average }}/5</h5>
           </div>
         </div>
         </li>
@@ -114,7 +104,7 @@
         <div class="row">
           <h6 class="col-11">11. Do you find evidence that our students have an ability to use modern engineering tools for analysis and design?</h6>
           <div class="card col-1">
-            <h5>{{ sd_exp.q11 }}/5</h5>
+            <h5>{{ q11_average }}/5</h5>
           </div>
         </div>
         </li>
@@ -122,20 +112,22 @@
         <div class="row">
           <h6 class="col-11">12. How do the skills and competencies that you observed today compare with those demonstrated by entry-level engineers from other institutions?</h6>
           <div class="card col-1">
-            <h5>{{ sd_exp.q12 }}/5</h5>
+            <h5>{{ q12_average }}/5</h5>
           </div>
         </div>
         </li>
         <li class="list-group-item">
-          <div class="row">
-            <h6 class="col-11">Comments:</h6>
-            <div class="card col-12">
-              <h7>{{ sd_exp.comments }}</h7>
-            </div>
-          </div>
+          <form action="/admin_home/sd_experience_results" method="POST">
+            {% csrf_token %}
+              <button
+                type="submit"
+                value="alls"
+                class="btn btn-outline-primary"
+                name="subject">
+                <h5>View All Results</h5>
+              </button>
+          </form>
         </li>
-      </div>
-    {% endfor %}
   </div>
 
 </body>

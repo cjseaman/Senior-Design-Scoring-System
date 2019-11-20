@@ -848,3 +848,103 @@ INFO:django.utils.autoreload:E:\Documents\GitHub\Senior-Design-Scoring-System\Dj
 WARNING:django.request:Not Found: /js/functions.js
 WARNING:django.request:Not Found: /project_eval_form/events.js
 INFO:django.utils.autoreload:E:\Documents\GitHub\Senior-Design-Scoring-System\Django\scoringsystem\scoringsystem\views.py changed, reloading.
+WARNING:django.request:Not Found: /js/functions.js
+WARNING:django.request:Not Found: /project_eval_form/events.js
+WARNING:django.request:Not Found: /project_eval_form/events.js
+INFO:django.utils.autoreload:E:\Documents\GitHub\Senior-Design-Scoring-System\Django\scoringsystem\scoringsystem\views.py changed, reloading.
+WARNING:django.request:Not Found: /js/functions.js
+WARNING:django.request:Not Found: /project_eval_form/events.js
+WARNING:django.request:Not Found: /js/functions.js
+WARNING:django.request:Not Found: /project_eval_form/events.js
+INFO:django.utils.autoreload:E:\Documents\GitHub\Senior-Design-Scoring-System\Django\scoringsystem\scoringsystem\views.py changed, reloading.
+ERROR:django.request:Internal Server Error: /login_user/
+Traceback (most recent call last):
+  File "C:\Python37\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python37\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python37\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\Documents\GitHub\Senior-Design-Scoring-System\Django\scoringsystem\scoringsystem\views.py", line 31, in loginUserView
+    return judgeHomeView(request)
+  File "E:\Documents\GitHub\Senior-Design-Scoring-System\Django\scoringsystem\scoringsystem\views.py", line 156, in judgeHomeView
+    session_id = judge.session_id
+AttributeError: 'AnonymousUser' object has no attribute 'session_id'
+INFO:django.utils.autoreload:E:\Documents\GitHub\Senior-Design-Scoring-System\Django\scoringsystem\scoringsystem\views.py changed, reloading.
+ERROR:django.request:Internal Server Error: /login_user/
+Traceback (most recent call last):
+  File "C:\Python37\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python37\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python37\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\Documents\GitHub\Senior-Design-Scoring-System\Django\scoringsystem\scoringsystem\views.py", line 31, in loginUserView
+    return judgeHomeView(request)
+  File "E:\Documents\GitHub\Senior-Design-Scoring-System\Django\scoringsystem\scoringsystem\views.py", line 156, in judgeHomeView
+    session_id = judge.session_id
+AttributeError: 'AnonymousUser' object has no attribute 'session_id'
+INFO:django.utils.autoreload:E:\Documents\GitHub\Senior-Design-Scoring-System\Django\scoringsystem\scoringsystem\views.py changed, reloading.
+INFO:django.utils.autoreload:E:\Documents\GitHub\Senior-Design-Scoring-System\Django\scoringsystem\scoringsystem\views.py changed, reloading.
+WARNING:django.request:Not Found: /js/functions.js
+WARNING:django.request:Not Found: /project_eval_form/events.js
+WARNING:django.request:Not Found: /judge_home/judge_exp_eval_form/
+INFO:django.utils.autoreload:E:\Documents\GitHub\Senior-Design-Scoring-System\Django\scoringsystem\scoringsystem\views.py changed, reloading.
+WARNING:django.request:Not Found: /login_user/judge_exp_eval_form/
+WARNING:django.request:Not Found: /js/functions.js
+WARNING:django.request:Not Found: /project_eval_form/events.js
+WARNING:django.security.csrf:Forbidden (CSRF token missing or incorrect.): /login_user/
+WARNING:django.security.csrf:Forbidden (CSRF token missing or incorrect.): /login_user/
+WARNING:django.request:Not Found: /judge_exp_eval_form/admin_home
+WARNING:django.request:Not Found: /judge_exp_eval_form/admin_home
+WARNING:django.request:Not Found: /judge_exp_eval_form/admin_home
+INFO:django.utils.autoreload:E:\Documents\GitHub\Senior-Design-Scoring-System\Django\scoringsystem\scoringsystem\views.py changed, reloading.
+DEBUG:root:got to submitJudgeEval!!
+ERROR:django.request:Internal Server Error: /judge_exp_eval_form/submitted
+Traceback (most recent call last):
+  File "C:\Python37\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python37\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python37\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\Documents\GitHub\Senior-Design-Scoring-System\Django\scoringsystem\scoringsystem\views.py", line 48, in submitJudgeExpEvalView
+    return submitJudgeEval(request)
+  File "C:\Python37\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "E:\Documents\GitHub\Senior-Design-Scoring-System\Django\scoringsystem\scoringsystem\views.py", line 299, in submitJudgeEval
+    judge_email = judge.email
+AttributeError: 'judge' object has no attribute 'email'
+INFO:django.utils.autoreload:E:\Documents\GitHub\Senior-Design-Scoring-System\Django\scoringsystem\scoringsystem\views.py changed, reloading.
+DEBUG:root:got to submitJudgeEval!!
+DEBUG:root:form is valid
+INFO:django.utils.autoreload:E:\Documents\GitHub\Senior-Design-Scoring-System\Django\scoringsystem\scoringsystem\views.py changed, reloading.
+ERROR:django.request:Internal Server Error: /admin_home/sd_experience
+Traceback (most recent call last):
+  File "C:\Python37\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Python37\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python37\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\Documents\GitHub\Senior-Design-Scoring-System\Django\scoringsystem\scoringsystem\views.py", line 119, in sdExperience
+    if n is not 0:
+NameError: name 'n' is not defined
+INFO:django.utils.autoreload:E:\Documents\GitHub\Senior-Design-Scoring-System\Django\scoringsystem\scoringsystem\views.py changed, reloading.
+DEBUG:root:inside submittedAssignJudgesView
+DEBUG:root:got to submitAndAddJudge!!
+DEBUG:root:form is valid
+DEBUG:root:inside submittedAssignJudgesView
+DEBUG:root:got to submitAndAddJudge!!
+DEBUG:root:form is valid
+WARNING:django.request:Not Found: /login_user/login_user/
+DEBUG:root:got to submitJudgeEval!!
+DEBUG:root:form is valid
+WARNING:django.request:Not Found: /js/functions.js
+WARNING:django.request:Not Found: /admin_home/events.js
+WARNING:django.request:Not Found: /admin_home/events.js
+WARNING:django.request:Not Found: /js/functions.js
+WARNING:django.request:Not Found: /admin_home/events.js
+DEBUG:root:inside createProjectForm
+DEBUG:root:inside createProjectForm
+INFO:django.utils.autoreload:E:\Documents\GitHub\Senior-Design-Scoring-System\Django\scoringsystem\scoringsystem\views.py changed, reloading.

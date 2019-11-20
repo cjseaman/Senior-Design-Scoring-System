@@ -40,15 +40,7 @@
     	    	</li>
     		{% endfor %}
         <li class="list-group-item">
-          <form action="judge_exp_eval_form/" method="POST">
-            {% csrf_token %}
-            <button
-              type="submit"
-              class="btn btn-outline-dark col-12"
-              value="{{ judge.judge_email }}"
-              name="judge_email">Senior Design Experience Survey
-            </button>
-          </form>
+          <a class="btn btn-outline-dark" href="/judge_exp_eval_form/">Senior Design Experience Form</a>
         </li>
 		</div>
 	</form>
