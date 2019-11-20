@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	{% load static %}
+	{% load define_action %}
+  	<link rel="stylesheet" type="text/css" href="{% static 'scoringsystem/style.css' %}">
+	<Title>Scoring System</Title>
+</head>
+
+<body>
+
+	<nav class="navbar navbar-expand-sm navbar-light bg-light clearfix">
+		<a class="navbar-brand" href="/admin_home/">Home</a>
+		<a class="btn btn-danger pull-right" href="/logout/">Log Out</a>
+	</nav>
+
+  <div class="container" id="form_results">
+    {% if not scores_list %}
+      <div class="card">
+        <li class="list-group-item">
+          <h5>No scores to show!</h5>
+        </li>
+      </div>
+    {% endif %}
+
+    {% for score in scores_list %}
+      <div class="card">
+        <li class="list-group-item">
+          <h5>Project: {{ project.project_name }}</h5>
+          <h5>Group Members: {{ project.group_members }}</h5>
+        </li>
+        <li class="list-group-item">
+          <h2>Design Project</h2>
+        </li>
+        <li class="list-group-item">
+          <div class="row">
+            <h6 class="col-11">A. Technical Accuracy</h6>
+            <div class="card col-1">
+              <h5>{{ score.dp_a }}/5</h5>
+            </div>
+          </div>
+        </li>
+        <li class="list-group-item">
+        <div class="row">
+          <h6 class="col-11">B. Creativity and Innovation</h6>
+            <div class="card col-1">
+              <h5>{{ score.dp_b }}/5</h5>
+            </div>
+        </div>
+        </li>
+        <li class="list-group-item">
+        <div class="row">
+          <h6 class="col-11">C. Supporting Analytical Work</h6>
+            <div class="card col-1">
+              <h5>{{ score.dp_c }}/5</h5>
+            </div>
+        </div>
+        </li>
+        <li class="list-group-item">
+        <div class="row">
+          <h6 class="col-11">D. Methodical Design Process Demonstrated</h6>
+          <div class="card col-1">
+            <h5>{{ score.dp_d }}/5</h5>
+          </div>
+        </div>
+        </li>
+        <li class="list-group-item">
+        <div class="row">
+          <h6 class="col-11">E. Addresses Project Complexity Appropriately</h6>
+          <div class="card col-1">
+            <h5>{{ score.dp_e }}/5</h5>
+          </div>
+        </div>
+        </li>
+        <li class="list-group-item">
+        <div class="row">
+          <h6 class="col-11">F. Expected Project Completion</h6>
+          <div class="card col-1">
+            <h5>{{ score.dp_f }}/5</h5>
+          </div>
+        </div>
+        </li>
+        <li class="list-group-item">
+        <div class="row">
+          <h6 class="col-11">G. Design & Analysis of Tests</h6>
+          <div class="card col-1">
+            <h5>{{ score.dp_g }}/5</h5>
+          </div>
+        </div>
+        </li>
+        <li class="list-group-item">
+        <div class="row">
+          <h6 class="col-11">H. Quality of Response During Q&A</h6>
+          <div class="card col-1">
+            <h5>{{ score.dp_g }}/5</h5>
+          </div>
+        </div>
+        </li>
+        <li class="list-group-item">
+          <h2>Presentation</h2>
+        </li>
+        <li class="list-group-item">
+        <div class="row">
+          <h6 class="col-11">A. Organization</h6>
+          <div class="card col-1">
+            <h5>{{ score.p_a }}/5</h5>
+          </div>
+        </div>
+        </li>
+        <li class="list-group-item">
+        <div class="row">
+          <h6 class="col-11">B. Use of Allotted Time</h6>
+          <div class="card col-1">
+            <h5>{{ score.p_b }}/5</h5>
+          </div>
+        </div>
+        </li>
+        <li class="list-group-item">
+        <div class="row">
+          <h6 class="col-11">C. Visual Aids</h6>
+          <div class="card col-1">
+            <h5>{{ score.p_c }}/5</h5>
+          </div>
+        </div>
+        </li>
+        <li class="list-group-item">
+        <div class="row">
+          <h6 class="col-11">D. Confidence and Poise</h6>
+          <div class="card col-1">
+            <h5>{{ score.p_d }}/5</h5>
+          </div>
+        </div>
+        </li>
+        <li class="list-group-item">
+        <div class="row">
+          <h6 class="col-12">Considerations Addressed</h6>
+            {% if score.econ_consideration == True %}
+              <h7>Economical</h7>
+            {% endif %}
+            {% if score.ethi_consideration == True %}
+              <h7>Ethical</h7>
+            {% endif %}
+            {% if score.envi_consideration == True %}
+              <h7>Environmental</h7>
+            {% endif %}
+            {% if score.heal_consideration == True %}
+              <h7>Health and Safety</h7>
+            {% endif %}
+            {% if score.sust_consideration == True %}
+              <h7>Sustainablility</h7>
+            {% endif %}
+            {% if score.soci_consideration == True %}
+              <h7>Social</h7>
+            {% endif %}
+            {% if score.manu_consideration == True %}
+              <h7>Manufacturability</h7>
+            {% endif %}
+            {% if score.poli_consideration == True %}
+              <h7>Political</h7>
+            {% endif %}
+        </div>
+        </li>
+        <li class="list-group-item">
+          <div class="row">
+            <h6 class="col-11">Comments:</h6>
+            <div class="card col-12">
+              <h7>{{ score.comments }}</h7>
+            </div>
+          </div>
+        </li>
+      </div>
+    {% endfor %}
+  </div>
+
+</body>
+<script type="text/javascript" src="..\js\functions.js"></script>
+<script type="text/javascript" src="events.js"></script>
+</html>

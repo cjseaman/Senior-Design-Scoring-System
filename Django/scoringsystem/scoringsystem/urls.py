@@ -21,10 +21,12 @@ from django.views.generic.base import TemplateView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('project_eval_form/', views.projectEvalView, name='project_eval'),
-    path('project_eval_form/submitted', views.submitProjectEvalView, name='submit_project_eval'),
+    path('project_eval_form/submitted', views.submitProjectEval, name='submit_project_eval'),
     path('judge_exp_eval_form/', views.judgeExpEvalView, name='exp_eval'),
     path('judge_exp_eval_form/submitted', views.submitJudgeExpEvalView, name='submit_exp_eval'),
     path('admin_home/', views.adminHomeView, name='admin_home'),
+    path('admin_home/scores_summary', views.scoresSummaryView, name='scores_summary'),
+    path('admin_home/scores_detail', views.scoresDetailView, name='scores_detail'),
     path('admin_home/sd_experience_results', views.sdExperienceResults, name='sd_experience_results'),
     path('admin_home/sd_experience', views.sdExperience, name='sd_experience'),
     path('admin_home/create_session_form', views.createSessionView, name='create_session'),

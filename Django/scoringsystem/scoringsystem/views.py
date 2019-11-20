@@ -9,6 +9,7 @@ from django.contrib.auth import authenticate, get_user, login
 from django.contrib.auth import logout
 from django.core.mail import send_mail
 from smtplib import SMTPRecipientsRefused
+from django.core.exceptions import ObjectDoesNotExist
 import logging
 import string
 import random
@@ -416,6 +417,7 @@ def submitProjectEval(request):
         soci_consideration = makeBool(request.POST.get("soci_consideration"))
         poli_consideration = makeBool(request.POST.get("poli_consideration"))
         comments = request.POST.get("comments")
+
         score = m.ProjectEval(
             project_id=project_id, judge_email=judge_email, dp_a=dp_a,
             dp_b=dp_b, dp_c=dp_c, dp_d=dp_d, dp_e=dp_e, dp_f=dp_f,
@@ -432,13 +434,52 @@ def submitProjectEval(request):
         )
         logging.debug('score:', score)
         score.save()
-        return judgeHomeView(request)
+        p = m.project.objects.get(id=project_id)
+        p.average_score = averageScores(project_id)
+        p.save()
+        return render(request, 'judge/submitted.html')
     else:
         logging.debug('method is not POST')
 
     return render(request,'error.html')
 
+def scoresSummaryView(request):
+    session_id = request.POST.get('session_id')
+    project_list = m.project.objects.filter(session_id=session_id)
+    judge = get_user(request)
+    return render(request, 'admin/scores_summary.html', {'project_list': project_list, 'judge': judge})
+
+def scoresDetailView(request):
+    project_id = request.POST.get('project_id')
+    scores_list = m.ProjectEval.objects.filter(project_id=project_id)
+    project = m.project.objects.get(id=project_id)
+    return render(request, 'admin/scores_detail.html', {'scores_list': scores_list, 'project': project})
+
 def randomPassword(stringLength=10):
     """Generate a random string of letters and digits """
     lettersAndDigits = string.ascii_letters + string.digits
     return ''.join(random.choice(lettersAndDigits) for i in range(stringLength))
+
+def averageScores(project_id):
+    #Tallies up the total average score of a project 
+    p = m.project.objects.get(id=project_id)
+    judge_list = m.judge.objects.filter(session_id=p.session_id)
+    all_scores_list = []
+    average_score = 0
+    for judge in judge_list:
+        try:
+            p = m.ProjectEval.objects.get(judge_email=judge.judge_email)
+        except ObjectDoesNotExist:
+            continue
+        all_scores_list = all_scores_list + [p.dp_a, p.dp_b, p.dp_c, p.dp_d, p.dp_e, p.dp_f, p.dp_g, p.dp_h, p.p_a, p.p_b, p.p_c, p.p_d]
+    n = 0
+    for score in all_scores_list:
+        if(score == 0):
+            continue
+        else:
+            n += 1
+            average_score += score
+    if(n > 0):
+        average_score /= n
+    return round(average_score, 2)
+

@@ -5,7 +5,7 @@
 	{% load static %}
 	{% load define_action %}
   	<link rel="stylesheet" type="text/css" href="{% static 'scoringsystem/style.css' %}">
-	<title> Judge Home </title>
+	<title> Scores Summary </title>
 </head>
 
 <body>
@@ -17,37 +17,35 @@
     </div>
 	</nav>
 		<div class="container" id="session_list">
-	    	<li class="list-group-item">
+	    	<li class="list-group-item text-center">
           <h2>Welcome, {{ judge.judge_name }}</h2>
-          <h4>Select a project to score:</h4>
+          <h4>Select a project to view score details</h4>
         </li>
         <li class="list-group-item">
-          <div class="row">
-            <h2 class="col-3">Project Name</h2>
-            <h5 class="col-3 pull-right">Group Members</h5>
+          <div class="row container text-center">
+            <h2 class="col-4">Project Name</h2>
+            <h2 class="col-4 pull-right">Group Members</h2>
+            <h2 class="col-4 pull-right">Average Score</h2>
           </div>
         </li>
         {% for project in project_list %}
         		<li class="list-group-item">
-    					<form action="/project_eval_form/" method="POST">
+    					<form action="/admin_home/scores_detail" method="POST">
     						{% csrf_token %}
-                <input name="judge_email" type="hidden" value="{{ judge.judge_email }}"></input>
                 <button
   		    				type="submit"
-  		    				class="btn btn-outline-primary col-12"
+  		    				class="btn btn-outline-dark col-12"
   		    				name="project_id"
   		    				value="{{ project.id }}">
                   <div class="row">
-                    <h2 class="col-6">{{ project.project_name }}</h2>
-                    <h5 class="col-6 pull-right">{{ project.group_members }}</h5>
+                    <h3 class="col-4">{{ project.project_name }}</h3>
+                    <h5 class="col-4 pull-right">{{ project.group_members }}</h5>
+                    <h2 class="col-4">{{ project.average_score }}</h2>
                   </div>
   		    			</button>
     					</form>
     	    	</li>
     		{% endfor %}
-        <li class="list-group-item">
-          <a class="btn btn-outline-dark col-12" href="/judge_exp_eval_form/">Senior Design Experience Form</a>
-        </li>
 		</div>
 </body>
 </html>

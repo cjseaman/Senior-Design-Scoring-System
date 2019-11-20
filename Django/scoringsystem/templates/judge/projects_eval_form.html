@@ -32,7 +32,7 @@
       </ul>
     </div>
     <div class="card">
-      <form action="submitted" method="POST">
+      <form action="/project_eval_form/submitted" method="POST">
         {% csrf_token %}
         <ul class="list-group">
           <li class="list-group-item">
@@ -599,8 +599,7 @@
             <div class="form-group">
               <label for="comments">Comments (optional):</label>
               <textarea class="form-control" name="comments" id="comments" rows="5"></textarea>
-            </div>
-            <input name="judge_email" type="hidden" value="{{ judge.judge_email }}"></input> 
+            </div> 
             <button type="submit" name="project_id"
             value="{{ project_id }}" class="btn btn-primary">Submit All Scores and Comments</button>
           </li>
