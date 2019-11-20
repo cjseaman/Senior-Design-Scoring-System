@@ -30,13 +30,12 @@ def loginUserView(request):
             return render(request, 'admin/submitted.html')
         else:
             return judgeHomeView(request)
-        return loginView(request)
     else:
-        return loginView(request)
+        return render(request, 'registration/login.html')
 
 def projectEvalView(request):
-    project_id = request.POST.get('project_id')
     judge = get_user(request)
+    project_id = request.POST.get('project_id')
     return render(request, 'judge/projects_eval_form.html', {'project_id':project_id, 'judge': judge})
 
 def judgeExpEvalView(request):
@@ -376,14 +375,13 @@ def makeBool(val):
 
 @csrf_exempt
 def submitProjectEval(request):
-    judge_email = request.POST.get('judge_email')
-    judge = m.judge.objects.filter(email=judge_email)
+    judge = get_user(request)
     logging.basicConfig(filename='mylog.log', level=logging.DEBUG)
     logging.debug('got to submitProjectEval!!')
     if request.method == 'POST':
         logging.debug('form is valid')
         project_id = request.POST.get("project_id")
-        judge_email = request.POST.get("judge_email")
+        judge_email = judge.judge_email
         dp_a = request.POST.get("dp_a")
         dp_b = request.POST.get("dp_b")
         dp_c = request.POST.get("dp_c")
