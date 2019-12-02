@@ -27,7 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     '6eea0fde.ngrok.io',
-    '127.0.0.1'
+    '127.0.0.1',
+    '39632aaa.ngrok.io',
 ]
 
 
@@ -92,12 +93,8 @@ WSGI_APPLICATION = 'scoringsystem.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'scoring_system',
-        'USER': 'root',
-        'HOST': 'localhost',
-        'PASSWORD': '174LW215',
-        'PORT': '3307',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'scoringsystem.db',
     }
 }
 
