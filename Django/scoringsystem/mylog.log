@@ -948,3 +948,6 @@ WARNING:django.request:Not Found: /admin_home/events.js
 DEBUG:root:inside createProjectForm
 DEBUG:root:inside createProjectForm
 INFO:django.utils.autoreload:E:\Documents\GitHub\Senior-Design-Scoring-System\Django\scoringsystem\scoringsystem\views.py changed, reloading.
+WARNING:django.request:Not Found: /project_eval_form/events.js
+WARNING:django.request:Not Found: /js/functions.js
+WARNING:django.request:Not Found: /project_eval_form/events.js
