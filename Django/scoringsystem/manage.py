@@ -1,9 +1,16 @@
+# File: manage.py
+# Description: This file holds Django's command-line utility for
+#   administrative tasks.
+
 #!/usr/bin/env python
-"""Django's command-line utility for administrative tasks."""
 import os
 import sys
 
-
+# Function name: main
+# Parameters: None
+# Returns: None
+# Description: Sets up the environment for Django, and raises an error
+#   if it is not installed/invoked correctly.
 def main():
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'scoringsystem.settings')
     try:

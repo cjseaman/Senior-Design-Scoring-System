@@ -1,3 +1,9 @@
+/*
+* File: create_tables.sql
+* Description: This SQL file details the tables needed in the
+* "scoringsystem" database.
+*/
+
 create table scoringsystem_session (
 	id serial,
 	session_name char(128) default '',

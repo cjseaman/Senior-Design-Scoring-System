@@ -1,6 +1,16 @@
+# File: projects_eval.py
+# Description: This file holds the preliminary method(s) to record the scores
+#   submitted from the project evaluation form.
+
 from django.shortcuts import render
 from .scoring_data import Score
 
+# Function name: createscore
+# Parameters:
+#   request (Django HTTP request) - holds the HTTP request and associated data
+# Returns: HttpResponse object with rendered template
+# Description: Handles the HTTP request and saves the project evaluation
+#   scores in the database.
 def createscore(request):
     if request.method == 'POST':
         if request.POST.get("project_id") and request.POST.get("judge_email")

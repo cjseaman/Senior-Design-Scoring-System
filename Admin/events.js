@@ -1,5 +1,7 @@
 /*
-	File for creating listeners on page elements.
+* File: events.js
+* Description: This Javascrpt file creates listeners on the
+* Admin's page elements.
 */
 
 var Session_List = document.getElementById('session_list');
@@ -13,6 +15,3 @@ console.log(Add_Session_Btn);
 Add_Session_Btn.addEventListener("click", function() {
 	addSession(Session_List);
 });
-
-
-
