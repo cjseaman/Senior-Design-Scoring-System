@@ -1,4 +1,7 @@
-#views.py
+# File: views.py
+# Description: This file holds all the methods to display all the views and
+#   render all the pages.
+
 from django.views.generic import TemplateView
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
@@ -14,13 +17,28 @@ import logging
 import string
 import random
 
+# Function name: logoutView
+# Parameters:
+#   request (Django HTTP request) - holds the HTTP request and associated data
+# Returns: HttpResponse object with rendered template
+# Description: Logs out user from application.
 def logoutView(request):
     logout(request)
     return render(request, 'logout.html')
 
+# Function name: loginView
+# Parameters:
+#   request (Django HTTP request) - holds the HTTP request and associated data
+# Returns: HttpResponse object with rendered template
+# Description: Logs in user to application.
 def loginView(request):
     return render(request, 'registration/login.html')
 
+# Function name: loginUserView
+# Parameters:
+#   request (Django HTTP request) - holds the HTTP request and associated data
+# Returns: HttpResponse object with rendered template
+# Description: Logs in the user by submitting the login information.
 def loginUserView(request):
     email = request.POST.get('email')
     password = request.POST.get('password')
@@ -34,11 +52,22 @@ def loginUserView(request):
     else:
         return render(request, 'logout.html')
 
+# Function name: homeView
+# Parameters:
+#   request (Django HTTP request) - holds the HTTP request and associated data
+# Returns: HttpResponse object with rendered template
+# Description: Renders the general home view.
 def homeView(request):
     return render(request, 'home.html')
 
 """Judge Views"""
 
+# Function name: judgeHomeView
+# Parameters:
+#   request (Django HTTP request) - holds the HTTP request and associated data
+# Returns: HttpResponse object with rendered template
+# Description: Verifies that the user is authenticated before rendering
+#   the judge home view.
 def judgeHomeView(request):
     judge = get_user(request)
     if(judge.is_authenticated):
@@ -55,6 +84,12 @@ def judgeHomeView(request):
     else:
         return render(request, 'logout.html')
 
+# Function name: projectEvalView
+# Parameters:
+#   request (Django HTTP request) - holds the HTTP request and associated data
+# Returns: HttpResponse object with rendered template
+# Description: Verifies that the user is authenticated before rendering
+#   the projects evaluation form.
 def projectEvalView(request):
     judge = get_user(request)
     if (judge.is_authenticated):
@@ -62,8 +97,13 @@ def projectEvalView(request):
         return render(request, 'judge/projects_eval_form.html', {'project_id':project_id, 'judge': judge})
     else:
         return render(request, 'logout.html')
-       
 
+# Function name: judgeExpEvalView
+# Parameters:
+#   request (Django HTTP request) - holds the HTTP request and associated data
+# Returns: HttpResponse object with rendered template
+# Description: Verifies that the user is authenticated before rendering
+#   the experience evaluation form.
 def judgeExpEvalView(request):
     judge = get_user(request)
     if(judge.is_authenticated):
@@ -71,13 +111,25 @@ def judgeExpEvalView(request):
     else:
         return render(request, 'logout.html')
 
+# Function name: submitJudgeExpEvalView
+# Parameters:
+#   request (Django HTTP request) - holds the HTTP request and associated data
+# Returns: HttpResponse object with rendered template
+# Description: Verifies that the user is authenticated before submitting
+#   the judge evaluation form.
 def submitJudgeExpEvalView(request):
-    judge = get_user(request) 
+    judge = get_user(request)
     if(judge.is_authenticated):
         return submitJudgeEval(request)
     else:
         return render(request, 'logout.html')
 
+# Function name: submitProjectEvalView
+# Parameters:
+#   request (Django HTTP request) - holds the HTTP request and associated data
+# Returns: HttpResponse object with rendered template
+# Description: Verifies that the user is authenticated before rendering
+#   the project evaluation form.
 def submitProjectEvalView(request):
     judge = get_user(request)
     if(judge.is_authenticated):
@@ -86,6 +138,12 @@ def submitProjectEvalView(request):
     else:
         return render(request, 'logout.html')
 
+# Function name: sdExperience
+# Parameters:
+#   request (Django HTTP request) - holds the HTTP request and associated data
+# Returns: HttpResponse object with rendered template
+# Description: Verifies that the user is authenticated before calculating and
+#   rendering the averages of the senior design experience form.
 def sdExperience(request):
     user = get_user(request)
     if(user.is_authenticated):
@@ -193,6 +251,12 @@ def sdExperience(request):
     else:
         return render(request, 'logout.html')
 
+# Function name: submitJudgeEval
+# Parameters:
+#   request (Django HTTP request) - holds the HTTP request and associated data
+# Returns: HttpResponse object with rendered template
+# Description: Verifies that the user is authenticated before handling the
+#   HTTP request and save the judge experience evaluation form in the database.
 @csrf_exempt
 def submitJudgeEval(request):
     judge = get_user(request)
@@ -231,6 +295,12 @@ def submitJudgeEval(request):
     else:
         return render(request, 'logout.html')
 
+# Function name: submitProjectEval
+# Parameters:
+#   request (Django HTTP request) - holds the HTTP request and associated data
+# Returns: HttpResponse object with rendered template
+# Description: Verifies that the user is authenticated before handling the
+#   HTTP request and saves the project evaluation form in the database.
 @csrf_exempt
 def submitProjectEval(request):
     judge = get_user(request)
@@ -291,8 +361,14 @@ def submitProjectEval(request):
     else:
         return render(request, 'logout.html')
 
-"""Admin Views"""
+# Admin Views
 
+# Function name: adminHomeView
+# Parameters:
+#   request (Django HTTP request) - holds the HTTP request and associated data
+# Returns: HttpResponse object with rendered template
+# Description: Verifies that the admin is authenticated before rendering
+#   the home page.
 def adminHomeView(request):
     user = get_user(request)
     if(user.is_authenticated):
@@ -304,6 +380,12 @@ def adminHomeView(request):
     else:
         return render(request, 'logout.html')
 
+# Function name: sdExperienceResults
+# Parameters:
+#   request (Django HTTP request) - holds the HTTP request and associated data
+# Returns: HttpResponse object with rendered template
+# Description: Verifies that the admin is authenticated before rendering all
+#   the senior design experience results.
 def sdExperienceResults(request):
     user = get_user(request)
     if(user.is_authenticated):
@@ -317,6 +399,12 @@ def sdExperienceResults(request):
     else:
         return render(request, 'logout.html')
 
+# Function name: submittedCreatedSessionView
+# Parameters:
+#   request (Django HTTP request) - holds the HTTP request and associated data
+# Returns: HttpResponse object with rendered template
+# Description: Verifies that the admin is authenticated before submitting
+#   the created session.
 def submittedCreatedSessionView(request):
     user = get_user(request)
     if(user.is_authenticated):
@@ -329,6 +417,12 @@ def submittedCreatedSessionView(request):
     else:
         return render(request, 'logout.html')
 
+# Function name: createProjectForm
+# Parameters:
+#   request (Django HTTP request) - holds the HTTP request and associated data
+# Returns: HttpResponse object with rendered template
+# Description: Verifies that the admin is authenticated before creating
+#   a project for a given session.
 def createProjectForm(request):
     user = get_user(request)
     if(user.is_authenticated):
@@ -351,6 +445,11 @@ def createProjectForm(request):
     else:
         return render(request, 'logout.html')
 
+# Function name: submittedCreatedProjectForm
+# Parameters:
+#   request (Django HTTP request) - holds the HTTP request and associated data
+# Returns: HttpResponse object with rendered template
+# Description: Verifies that the admin is authenticated before submitting a created project.
 def submittedCreatedProjectForm(request):
     user = get_user(request)
     if(user.is_authenticated):
@@ -364,7 +463,11 @@ def submittedCreatedProjectForm(request):
     else:
         return render(request, 'logout.html')
 
-
+# Function name: createSessionView
+# Parameters:
+#   request (Django HTTP request) - holds the HTTP request and associated data
+# Returns: HttpResponse object with rendered template
+# Description: Verifies that the admin is authenticated before rendering a created session.
 def createSessionView(request):
     user = get_user(request)
     if(user.is_authenticated):
@@ -377,6 +480,11 @@ def createSessionView(request):
     else:
         return render(request, 'logout.html')
 
+# Function name: submitSessionView
+# Parameters:
+#   request (Django HTTP request) - holds the HTTP request and associated data
+# Returns: HttpResponse object with rendered template
+# Description: Verifies that the admin is authenticated before submitting a session.
 def submitSessionView(request):
     user = get_user(request)
     if(user.is_authenticated):
@@ -389,6 +497,12 @@ def submitSessionView(request):
     else:
         return render(request, 'logout.html')
 
+# Function name: deleteSessionPromptView
+# Parameters:
+#   request (Django HTTP request) - holds the HTTP request and associated data
+# Returns: HttpResponse object with rendered template
+# Description: Verifies that the admin is authenticated before prompting
+#   a confirmation to delete the session.
 def deleteSessionPromptView(request):
     user = get_user(request)
     if(user.is_authenticated):
@@ -400,6 +514,11 @@ def deleteSessionPromptView(request):
     else:
         return render(request, 'logout.html')
 
+# Function name: deleteSessionView
+# Parameters:
+#   request (Django HTTP request) - holds the HTTP request and associated data
+# Returns: HttpResponse object with rendered template
+# Description: Verifies that the admin is authenticated before deleting a sesison.
 def deleteSessionView(request):
     user = get_user(request)
     if(user.is_authenticated):
@@ -423,6 +542,12 @@ def deleteSessionView(request):
     else:
         return render(request, 'logout.html')
 
+# Function name: assignJudgesView
+# Parameters:
+#   request (Django HTTP request) - holds the HTTP request and associated data
+# Returns: HttpResponse object with rendered template
+# Description: Verifies that the admin is authenticated before rendering
+#   the list of judges to a session.
 def assignJudgesView(request):
     user = get_user(request)
     if(user.is_authenticated):
@@ -443,6 +568,11 @@ def assignJudgesView(request):
     else:
         return render(request, 'logout.html')
 
+# Function name: submittedAssignJudgesView
+# Parameters:
+#   request (Django HTTP request) - holds the HTTP request and associated data
+# Returns: HttpResponse object with rendered template
+# Description: Verifies that the admin is authenticated before creating a judge.
 def submittedAssignJudgesView(request):
     user = get_user(request)
     if(user.is_authenticated):
@@ -455,6 +585,12 @@ def submittedAssignJudgesView(request):
     else:
         return render(request, 'logout.html')
 
+# Function name: submitAndAddJudge
+# Parameters:
+#   request (Django HTTP request) - holds the HTTP request and associated data
+# Returns: HttpResponse object with rendered template
+# Description: Submits and creates a new judge, sending them an email with
+#   their login password.
 def submitAndAddJudge(request):
     user = get_user(request)
     if(user.is_authenticated):
@@ -473,7 +609,6 @@ def submitAndAddJudge(request):
                 )
                 #To be used later
                 password = randomPassword()
-                #password = 'testpassword'
                 judge.set_password(password)
                 message = (
                     'Hi ' + judge_name + ',\n'
@@ -498,6 +633,11 @@ def submitAndAddJudge(request):
     else:
         return render(request, 'logout.html')
 
+# Function name: submitCreatedProject
+# Parameters:
+#   request (Django HTTP request) - holds the HTTP request and associated data
+# Returns: HttpResponse object with rendered template
+# Description: Submits and creates a new project.
 def submitCreatedProject(request):
     user = get_user(request)
     if(user.is_authenticated):
@@ -532,6 +672,11 @@ def submitCreatedProject(request):
     else:
         return render(request, 'logout.html')
 
+# Function name: submitCreatedSession
+# Parameters:
+#   request (Django HTTP request) - holds the HTTP request and associated data
+# Returns: HttpResponse object with rendered template
+# Description: Submits and creates a new session.
 def submitCreatedSession(request):
     user = get_user(request)
     if(user.is_authenticated):
@@ -558,6 +703,12 @@ def submitCreatedSession(request):
     else:
         return render(request, 'logout.html')
 
+# Function name: scoresSummaryView
+# Parameters:
+#   request (Django HTTP request) - holds the HTTP request and associated data
+# Returns: HttpResponse object with rendered template
+# Description: Verifies that user is authenticaed before submitting
+#   or displaying summary scores.
 def scoresSummaryView(request):
     judge = get_user(request)
     if(judge.is_authenticated):
@@ -570,6 +721,12 @@ def scoresSummaryView(request):
     else:
         return render(request, 'logout.html')
 
+# Function name: scoresDetailView
+# Parameters:
+#   request (Django HTTP request) - holds the HTTP request and associated data
+# Returns: HttpResponse object with rendered template
+# Description: Verifies that user is authenticaed before submitting
+#   or displaying detailed scores.
 def scoresDetailView(request):
     user = get_user(request)
     if(user.is_authenticated):
@@ -583,15 +740,23 @@ def scoresDetailView(request):
     else:
         return render(request, 'logout.html')
 
-#Utility functions
+# Utility functions
 
+# Function name: randomPassword
+# Parameters:
+#   stringLength - (int) default value is 10
+# Returns: string
+# Description: Generate a random string of letters and digits
 def randomPassword(stringLength=10):
-    #Generate a random string of letters and digits
     lettersAndDigits = string.ascii_letters + string.digits
     return ''.join(random.choice(lettersAndDigits) for i in range(stringLength))
 
+# Function name: averageScores
+# Parameters:
+#   project_id - (int) holds project ID
+# Returns: rounded average score for project
+# Description: Tallies up the total average score of a project
 def averageScores(project_id):
-    #Tallies up the total average score of a project 
     p = m.project.objects.get(id=project_id)
     judge_list = m.judge.objects.filter(session_id=p.session_id)
     all_scores_list = []
@@ -614,9 +779,12 @@ def averageScores(project_id):
         average_score /= n
     return round(average_score, 2)
 
+# Function name: makeBool
+# Parameters:
+#   val - (string) 'true' or 'false'
+# Returns: bool
+# Description: returns a boolean depending on value of input string
 def makeBool(val):
     if val == 'true':
         return True
     return False
-
-

@@ -1,10 +1,13 @@
-# m.py
+# File: models.py
+# Description: Class definitions for Django models.
 
 from django.db import models as m
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.base_user import AbstractBaseUser
 from django.contrib.auth.models import UserManager
 
+# Class: ProjectEval
+# Description: Class definition for project evaluation form.
 class ProjectEval(m.Model):
     id = m.AutoField(primary_key=True)
     project_id = m.IntegerField(default=0)
@@ -34,6 +37,8 @@ class ProjectEval(m.Model):
     class Meta:
         unique_together = (("project_id", "judge_email"),)
 
+# Class: JudgeEval
+# Description: Class definition for judge experience evaluation form.
 class JudgeEval(m.Model):
     judge_email = m.CharField(max_length=128, primary_key=True)
     discipline = m.CharField(max_length=5)
@@ -51,6 +56,8 @@ class JudgeEval(m.Model):
     q12 = m.IntegerField(default=0)
     comments = m.CharField(max_length=512)
 
+# Class: session
+# Description: Class definition for session.
 class session(m.Model):
     session_name = m.CharField(max_length=128)
     session_location = m.CharField(max_length=128)
@@ -58,6 +65,8 @@ class session(m.Model):
     class Meta:
         db_table = 'scoringsystem_session'
 
+# Class: judge
+# Description: Class definition for judge, including login information.
 class judge(AbstractBaseUser):
     judge_name = m.CharField(max_length=128)
     judge_email = m.CharField(max_length=128, primary_key=True)
@@ -68,7 +77,8 @@ class judge(AbstractBaseUser):
     REQUIRED_FIELDS = ['judge_name']
     objects = UserManager()
 
-
+# Class: project
+# Description: Class definition for project.
 class project(m.Model):
     session_id = m.IntegerField(default=0)
     project_name = m.CharField(max_length=128)
@@ -77,6 +87,8 @@ class project(m.Model):
     average_score = m.FloatField(default=0)
     id = m.AutoField(primary_key=True)
 
+# Class: judgeUser
+# Description: Class definition for judge as a user.
 class judgeUser(m.Model):
     user_email = m.CharField(max_length=128, primary_key=True)
     password = m.CharField(max_length=128)

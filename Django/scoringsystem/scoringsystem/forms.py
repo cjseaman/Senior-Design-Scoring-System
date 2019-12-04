@@ -1,5 +1,10 @@
+# File: forms.py
+# Description: Class definitions for Django forms.
+
 from django import forms
 
+# Class: ProjectEvalForm
+# Description: Class definition for project evaluation form.
 class ProjectEvalForm(forms.Form):
     project_id = forms.IntegerField()
     judge_email = forms.CharField(max_length=128)
@@ -25,6 +30,8 @@ class ProjectEvalForm(forms.Form):
     poli_consideration = forms.BooleanField()
     comments = forms.CharField(max_length=512)
 
+# Class: JudgeEvalForm
+# Description: Class definition for judge experience evaluation form.
 class JudgeEvalForm(forms.Form):
     judge_email = forms.CharField(max_length=128)
     discipline = forms.CharField(max_length=5)
@@ -42,10 +49,14 @@ class JudgeEvalForm(forms.Form):
     q12 = forms.CharField(max_length=1)
     comments = forms.CharField(max_length=512)
 
+# Class: CreateSessionForm
+# Description: Class definition for a form to create a session.
 class CreateSessionForm(forms.Form):
     session_name = forms.CharField(max_length=128)
     session_location = forms.CharField(max_length=128)
 
+# Class: CreateProjectForm
+# Description: Class definition for a form to create a project.
 class CreateProjectForm(forms.Form):
     session_id = forms.IntegerField()
     project_name = forms.CharField(max_length=128)
@@ -53,6 +64,8 @@ class CreateProjectForm(forms.Form):
     project_desc = forms.CharField(max_length=256)
     average_score = forms.FloatField()
 
+# Class: AddJudgeForm
+# Description: Class definition for a form to add a judge.
 class AddJudgeForm(forms.Form):
     judge_email = forms.CharField(max_length=128)
     judge_name = forms.CharField(max_length=128)
