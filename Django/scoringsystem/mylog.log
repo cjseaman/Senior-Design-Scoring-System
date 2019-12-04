@@ -951,3 +951,128 @@ INFO:django.utils.autoreload:E:\Documents\GitHub\Senior-Design-Scoring-System\Dj
 WARNING:django.request:Not Found: /project_eval_form/events.js
 WARNING:django.request:Not Found: /js/functions.js
 WARNING:django.request:Not Found: /project_eval_form/events.js
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+DEBUG:root:inside submittedAssignJudgesView
+DEBUG:root:got to submitAndAddJudge!!
+DEBUG:root:form is valid
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /project_eval_form/events.js
+WARNING:django.request:Not Found: /js/functions.js
+DEBUG:root:got to submitProjectEval!!
+DEBUG:root:form is valid
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /js/functions.js
+WARNING:django.request:Not Found: /project_eval_form/events.js
+WARNING:django.request:Not Found: /project_eval_form/events.js
+DEBUG:root:got to submitProjectEval!!
+DEBUG:root:form is valid
+DEBUG:root:got to submitJudgeEval!!
+DEBUG:root:form is valid
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /admin_home/events.js
+WARNING:django.request:Not Found: /js/functions.js
+WARNING:django.request:Not Found: /admin_home/events.js
+WARNING:django.request:Not Found: /admin_home/events.js
+WARNING:django.request:Not Found: /js/functions.js
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /js/functions.js
+WARNING:django.request:Not Found: /admin_home/events.js
+WARNING:django.request:Not Found: /admin_home/events.js
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+DEBUG:root:inside submittedAssignJudgesView
+DEBUG:root:got to submitAndAddJudge!!
+DEBUG:root:form is valid
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /project_eval_form/events.js
+WARNING:django.request:Not Found: /js/functions.js
+WARNING:django.request:Not Found: /project_eval_form/events.js
+DEBUG:root:got to submitProjectEval!!
+DEBUG:root:form is valid
+WARNING:django.request:Not Found: /js/functions.js
+WARNING:django.request:Not Found: /project_eval_form/events.js
+WARNING:django.request:Not Found: /project_eval_form/events.js
+WARNING:django.request:Not Found: /favicon.ico
+DEBUG:root:got to submitJudgeEval!!
+DEBUG:root:form is valid
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /js/functions.js
+WARNING:django.request:Not Found: /admin_home/events.js
+WARNING:django.request:Not Found: /admin_home/events.js
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /js/functions.js
+WARNING:django.request:Not Found: /admin_home/events.js
+WARNING:django.request:Not Found: /admin_home/events.js
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /js/functions.js
+WARNING:django.request:Not Found: /admin_home/events.js
+WARNING:django.request:Not Found: /admin_home/events.js
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+DEBUG:root:inside createSessionView
+DEBUG:root:inside submittedCreatedSessionView
+DEBUG:root:got to submitCreatedSession!!
+DEBUG:root:form is valid
+DEBUG:root:inside createProjectForm
+DEBUG:root:inside submittedCreatedProjectForm
+DEBUG:root:got to submitCreatedProject!!
+DEBUG:root:form is valid
+DEBUG:root:inside createProjectForm
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /js/functions.js
+WARNING:django.request:Not Found: /project_eval_form/events.js
+WARNING:django.request:Not Found: /project_eval_form/events.js
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+DEBUG:root:inside createProjectForm
+DEBUG:root:inside createSessionView
+WARNING:django.request:Not Found: /admin_home/events.js
+WARNING:django.request:Not Found: /js/functions.js
+WARNING:django.request:Not Found: /admin_home/events.js
+ERROR:django.request:Internal Server Error: /judge_home/
+Traceback (most recent call last):
+  File "/home/cseaman/anaconda3/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/cseaman/anaconda3/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/cseaman/anaconda3/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/DCNFS/users/student/cseaman/Senior-Design-Scoring-System/Django/scoringsystem/scoringsystem/views.py", line 76, in judgeHomeView
+    session = m.session.objects.get(id=session_id)
+  File "/home/cseaman/anaconda3/lib/python3.7/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/cseaman/anaconda3/lib/python3.7/site-packages/django/db/models/query.py", line 408, in get
+    self.model._meta.object_name
+scoringsystem.models.session.DoesNotExist: session matching query does not exist.
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico

@@ -140,30 +140,32 @@ judges' scores for a specific project. -->
         <li class="list-group-item">
         <div class="row">
           <h6 class="col-12">Considerations Addressed</h6>
+	    <ul>
             {% if score.econ_consideration == True %}
-              <h7>Economical</h7>
+              <li><h7>Economical</h7></li>
             {% endif %}
             {% if score.ethi_consideration == True %}
-              <h7>Ethical</h7>
+              <li><h7>Ethical</h7></li>
             {% endif %}
             {% if score.envi_consideration == True %}
-              <h7>Environmental</h7>
+              <li><h7>Environmental</h7></li>
             {% endif %}
             {% if score.heal_consideration == True %}
-              <h7>Health and Safety</h7>
+              <li><h7>Health and Safety</h7></li>
             {% endif %}
             {% if score.sust_consideration == True %}
-              <h7>Sustainablility</h7>
+              <li><h7>Sustainablility</h7></li>
             {% endif %}
             {% if score.soci_consideration == True %}
-              <h7>Social</h7>
+              <li><h7>Social</h7></li>
             {% endif %}
             {% if score.manu_consideration == True %}
-              <h7>Manufacturability</h7>
+              <li><h7>Manufacturability</h7></li>
             {% endif %}
             {% if score.poli_consideration == True %}
-              <h7>Political</h7>
+              <li><h7>Political</h7></li>
             {% endif %}
+	  </ul>
         </div>
         </li>
         <li class="list-group-item">
