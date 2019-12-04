@@ -1,6 +1,7 @@
 /*
 * File: events.js
-* Description: This Javascrpt file creating listeners on page elements.
+* Description: This Javascript file creates listeners on the
+* Judge's page elements.
 */
 
 var Project_List = document.getElementById("project_list");
