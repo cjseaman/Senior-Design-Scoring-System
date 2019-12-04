@@ -1,0 +1,94 @@
+
+Step 0:
+	Make sure you have python, pip, and git installed on your computer.
+
+	Please reference https://www.python.org/downloads/ to download and install Python.
+	Reference https://pip.pypa.io/en/stable/installing/ to download and install pip.
+	Reference https://git-scm.com/ to download and install git.
+
+
+Step 1: Install Django
+
+	Use the command: 
+	> pip install Django
+
+
+Step 2: Verify Django installation
+
+	Enter Python shell:
+	> python
+
+	From Python shell type:
+	> import django
+	> django.get_version()
+
+	Exit python shell:
+	> exit()
+
+
+Step 3: Get project files from github
+
+	cd to the directory where you would like the project installed and type:
+	> git clone https://github.com/cjseaman/Senior-Design-Scoring-System.git
+
+
+Step 4: Initialize database
+	
+	Inside the cloned directory:
+	> cd Django/senior-design-scoring-system/
+
+	Then run the following command to initialize your database:
+	> python manage.py migrate --run-syncdb
+
+Step 5: Start local server
+
+	> python manage.py runserver
+
+	This should print the following:
+
+		Performing system checks...
+
+		System check identified no issues (0 silenced).
+		((Date and time))
+		Django version ((your version)), using settings 'scoringsystem.settings'
+		Starting development server at http://127.0.0.1:8000/
+		Quit the server with CTRL-BREAK.
+
+
+ADMIN LOGIN INFORMATION:
+
+	Email: scusdscoringsystem@scu.edu
+	PW:	Rr3nOqgDRk
+
+	To create a new admin user, you must:
+	1. Add the user as a judge to any created session using the master admin account above
+	2. Open scoringsystem.db using a sqlite viewer of your choice (we used DB Browser for SQLite https://sqlitebrowser.org/dl/)
+	3. Manually change the judge's value of is_admin to 1
+	4. Set the value of session_id to 0 (this prevents the admin from being deleted when the session is deleted)
+
+Because we assume you are installing this on a user system, and will only be using it short-term, you can make the website 
+available online using any port forwarding software (we used ngrok). You will need to add the URL where the site is hosted 
+to the ALLOWED_HOSTS section in settings.py.
+
+(Very simple) hosting using ngrok:
+
+	1. Install ngrok from https://dashboard.ngrok.com/get-started
+
+	2. Make sure your local instance is running, if not use the command:
+		> python manage.py runserver
+
+	3. Run ngrok on port 8000:
+		> ngrok 8000
+
+	4. Add the url to ALLOWED_HOSTS in settings.py
+
+	5. Use the url to access an instance of the website
+
+
+
+
+
+
+
+
+
