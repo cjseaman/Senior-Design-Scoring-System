@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<!-- File: delete_session_prompt.html -->
+<!-- Description: This HTML page is a prompt to confirm deletion of a session. -->
+
 <meta charset="UTF-8">
 <html>
 
@@ -16,7 +19,7 @@
       <div class="row col-12">
           <form action="/admin_home/delete_session" method="POST" class="col-3">
             {% csrf_token %}
-              <button 
+              <button
                 type="submit"
                 value="{{ session_id }}"
                 class="btn btn-outline-danger"

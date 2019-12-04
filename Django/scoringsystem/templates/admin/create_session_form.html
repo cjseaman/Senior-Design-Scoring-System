@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<!-- File: create_session_form.html -->
+<!-- Description: This HTML page is the form to create a new session. -->
+
 <html lang="en">
 <meta charset="utf-8">
 <head>
@@ -12,7 +15,7 @@
 		<a class="navbar-brand" href="/admin_home/">Home</a>
 		<a class="btn btn-danger pull-right" href="/logout/">Log Out</a>
 	</nav>
-	<form action="create_session_form/submitted" method="POST"> 
+	<form action="create_session_form/submitted" method="POST">
 	{% csrf_token %}
 		<div class = "container" style="padding: 5px;">
 		  	<li class="list-group-item">
